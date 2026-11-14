@@ -1,0 +1,60 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    # Weekly: re-download every wheel and re-verify hashes and attestations,
+    # so a replaced release asset is caught even if the catalog didn't change.
+    - cron: "17 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  attestations: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install jsonschema
+        run: python -m pip install "jsonschema>=4.18"
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Base catalog
+        # PRs and pushes are checked against the catalog they change, so only
+        # new or edited versions are downloaded and published ones stay
+        # immutable. Scheduled/manual runs check every version.
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          case "$EVENT" in
+            pull_request) ref="origin/${BASE_REF}" ;;
+            push) ref="$BEFORE" ;;
+            *) ref="" ;;
+          esac
+          if [ -n "$ref" ] && git cat-file -e "${ref}:catalog.json" 2>/dev/null; then
+            git show "${ref}:catalog.json" > "$RUNNER_TEMP/base.json"
+            echo "Comparing against ${ref}"
+          else
+            : > "$RUNNER_TEMP/base.json"
+            echo "No base catalog; checking every version"
+          fi
+
+      - name: Validate catalog.json
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python scripts/validate.py catalog.json --base "$RUNNER_TEMP/base.json" --network
