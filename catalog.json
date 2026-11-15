@@ -560,9 +560,35 @@
     "weather": {
       "name": "Weather",
       "description": "Weather for any location (now, 24 hours, 7 days, air quality, alerts)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v1.6.1/weather/static/weather/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v2.0.0/weather/static/weather/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-weather",
       "versions": [
+        {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-weather@sha256:28b00f225f86ce6251c3b2b9b372cf608439f6651f3795e93c91d753c5b06589",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:74f1ebeb9fa55faca70911e539be0dad68dc071f96cc54754d596a080a241527",
+          "build": "gh-43681423158.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-weather/releases/download/v2.0.0/bdh_app_weather-2.0.0-py3-none-any.whl",
+          "sha256": "cbfb3b7cce8ac5eaf7e58b913d5b5b8dec56660347ba31d05aaf5414166cca3c",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Release: allow manual dispatch (#10)",
+          "released_at": "2026-11-15T05:26:43Z",
+          "built_at": "2026-11-15T05:32:18Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67716268",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "1.6.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-weather/releases/download/v1.6.1/bdh_app_weather-1.6.1-py3-none-any.whl",
