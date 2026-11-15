@@ -425,9 +425,35 @@
     "snow_report": {
       "name": "Mountain Conditions",
       "description": "Sun Peaks mountain conditions (snow, weather, forecast)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-snow-report/v2.3.1/snow_report/static/snow_report/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-snow-report/v3.0.0/snow_report/static/snow_report/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-snow-report",
       "versions": [
+        {
+          "version": "3.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-snow_report@sha256:165676e5fc8e0ab6e66cd00dbe127874c56eda57ae896229a12b1b721973e52c",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:74f1ebeb9fa55faca70911e539be0dad68dc071f96cc54754d596a080a241527",
+          "build": "gh-43681883509.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-snow-report/releases/download/v3.0.0/bdh_app_snow_report-3.0.0-py3-none-any.whl",
+          "sha256": "515501af07ef2cca81fdc61a3b0b46e87aa21fa856c64f47652068ac1c4e3cdf",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Release: allow manual dispatch (#11)",
+          "released_at": "2026-11-15T05:35:36Z",
+          "built_at": "2026-11-15T05:38:36Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67717574",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.3.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-snow-report/releases/download/v2.3.1/bdh_app_snow_report-2.3.1-py3-none-any.whl",
