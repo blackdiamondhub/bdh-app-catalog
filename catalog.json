@@ -747,9 +747,35 @@
     "weather": {
       "name": "Weather",
       "description": "Weather for any location (now, 24 hours, 7 days, air quality, alerts)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v2.0.0/weather/static/weather/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v2.0.1/weather/static/weather/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-weather",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-weather@sha256:3fcf452130c3ff6b1928f843e6aab7a1a1ed7ee67ae2549617648030f117face",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:d37847a823f7a0bdc70d9b47d62bd9eebe449510dd357068e3e597cae99e7d59",
+          "build": "gh-43699379859.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-weather/releases/download/v2.0.1/bdh_app_weather-2.0.1-py3-none-any.whl",
+          "sha256": "cf510bbc9215bec836ed2a8df5a275c3e7569328a8615c801ebd8dfe69cb2909",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Wake every 3 hours to refresh the tile (#11)",
+          "released_at": "2026-11-15T09:27:45Z",
+          "built_at": "2026-11-15T09:29:01Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67755845",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
