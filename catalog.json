@@ -262,9 +262,33 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.2/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.3/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.0.3",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:cc8074f33b7d7e48c4442afe195966101f4e5b7adcbc95ec5ea8db54ea6c1540",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:5af04aef0728160c103dd2820533a9d57c3e84770904ab1a099d7dd75d49a53c",
+          "build": "gh-43745791507.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.0.3/bdh_app_calendar-2.0.3-py3-none-any.whl",
+          "sha256": "d741ba932cc00e33c441095841df8b2cd17f12532e718e2bd36bc8fcf72695b3",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Parse each feed at most once at a time to stop OOM kills (#10)",
+          "released_at": "2026-11-15T18:15:11Z",
+          "built_at": "2026-11-15T18:17:16Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67846359",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.2",
           "kind": "image",
