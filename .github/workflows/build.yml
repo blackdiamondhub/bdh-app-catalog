@@ -153,7 +153,13 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      # Optional CATALOG_PR_TOKEN (PAT/App token with contents + pull-requests
+      # write) pushes the branch and opens the PR, so `validate` runs and the
+      # PR can auto-merge. Without it the default token pushes the branch and
+      # the step summary links it for a human to open the PR.
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CATALOG_PR_TOKEN || github.token }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
@@ -165,10 +171,8 @@ jobs:
           merge-multiple: true
       - name: Open catalog PRs
         env:
-          # Org policy may forbid Actions from opening PRs; a PAT/App token in
-          # CATALOG_PR_TOKEN lifts that. Without one the branch is still
-          # pushed and the step summary links to it.
           GH_TOKEN: ${{ secrets.CATALOG_PR_TOKEN || github.token }}
+          HAVE_PR_TOKEN: ${{ secrets.CATALOG_PR_TOKEN != '' }}
         run: |
           set -euo pipefail
           git config user.name "bdh-builder[bot]"
@@ -201,6 +205,10 @@ jobs:
             url=$(gh pr list --head "$branch" --json url --jq '.[0].url' || true)
             if [ -z "$url" ]; then
               url=$(gh pr create --head "$branch" --base main --title "$title" --body "$body" 2>&1) || {
+                if [ "$HAVE_PR_TOKEN" = true ]; then
+                  echo "::error::CATALOG_PR_TOKEN could not open the PR for $branch: $url"
+                  exit 1
+                fi
                 echo "::warning::could not open the PR ($url); open it from $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch"
                 echo "- [$title]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch?expand=1) (open the PR by hand)" >> "$GITHUB_STEP_SUMMARY"
                 continue

@@ -127,10 +127,14 @@ builder. Every 6 hours, or on demand
    one for all rebuilds (`builder/base-<digest>`). PRs that need no human
    review auto-merge once `validate` passes.
 
-If the org doesn't let Actions open PRs, the branches are still pushed and
-the run summary links them; open the PR by hand (or set a `CATALOG_PR_TOKEN`
-secret). A PR opened with the default `GITHUB_TOKEN` doesn't trigger
-`validate`, so a token is needed for hands-off merging either way.
+With an optional `CATALOG_PR_TOKEN` repo secret (a fine-grained PAT or App
+token with contents and pull-requests write on this repo), the builder pushes
+the branch and opens the PR with it, so `validate` runs and the PR
+auto-merges hands-off; a failure to open the PR then fails the run. Without
+the secret, the default `GITHUB_TOKEN` pushes the branch and tries to open the
+PR. If the org doesn't let Actions open PRs, the run summary links the branch
+and you open the PR by hand. Either way, a branch pushed with `GITHUB_TOKEN`
+doesn't trigger `validate` until a human opens or updates the PR.
 
 ### Hub API 1: wheels
 
