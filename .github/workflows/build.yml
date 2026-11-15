@@ -102,9 +102,9 @@ jobs:
       - name: Build
         run: |
           docker pull -q "$BASE"
-          .sdk/builder/build_app.sh art "$BASE" "bdh-app-$APP:candidate"
+          bash .sdk/builder/build_app.sh art "$BASE" "bdh-app-$APP:candidate"
       - name: Smoke test
-        run: .sdk/builder/smoke.sh "bdh-app-$APP:candidate" smoke.json && cat smoke.json
+        run: bash .sdk/builder/smoke.sh "bdh-app-$APP:candidate" smoke.json && cat smoke.json
       - name: Push
         id: push
         run: |
