@@ -640,6 +640,36 @@
       "repo": "blackdiamondlodge/bdh-app-stays",
       "versions": [
         {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-stays@sha256:fb17004c531ab9fc8098744f3feba9b10cb8e3795f75c77ee6b876da3a896c41",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43721306131.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-stays/releases/download/v2.0.0/bdh_app_stays-2.0.0-py3-none-any.whl",
+          "sha256": "dd0fad887845cda1ca214da9a2a51fc877b1fc5005beeac5adf99891f947fc01",
+          "permissions": [
+            "ha.read:input_select.bdl_occupancy",
+            "ha.read:sensor.bdl_modes_status",
+            "ha.read:sensor.bdl_stay_*",
+            "ha.read:sensor.hot_tub_current_temperature",
+            "ha.read:sensor.main_floor_temperature"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "2.0.0: run in its own container (hub API 2) (#4)",
+          "released_at": "2026-11-15T06:15:04Z",
+          "built_at": "2026-11-15T13:53:58Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67797435",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.1.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-stays/releases/download/v1.1.1/bdh_app_stays-1.1.1-py3-none-any.whl",
           "sha256": "ba9fa8d5b30be89061c10d7dc54df626c4110884bb0025351e49eb7eb608a1ed",
