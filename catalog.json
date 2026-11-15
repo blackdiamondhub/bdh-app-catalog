@@ -28,9 +28,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.0.0/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.1.0/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.1.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:208fcf76fd02fec020d6f5552cff6d839f5befebb09ea3bde5f52eea9e989ffd",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e00a658827cbfd777b29479e237bc858280fcff9c925f7d9627bb4d07d529464",
+          "build": "gh-43663132535.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.1.0/bdh_app_cameras-2.1.0-py3-none-any.whl",
+          "sha256": "560603ebfd7e1455ad6908bf16962150d075e1f81b0b145920f6ffeb2e97461b",
+          "permissions": [
+            "alerts",
+            "events.subscribe:ha/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Cameras 2.1.0: ship as its own image (#44)",
+          "released_at": "2026-11-15T01:24:11Z",
+          "built_at": "2026-11-15T01:28:05Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67673922",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.0.0/bdh_app_cameras-2.0.0-py3-none-any.whl",
