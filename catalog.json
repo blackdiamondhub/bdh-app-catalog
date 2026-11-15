@@ -506,9 +506,35 @@
     "sunpeaks_webcams": {
       "name": "Webcams",
       "description": "Sun Peaks resort webcam viewer",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/v1.2.0/sunpeaks_webcams/static/sunpeaks_webcams/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/v2.0.0/sunpeaks_webcams/static/sunpeaks_webcams/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-sunpeaks-webcams",
       "versions": [
+        {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:adb59f5695acc56bb83f9f23b2fe816485278770966c42fb15702358ace7d9eb",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:74f1ebeb9fa55faca70911e539be0dad68dc071f96cc54754d596a080a241527",
+          "build": "gh-43681887753.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/releases/download/v2.0.0/bdh_app_sunpeaks_webcams-2.0.0-py3-none-any.whl",
+          "sha256": "a179c350fd11715cd806c79e8588b16c2d7394cdedbe486b594459d8fa81b337",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "backgrounds"
+          ],
+          "custom_base": false,
+          "changelog": "Release: allow manual dispatch (#5)",
+          "released_at": "2026-11-15T05:36:30Z",
+          "built_at": "2026-11-15T05:39:52Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67717815",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "1.2.0",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/releases/download/v1.2.0/bdh_app_sunpeaks_webcams-1.2.0-py3-none-any.whl",
