@@ -319,6 +319,40 @@
         }
       ]
     },
+    "flights": {
+      "name": "Flights",
+      "description": "Track flights with FlightAware and get delay, gate and landing alerts",
+      "repo": "blackdiamondlodge/bdh-app-flights",
+      "versions": [
+        {
+          "version": "0.1.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:ef7cd804b2122c49834b6cc680bc20cd721eb57f9a41c3f72fc50151904f480c",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:52dee6567c5d9c6967bd61ead1abe0b4f1a5fe5dcd3562fa3a4f7da385172f6f",
+          "build": "gh-43774079971.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.0/bdh_app_flights-0.1.0-py3-none-any.whl",
+          "sha256": "37b577aa841f78b3bf8776ef6b79809a306a77d0cbf1190b4b98ceadc500d3d3",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Flight tracker app",
+          "released_at": "2026-11-15T23:16:33Z",
+          "built_at": "2026-11-15T23:19:25Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67906786",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
