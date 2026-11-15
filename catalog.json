@@ -262,9 +262,33 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.0/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.1/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:9638880a6d9c510ebb3a77be41794e22db5a4e83c8616a71e4624cb2e0099b4a",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:bae39b85844ed1a7ba9aefaafed4466cc6ec21ab6d29f0951ffb038303e746d7",
+          "build": "gh-43685789599.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.0.1/bdh_app_calendar-2.0.1-py3-none-any.whl",
+          "sha256": "09c01c0ae94e04d7abdf11f7b15073ad115789a542f37729f23d85bd62e782b9",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "2.0.1: 192 MB memory limit (#8)",
+          "released_at": "2026-11-15T06:30:48Z",
+          "built_at": "2026-11-15T06:31:57Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67726920",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
