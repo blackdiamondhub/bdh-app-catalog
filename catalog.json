@@ -53,7 +53,7 @@
           ],
           "provides": [],
           "custom_base": false,
-          "changelog": "Cameras 2.1.1: real PyAV, settings-only Protect config (#45)",
+          "changelog": "Cameras 2.1.1: settings-only Protect config (UNIFI_PROTECT_* env fallback removed) (#45)",
           "released_at": "2026-11-15T02:32:20Z",
           "built_at": "2026-11-15T02:34:41Z",
           "attestation": {
