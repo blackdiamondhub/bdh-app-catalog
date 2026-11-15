@@ -882,9 +882,33 @@
     "wifi": {
       "name": "WiFi",
       "description": "Wi-Fi QR codes for guests",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-wifi/v1.3.0/wifi/static/wifi/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-wifi/v2.1.0/wifi/static/wifi/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-wifi",
       "versions": [
+        {
+          "version": "2.1.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-wifi@sha256:81e5743e09ad50e3ef227f9683acaf6b3677f4477158ff8159317e466e5e5efd",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43721306131.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-wifi/releases/download/v2.1.0/bdh_app_wifi-2.1.0-py3-none-any.whl",
+          "sha256": "b18d929282662b7ddfa9e749757bf8641da36fba7d074e5a6ec7b6e824a28ecc",
+          "permissions": [],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Ship as its own image (2.1.0) (#9)",
+          "released_at": "2026-11-15T05:23:40Z",
+          "built_at": "2026-11-15T13:53:59Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67797450",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "1.3.0",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-wifi/releases/download/v1.3.0/bdh_app_wifi-1.3.0-py3-none-any.whl",
