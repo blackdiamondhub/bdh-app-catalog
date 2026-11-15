@@ -28,9 +28,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.1.2/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.1.3/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.1.3",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:1a718700c2ebc1f2720deed6cf032348006e2d5ec489393f3318c105fe98b754",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:74f1ebeb9fa55faca70911e539be0dad68dc071f96cc54754d596a080a241527",
+          "build": "gh-43680429561.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.1.3/bdh_app_cameras-2.1.3-py3-none-any.whl",
+          "sha256": "6ee0f33174cb3ac49a1ce55264818cf2753cc3860431daa7e5104387bd778d83",
+          "permissions": [
+            "alerts",
+            "events.subscribe:ha/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Black first paint, early rail layout, cached live posters (2.1.3) (#47)",
+          "released_at": "2026-11-15T05:11:09Z",
+          "built_at": "2026-11-15T05:18:24Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67713852",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.1.2",
           "kind": "image",
