@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Add the latest GitHub release of each app repo to catalog.json.
 
-Seeds the catalog, and is the manual fallback when an app release couldn't
-open its own catalog PR (e.g. CATALOG_TOKEN missing). Needs the ``gh`` CLI.
+Hub API 1 releases (a wheel only) are added with add_version.py. Releases
+that publish bdh-app.json (hub API 2+, built as images) are handed to the
+builder instead: this dispatches .github/workflows/build.yml for them (pass
+--no-dispatch to just list them). Needs the ``gh`` CLI.
 
     python scripts/sync_releases.py                      # every bdh-app-* repo
     python scripts/sync_releases.py bdh-app-weather      # just one
@@ -29,12 +31,24 @@ def app_repos():
                   and r["name"] != "bdh-app-catalog")
 
 
-def sync(repo_name, catalog_path):
+def sync(repo_name, catalog_path, dispatch=True):
     repo = f"{bc.ORG}/{repo_name}"
     try:
         rel = json.loads(gh("release", "view", "-R", repo, "--json", "tagName,publishedAt,assets"))
     except subprocess.CalledProcessError:
         print(f"{repo}: no release, skipped")
+        return
+    if any(a["name"] == "bdh-app.json" for a in rel["assets"]):
+        catalog = bc.load_catalog(catalog_path) if Path(catalog_path).exists() else {"apps": {}}
+        version = rel["tagName"].removeprefix("v")
+        if any(app["repo"] == repo and any(v["version"] == version for v in app["versions"])
+               for app in catalog["apps"].values()):
+            print(f"{repo} {rel['tagName']}: already in the catalog")
+        elif dispatch:
+            gh("workflow", "run", "build.yml", "-R", bc.CATALOG_REPO, "-f", f"apps={repo_name}")
+            print(f"{repo} {rel['tagName']}: image build dispatched")
+        else:
+            print(f"{repo} {rel['tagName']}: needs an image build")
         return
     wheels = [a for a in rel["assets"] if a["name"].endswith(".whl")]
     if len(wheels) != 1:
@@ -63,9 +77,10 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("repos", nargs="*", help="app repo names (default: all bdh-app-* repos)")
     p.add_argument("--catalog", default=str(bc.CATALOG))
+    p.add_argument("--no-dispatch", action="store_true", help="don't start image builds")
     args = p.parse_args(argv)
     for name in args.repos or app_repos():
-        sync(name, args.catalog)
+        sync(name, args.catalog, dispatch=not args.no_dispatch)
 
 
 if __name__ == "__main__":

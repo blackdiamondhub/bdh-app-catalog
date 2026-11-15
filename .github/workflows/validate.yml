@@ -2,6 +2,8 @@ name: Validate
 
 on:
   pull_request:
+    # labeled/unlabeled: the human-review label changes the outcome.
+    types: [opened, synchronize, reopened, labeled, unlabeled]
   push:
     branches: [main]
   schedule:
@@ -13,6 +15,7 @@ on:
 permissions:
   contents: read
   attestations: read
+  packages: read
 
 jobs:
   validate:
@@ -57,4 +60,11 @@ jobs:
       - name: Validate catalog.json
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python scripts/validate.py catalog.json --base "$RUNNER_TEMP/base.json" --network
+          EVENT: ${{ github.event_name }}
+          LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          # gh attestation verify oci://... reads the image attestations from ghcr.io.
+          echo "$GH_TOKEN" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          args=(--base "$RUNNER_TEMP/base.json" --network)
+          [ "$EVENT" = pull_request ] && args+=(--pr --labels "$LABELS")
+          python scripts/validate.py catalog.json "${args[@]}"

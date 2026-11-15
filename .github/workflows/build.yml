@@ -1,0 +1,213 @@
+name: Build app images
+
+# The platform image builder. App repos publish only a wheel, bdh-lock.txt
+# and bdh-app.json (bdh-sdk's app-release workflow, which attests them);
+# this workflow builds every app image FROM the bdh-app-runtime base with the
+# SDK's template, smoke-tests it, pushes ghcr.io/blackdiamondlodge/bdh-app-<id>,
+# attests it, and opens the catalog PR. App repos never push images.
+#
+# Runs on a schedule (new app releases, and a rebuild of every app when the
+# base image moves) and on demand: `gh workflow run build.yml -f apps=cameras`.
+
+on:
+  workflow_dispatch:
+    inputs:
+      apps:
+        description: "Comma-separated app ids or repo names (default: all)"
+        required: false
+        default: ""
+      rebuild_all:
+        description: "Rebuild every app's newest image version"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "17 */6 * * *"
+
+concurrency:
+  group: build-app-images
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  SDK_REF: v0
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      base: ${{ steps.plan.outputs.base }}
+      matrix: ${{ steps.plan.outputs.matrix }}
+      any: ${{ steps.plan.outputs.any }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          args=(--apps "${{ inputs.apps }}")
+          [ "${{ inputs.rebuild_all }}" = true ] && args+=(--rebuild-all)
+          python scripts/builder.py plan "${args[@]}" > plan.json
+          cat plan.json
+          echo "base=$(jq -r .base plan.json)" >> "$GITHUB_OUTPUT"
+          echo "matrix=$(jq -c '{include: .include}' plan.json)" >> "$GITHUB_OUTPUT"
+          echo "any=$(jq -r '(.include | length) > 0' plan.json)" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: plan
+    if: needs.plan.outputs.any == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ matrix.repo }}
+      TAG: ${{ matrix.tag }}
+      BASE: ${{ needs.plan.outputs.base }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: blackdiamondlodge/bdh-sdk
+          ref: ${{ env.SDK_REF }}
+          path: .sdk
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Download and verify the release artifacts
+        run: |
+          mkdir -p art
+          gh release download "$TAG" -R "$REPO" -D art -p '*.whl' -p bdh-lock.txt -p bdh-app.json -p bdh-extra.Dockerfile
+          for f in art/*; do
+            gh attestation verify "$f" --repo "$REPO" \
+              --signer-workflow blackdiamondlodge/bdh-sdk/.github/workflows/app-release.yml
+          done
+          app=$(jq -r .id art/bdh-app.json)
+          [ "$(jq -r .version art/bdh-app.json)" = "${TAG#v}" ] || { echo "bdh-app.json version != $TAG"; exit 1; }
+          if [ -e art/bdh-extra.Dockerfile ] && [ "$(jq -r .custom_base art/bdh-app.json)" != true ]; then
+            echo "bdh-extra.Dockerfile without custom_base"; exit 1
+          fi
+          echo "APP=$app" >> "$GITHUB_ENV"
+          echo "IMAGE=ghcr.io/blackdiamondlodge/bdh-app-$app" >> "$GITHUB_ENV"
+      - name: Build
+        run: |
+          docker pull -q "$BASE"
+          .sdk/builder/build_app.sh art "$BASE" "bdh-app-$APP:candidate"
+      - name: Smoke test
+        run: .sdk/builder/smoke.sh "bdh-app-$APP:candidate" smoke.json && cat smoke.json
+      - name: Push
+        id: push
+        run: |
+          echo "${{ github.token }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker tag "bdh-app-$APP:candidate" "$IMAGE:${TAG#v}"
+          docker push "$IMAGE:${TAG#v}" | tee push.log
+          digest=$(grep -oE 'digest: sha256:[0-9a-f]{64}' push.log | tail -1 | cut -d' ' -f2)
+          [ -n "$digest" ] || { echo "no digest in the push output"; exit 1; }
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+      - name: Attest
+        id: attest
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.IMAGE }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
+      - name: Catalog entry
+        run: |
+          rel=$(gh release view "$TAG" -R "$REPO" --json publishedAt,tagName)
+          subject=$(gh api "repos/$REPO/commits/$TAG" --jq .commit.message | head -1)
+          mkdir -p out
+          python scripts/builder.py entry --artifacts art --repo "$REPO" --tag "$TAG" \
+            --image "$IMAGE@${{ steps.push.outputs.digest }}" --base "$BASE" \
+            --build "gh-${{ github.run_id }}.${{ github.run_attempt }}" \
+            --attestation-url "${{ steps.attest.outputs.attestation-url }}" \
+            --changelog "$subject" --released-at "$(jq -r .publishedAt <<<"$rel" | sed 's/\.000//')" \
+            -o "out/${{ matrix.reason }}-$APP.json"
+          cp smoke.json "out/smoke-$APP.json"
+          cat "out/${{ matrix.reason }}-$APP.json"
+          {
+            echo "### $APP ${TAG#v}"
+            echo '```json'
+            cat smoke.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: entry-${{ matrix.app }}
+          path: out/
+
+  catalog:
+    needs: build
+    if: ${{ !cancelled() && needs.build.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m pip install -q "jsonschema>=4.18"
+      - uses: actions/download-artifact@v4
+        with:
+          path: entries
+          pattern: entry-*
+          merge-multiple: true
+      - name: Open catalog PRs
+        env:
+          # Org policy may forbid Actions from opening PRs; a PAT/App token in
+          # CATALOG_PR_TOKEN lifts that. Without one the branch is still
+          # pushed and the step summary links to it.
+          GH_TOKEN: ${{ secrets.CATALOG_PR_TOKEN || github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "bdh-builder[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          shopt -s nullglob
+          groups=()
+          for f in entries/new-*.json; do groups+=("$f"); done
+          rebuilds=(entries/rebuild-*.json)
+          [ ${#rebuilds[@]} -eq 0 ] || groups+=("${rebuilds[*]}")
+          for group in "${groups[@]}"; do
+            git checkout -q -f main
+            git reset -q --hard origin/main
+            # shellcheck disable=SC2086
+            python scripts/builder.py apply $group --github-output out.env
+            branch=$(grep '^branch=' out.env | cut -d= -f2-)
+            title=$(grep '^title=' out.env | cut -d= -f2-)
+            review=$(grep '^human_review=' out.env | cut -d= -f2-)
+            rm out.env
+            git show origin/main:catalog.json > "$RUNNER_TEMP/base.json"
+            python scripts/validate.py --base "$RUNNER_TEMP/base.json"
+            git checkout -q -B "$branch"
+            git commit -qam "$title" -m "Built by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            git push -qf origin "$branch"
+            body="Built by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID (smoke reports in the run summary)."
+            if [ "$review" = true ]; then
+              body="$body
+
+          Changes permissions, network, companions or custom_base (or adds an app): needs a human review and the \`human-review\` label."
+            fi
+            url=$(gh pr list --head "$branch" --json url --jq '.[0].url' || true)
+            if [ -z "$url" ]; then
+              url=$(gh pr create --head "$branch" --base main --title "$title" --body "$body" 2>&1) || {
+                echo "::warning::could not open the PR ($url); open it from $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch"
+                echo "- [$title]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/compare/main...$branch?expand=1) (open the PR by hand)" >> "$GITHUB_STEP_SUMMARY"
+                continue
+              }
+            fi
+            echo "- [$title]($url)" >> "$GITHUB_STEP_SUMMARY"
+            if [ "$review" != true ]; then
+              gh pr merge "$url" --squash --auto --delete-branch || true
+            fi
+          done

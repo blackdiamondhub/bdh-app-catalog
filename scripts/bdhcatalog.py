@@ -19,6 +19,15 @@ SCHEMA_VERSION = 1
 ORG = "blackdiamondlodge"
 ENTRY_POINT_GROUP = "blackdiamondhub.plugins"
 SIGNER_WORKFLOW = f"{ORG}/bdh-sdk/.github/workflows/app-release.yml"
+CATALOG_REPO = f"{ORG}/bdh-app-catalog"
+BUILDER_WORKFLOW = f"{CATALOG_REPO}/.github/workflows/build.yml"
+IMAGE_PREFIX = f"ghcr.io/{ORG}/"
+BASE_REPO = f"{IMAGE_PREFIX}bdh-app-runtime"
+# Fields of an image entry that a rebuild (same release, new base) changes.
+REBUILD_FIELDS = {"image", "base", "build", "built_at", "attestation"}
+# Changing these from one version to the next needs a human-reviewed PR.
+SENSITIVE_FIELDS = ("permissions", "network", "companions", "custom_base")
+HUMAN_REVIEW_LABEL = "human-review"
 
 # Mirrors bdh_sdk.plugins / bdh_sdk.provides so a wheel can be read without
 # importing it (or the SDK).
@@ -74,6 +83,14 @@ def render_catalog(catalog):
 
 def dump_catalog(catalog, path=CATALOG):
     Path(path).write_text(render_catalog(catalog), encoding="utf-8", newline="\n")
+
+
+def image_repo(app_id):
+    return f"{IMAGE_PREFIX}bdh-app-{app_id}"
+
+
+def is_image(entry):
+    return entry.get("kind") == "image"
 
 
 def release_url_prefix(repo):
