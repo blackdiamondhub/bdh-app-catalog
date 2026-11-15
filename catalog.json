@@ -906,9 +906,33 @@
     "wifi": {
       "name": "WiFi",
       "description": "Wi-Fi QR codes for guests",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-wifi/v2.1.0/wifi/static/wifi/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-wifi/v2.2.0/wifi/static/wifi/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-wifi",
       "versions": [
+        {
+          "version": "2.2.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-wifi@sha256:f719a98f75758d092b7c18071d4ae0873bac43fd7cafe840720c17b4644a73ef",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43738724361.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-wifi/releases/download/v2.2.0/bdh_app_wifi-2.2.0-py3-none-any.whl",
+          "sha256": "f4f316d98e21e4da9783a11b874d2f548bdbba117360702d10cad31a6a40b7b2",
+          "permissions": [],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Wifi settings: one collapsible card per network with + Add network (#10)",
+          "released_at": "2026-11-15T16:59:29Z",
+          "built_at": "2026-11-15T17:02:17Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67830688",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.1.0",
           "kind": "image",
