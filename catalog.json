@@ -825,6 +825,33 @@
       "repo": "blackdiamondlodge/bdh-app-timers",
       "versions": [
         {
+          "version": "2.0.2",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:443fc1af9ba444a86335f8f89955a44ee4ae0d70007554b75fbd31e7da7ad410",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:4e34c4c04a812c76b92a3cf9e2259630d080b9a8e3bdb96204b0a4069566713e",
+          "build": "gh-43762596877.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v2.0.2/bdh_app_timers-2.0.2-py3-none-any.whl",
+          "sha256": "8193d1ce835a64431118c8ff883e04f2b36c14115ed00939239cbda074432324",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Order tile rows: ringing, running (soonest first), paused, done (#7)",
+          "released_at": "2026-11-15T21:10:49Z",
+          "built_at": "2026-11-15T21:15:36Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67882826",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "2.0.0",
           "kind": "image",
           "hub_api": 2,
