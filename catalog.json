@@ -825,6 +825,33 @@
       "repo": "blackdiamondlodge/bdh-app-timers",
       "versions": [
         {
+          "version": "2.0.4",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:db1b62b29201737348841281f12cf0bc717f135d9f7a5414153d0d6cd3b70715",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:52dee6567c5d9c6967bd61ead1abe0b4f1a5fe5dcd3562fa3a4f7da385172f6f",
+          "build": "gh-43765790429.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v2.0.4/bdh_app_timers-2.0.4-py3-none-any.whl",
+          "sha256": "5e13c83787eceefc5b51db3ef0a190b117f8cadd84935cd751c0feca9c034229",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Cap the popup ttl at the ring length (#9)",
+          "released_at": "2026-11-15T21:47:15Z",
+          "built_at": "2026-11-15T21:50:16Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67889486",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "2.0.2",
           "kind": "image",
           "hub_api": 2,
