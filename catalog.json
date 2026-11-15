@@ -56,7 +56,8 @@
           "provides": [],
           "manifest_declared": true,
           "changelog": "Cameras 2.0.0: run in its own container (hub_api 2) (#43)",
-          "released_at": "2026-11-15T00:08:32Z"
+          "released_at": "2026-11-15T00:08:32Z",
+          "yanked": "Hub API 2 apps ship as images now; superseded by the 2.1.0 image"
         },
         {
           "version": "1.8.5",

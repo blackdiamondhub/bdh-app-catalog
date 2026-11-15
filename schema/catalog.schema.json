@@ -4,7 +4,10 @@
   "title": "Black Diamond Hub app catalog",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema", "apps"],
+  "required": [
+    "schema",
+    "apps"
+  ],
   "properties": {
     "schema": {
       "description": "Format version. Readers must refuse a value they don't know.",
@@ -13,18 +16,32 @@
     "apps": {
       "type": "object",
       "description": "Apps keyed by PluginSpec id.",
-      "propertyNames": {"pattern": "^[a-z][a-z0-9_]*$"},
-      "additionalProperties": {"$ref": "#/$defs/app"}
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9_]*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/app"
+      }
     }
   },
   "$defs": {
     "app": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name", "description", "repo", "versions"],
+      "required": [
+        "name",
+        "description",
+        "repo",
+        "versions"
+      ],
       "properties": {
-        "name": {"type": "string", "minLength": 1},
-        "description": {"type": "string"},
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
         "icon": {
           "description": "Store icon, pinned to the newest version's tag.",
           "type": "string",
@@ -39,26 +56,218 @@
           "description": "Newest first; versions are unique and immutable.",
           "type": "array",
           "minItems": 1,
-          "items": {"$ref": "#/$defs/version"}
+          "items": {
+            "$ref": "#/$defs/version"
+          }
         }
       }
     },
     "version": {
+      "description": "kind image: a digest-pinned container image built by the catalog's builder; otherwise a wheel.",
+      "if": {
+        "type": "object",
+        "required": [
+          "kind"
+        ],
+        "properties": {
+          "kind": {
+            "const": "image"
+          }
+        }
+      },
+      "then": {
+        "$ref": "#/$defs/imageVersion"
+      },
+      "else": {
+        "$ref": "#/$defs/wheelVersion"
+      }
+    },
+    "imageVersion": {
+      "description": "An app image (hub API 2+), built FROM bdh-app-runtime by .github/workflows/build.yml.",
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "version", "wheel_url", "sha256", "hub_api", "requires_sdk", "requires",
-        "permissions", "network", "lifecycle", "memory_mb", "companions",
-        "provides", "manifest_declared", "changelog", "released_at"
+        "version",
+        "kind",
+        "hub_api",
+        "image",
+        "base",
+        "build",
+        "wheel_url",
+        "sha256",
+        "permissions",
+        "network",
+        "lifecycle",
+        "memory_mb",
+        "companions",
+        "provides",
+        "custom_base",
+        "changelog",
+        "released_at",
+        "built_at",
+        "attestation"
       ],
       "properties": {
-        "version": {"type": "string", "pattern": "^\\d+(\\.\\d+)*((a|b|rc)\\d+)?$"},
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+(\\.\\d+)*((a|b|rc)\\d+)?$"
+        },
+        "kind": {
+          "const": "image"
+        },
+        "hub_api": {
+          "description": "Hub API version (bdh_sdk.API_VERSION) the app is built for.",
+          "type": "integer",
+          "minimum": 2
+        },
+        "image": {
+          "description": "ghcr.io/blackdiamondlodge/bdh-app-<id>, pinned by digest. A rebuild changes it (an upgrade for the supervisor).",
+          "type": "string",
+          "pattern": "^ghcr\\.io/blackdiamondlodge/bdh-app-[a-z0-9_-]+@sha256:[0-9a-f]{64}$"
+        },
+        "base": {
+          "description": "The bdh-app-runtime base the image was built FROM; its layers prefix the image's.",
+          "type": "string",
+          "pattern": "^ghcr\\.io/blackdiamondlodge/bdh-app-runtime@sha256:[0-9a-f]{64}$"
+        },
+        "build": {
+          "description": "Builder run that produced the image (gh-<run id>.<attempt>).",
+          "type": "string",
+          "pattern": "^[0-9A-Za-z._:+-]{1,128}$"
+        },
+        "wheel_url": {
+          "description": "The release wheel the image was built from.",
+          "type": "string",
+          "pattern": "^https://github\\.com/blackdiamondlodge/bdh-app-[a-z0-9-]+/releases/download/v[^/]+/[A-Za-z0-9_.]+-[^/-]+-[^/]+\\.whl$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "permissions": {
+          "description": "What the app asks the hub for; the admin approves a subset.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^(ha\\.read:[a-z0-9_*]+(\\.[a-z0-9_*]+)?|ha\\.call:[a-z0-9_]+\\.([a-z0-9_]+|\\*)|events\\.(publish|subscribe):[A-Za-z0-9_./*#+-]+|alerts|speakers|media)$"
+          }
+        },
+        "network": {
+          "enum": [
+            "none",
+            "outbound",
+            "lan"
+          ]
+        },
+        "lifecycle": {
+          "enum": [
+            "always",
+            "on_demand"
+          ]
+        },
+        "memory_mb": {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 256
+        },
+        "companions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "go2rtc"
+            ]
+          }
+        },
+        "provides": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "stats",
+              "backgrounds",
+              "season"
+            ]
+          }
+        },
+        "custom_base": {
+          "description": "The app adds its own Dockerfile steps (bdh-extra.Dockerfile); needs human review.",
+          "type": "boolean"
+        },
+        "changelog": {
+          "type": "string"
+        },
+        "released_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "built_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        },
+        "attestation": {
+          "description": "Build provenance of the image, pushed to the registry and stored on this repo.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "url",
+            "signer_workflow"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "pattern": "^https://github\\.com/blackdiamondlodge/bdh-app-catalog/attestations/\\d+$"
+            },
+            "signer_workflow": {
+              "const": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+            }
+          }
+        },
+        "yanked": {
+          "description": "Set (with a reason) to hide a bad version from new installs.",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "wheelVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "wheel_url",
+        "sha256",
+        "hub_api",
+        "requires_sdk",
+        "requires",
+        "permissions",
+        "network",
+        "lifecycle",
+        "memory_mb",
+        "companions",
+        "provides",
+        "manifest_declared",
+        "changelog",
+        "released_at"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+(\\.\\d+)*((a|b|rc)\\d+)?$"
+        },
+        "kind": {
+          "const": "wheel"
+        },
         "wheel_url": {
           "description": "GitHub release asset of the app repo, tag v<version>.",
           "type": "string",
           "pattern": "^https://github\\.com/blackdiamondlodge/bdh-app-[a-z0-9-]+/releases/download/v[^/]+/[A-Za-z0-9_.]+-[^/-]+-[^/]+\\.whl$"
         },
-        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
         "hub_api": {
           "description": "Hub API version (bdh_sdk.API_VERSION) the app is built for.",
           "type": "integer",
@@ -71,7 +280,9 @@
         "requires": {
           "description": "The wheel's other Requires-Dist entries (third-party deps).",
           "type": "array",
-          "items": {"type": "string"}
+          "items": {
+            "type": "string"
+          }
         },
         "permissions": {
           "description": "What the app asks the hub for; the admin approves a subset.",
@@ -82,24 +293,51 @@
             "pattern": "^(ha\\.read:[a-z0-9_*]+(\\.[a-z0-9_*]+)?|ha\\.call:[a-z0-9_]+\\.([a-z0-9_]+|\\*)|events\\.(publish|subscribe):[A-Za-z0-9_./*#+-]+|alerts|speakers|media)$"
           }
         },
-        "network": {"enum": ["none", "outbound", "lan"]},
-        "lifecycle": {"enum": ["always", "on_demand"]},
-        "memory_mb": {"type": "integer", "minimum": 48, "maximum": 256},
+        "network": {
+          "enum": [
+            "none",
+            "outbound",
+            "lan"
+          ]
+        },
+        "lifecycle": {
+          "enum": [
+            "always",
+            "on_demand"
+          ]
+        },
+        "memory_mb": {
+          "type": "integer",
+          "minimum": 48,
+          "maximum": 256
+        },
         "companions": {
           "type": "array",
           "uniqueItems": true,
-          "items": {"enum": ["go2rtc"]}
+          "items": {
+            "enum": [
+              "go2rtc"
+            ]
+          }
         },
         "provides": {
           "type": "array",
           "uniqueItems": true,
-          "items": {"enum": ["stats", "backgrounds", "season"]}
+          "items": {
+            "enum": [
+              "stats",
+              "backgrounds",
+              "season"
+            ]
+          }
         },
         "manifest_declared": {
           "description": "false when the PluginSpec set none of the manifest fields and SDK defaults were recorded.",
           "type": "boolean"
         },
-        "changelog": {"type": "string"},
+        "changelog": {
+          "type": "string"
+        },
         "released_at": {
           "type": "string",
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
@@ -108,7 +346,10 @@
           "description": "GitHub build provenance attestation for the wheel.",
           "type": "object",
           "additionalProperties": false,
-          "required": ["url", "signer_workflow"],
+          "required": [
+            "url",
+            "signer_workflow"
+          ],
           "properties": {
             "url": {
               "type": "string",
@@ -125,7 +366,8 @@
           "type": "string",
           "minLength": 1
         }
-      }
+      },
+      "description": "A wheel installed into the hub (hub API 1). Absent kind means wheel."
     }
   }
 }

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Add (or update) one app version in catalog.json from a built wheel.
+"""Add (or update) one hub API 1 app version in catalog.json from a built wheel.
 
-Used by bdh-sdk's app-release workflow after it publishes a GitHub release:
+Hub API 2+ apps ship as images built by .github/workflows/build.yml (see
+scripts/builder.py); this script refuses them.
 
     python scripts/add_version.py --wheel dist/bdh_app_x-1.2.0-py3-none-any.whl \
         --repo blackdiamondlodge/bdh-app-x --tag v1.2.0 \
@@ -46,6 +47,9 @@ def build_entry(info, args, sha256, url):
         if "api_version" in override:
             hub_api = override["api_version"]
         declared = True
+    if hub_api >= 2:
+        raise SystemExit(f"{info['id']} {info['version']} is hub API {hub_api}: hub API 2+ apps are images; "
+                         "run the builder (gh workflow run build.yml -f apps=<id>)")
     manifest["permissions"] = sorted(set(manifest["permissions"]))
     manifest["provides"] = sorted(set(manifest["provides"]))
 

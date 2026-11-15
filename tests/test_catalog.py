@@ -34,7 +34,7 @@ spec = PluginSpec(
 PLAIN_PLUGIN = 'from bdh_sdk import PluginSpec\nspec = PluginSpec(id="demo", app="demo")\n'
 
 
-def make_wheel(directory, version="1.0.0", plugin=PLUGIN, sdk=">=0.20,<1"):
+def make_wheel(directory, version="1.0.0", plugin=PLUGIN, sdk=">=0.16,<1"):
     path = Path(directory) / f"bdh_app_demo-{version}-py3-none-any.whl"
     di = f"bdh_app_demo-{version}.dist-info"
     with zipfile.ZipFile(path, "w") as zf:
@@ -73,15 +73,20 @@ class CatalogTest(unittest.TestCase):
         self.assertEqual(v["companions"], ["go2rtc"])
         self.assertEqual(v["provides"], ["season", "stats"])
         self.assertEqual(v["requires"], ["requests"])
-        self.assertEqual(v["hub_api"], 2)
+        self.assertEqual(v["hub_api"], 1)
         self.assertTrue(v["manifest_declared"])
         self.assertEqual(validate.check_schema(catalog) + validate.check_semantics(catalog), [])
 
     def test_defaults_and_old_sdk_mean_hub_api_1(self):
-        v = self.add(make_wheel(self.tmp.name, plugin=PLAIN_PLUGIN, sdk=">=0.16,<1"))["apps"]["demo"]["versions"][0]
+        v = self.add(make_wheel(self.tmp.name, plugin=PLAIN_PLUGIN))["apps"]["demo"]["versions"][0]
         self.assertEqual(v["hub_api"], 1)
         self.assertFalse(v["manifest_declared"])
         self.assertEqual((v["network"], v["lifecycle"], v["memory_mb"]), ("outbound", "on_demand", 96))
+
+    def test_hub_api_2_wheels_are_refused(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.add(make_wheel(self.tmp.name, sdk=">=0.20,<1"))
+        self.assertIn("images", str(cm.exception))
 
     def test_versions_sorted_newest_first_and_immutable(self):
         a = Path(self.tmp.name) / "a"
