@@ -262,9 +262,33 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.1/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.2/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.0.2",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:4cb9c73d9ebb1524c64a5a64fff0892de34f22913a089d859e2799e28d5e67ff",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:d37847a823f7a0bdc70d9b47d62bd9eebe449510dd357068e3e597cae99e7d59",
+          "build": "gh-43699379859.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.0.2/bdh_app_calendar-2.0.2-py3-none-any.whl",
+          "sha256": "d8c62d0510cd912837693f6be6e80da2b82cb84e46489a12d7f88c2cb17f5c89",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "2.0.2: show tile rows, wake hourly (#9)",
+          "released_at": "2026-11-15T09:25:52Z",
+          "built_at": "2026-11-15T09:29:02Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67755855",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.1",
           "kind": "image",
