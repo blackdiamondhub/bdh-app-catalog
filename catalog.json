@@ -35,9 +35,9 @@
           "version": "2.1.4",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:a6c1d37f9853b90077c578bb5d9965dc1a6bd5d142c21c63ffc860014cd6ab42",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:bae39b85844ed1a7ba9aefaafed4466cc6ec21ab6d29f0951ffb038303e746d7",
-          "build": "gh-43683239336.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:47b506d0ca818b012c636f61931d866b185384cfa66e92da6ab8c7641d09fa9e",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43738724361.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.1.4/bdh_app_cameras-2.1.4-py3-none-any.whl",
           "sha256": "8af34b1c24ab9a3602686f78c6daa493ec8c37100f3ddbb02de4cb28946e5081",
           "permissions": [
@@ -55,9 +55,9 @@
           "custom_base": false,
           "changelog": "Cache PTZ probe results so refreshes don't trip Protect's rate limit (2.1.4) (#48)",
           "released_at": "2026-11-15T05:54:15Z",
-          "built_at": "2026-11-15T05:58:05Z",
+          "built_at": "2026-11-15T17:02:24Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67720556",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67830705",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -269,9 +269,9 @@
           "version": "2.0.2",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:4cb9c73d9ebb1524c64a5a64fff0892de34f22913a089d859e2799e28d5e67ff",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:d37847a823f7a0bdc70d9b47d62bd9eebe449510dd357068e3e597cae99e7d59",
-          "build": "gh-43699379859.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:260ef8df55c137f2e1b52ca70d284a0409f086d9d131151e2116994e9079b492",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43738724361.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.0.2/bdh_app_calendar-2.0.2-py3-none-any.whl",
           "sha256": "d8c62d0510cd912837693f6be6e80da2b82cb84e46489a12d7f88c2cb17f5c89",
           "permissions": [],
@@ -283,9 +283,9 @@
           "custom_base": false,
           "changelog": "2.0.2: show tile rows, wake hourly (#9)",
           "released_at": "2026-11-15T09:25:52Z",
-          "built_at": "2026-11-15T09:29:02Z",
+          "built_at": "2026-11-15T17:02:24Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67755855",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67830704",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -396,9 +396,9 @@
           "version": "2.0.0",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-lift_status@sha256:f934474f848181a3159821e44bf4ed974d0c77ba3b58a05c8b9994cb6f4f7549",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:74f1ebeb9fa55faca70911e539be0dad68dc071f96cc54754d596a080a241527",
-          "build": "gh-43682087956.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-lift_status@sha256:3637eac548698ab1facb3954805c125710888f42575279eb9db199a6612636dc",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43738724361.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-lift-status/releases/download/v2.0.0/bdh_app_lift_status-2.0.0-py3-none-any.whl",
           "sha256": "35ee8dce52a1226383e077f21f522efe462355bc385a51a97868cc2a80522698",
           "permissions": [],
@@ -413,9 +413,9 @@
           "custom_base": false,
           "changelog": "Release: allow manual dispatch (#7)",
           "released_at": "2026-11-15T05:35:39Z",
-          "built_at": "2026-11-15T05:41:24Z",
+          "built_at": "2026-11-15T17:02:24Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67717993",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67830703",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -561,9 +561,9 @@
           "version": "3.0.0",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-snow_report@sha256:165676e5fc8e0ab6e66cd00dbe127874c56eda57ae896229a12b1b721973e52c",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:74f1ebeb9fa55faca70911e539be0dad68dc071f96cc54754d596a080a241527",
-          "build": "gh-43681883509.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-snow_report@sha256:2e4db2c7f795042277bed038659b0a4d5dead65b679b446dfb91e30ce0fc8252",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43738724361.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-snow-report/releases/download/v3.0.0/bdh_app_snow_report-3.0.0-py3-none-any.whl",
           "sha256": "515501af07ef2cca81fdc61a3b0b46e87aa21fa856c64f47652068ac1c4e3cdf",
           "permissions": [],
@@ -577,9 +577,9 @@
           "custom_base": false,
           "changelog": "Release: allow manual dispatch (#11)",
           "released_at": "2026-11-15T05:35:36Z",
-          "built_at": "2026-11-15T05:38:36Z",
+          "built_at": "2026-11-15T17:02:19Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67717574",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67830695",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -722,9 +722,9 @@
           "version": "2.0.0",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:adb59f5695acc56bb83f9f23b2fe816485278770966c42fb15702358ace7d9eb",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:74f1ebeb9fa55faca70911e539be0dad68dc071f96cc54754d596a080a241527",
-          "build": "gh-43681887753.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:297b483dccad71de8afdbb43d4d630c11b5875d7a3b539d115b6c006a0599e07",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43738724361.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/releases/download/v2.0.0/bdh_app_sunpeaks_webcams-2.0.0-py3-none-any.whl",
           "sha256": "a179c350fd11715cd806c79e8588b16c2d7394cdedbe486b594459d8fa81b337",
           "permissions": [],
@@ -738,9 +738,9 @@
           "custom_base": false,
           "changelog": "Release: allow manual dispatch (#5)",
           "released_at": "2026-11-15T05:36:30Z",
-          "built_at": "2026-11-15T05:39:52Z",
+          "built_at": "2026-11-15T17:02:21Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67717815",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67830697",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -832,9 +832,9 @@
           "version": "2.0.1",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-weather@sha256:3fcf452130c3ff6b1928f843e6aab7a1a1ed7ee67ae2549617648030f117face",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:d37847a823f7a0bdc70d9b47d62bd9eebe449510dd357068e3e597cae99e7d59",
-          "build": "gh-43699379859.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-weather@sha256:f6d92c5eef03a2bfff7a394aaecbedcb14f994be21bf94b0f3715239e818d8c0",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
+          "build": "gh-43738724361.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-weather/releases/download/v2.0.1/bdh_app_weather-2.0.1-py3-none-any.whl",
           "sha256": "cf510bbc9215bec836ed2a8df5a275c3e7569328a8615c801ebd8dfe69cb2909",
           "permissions": [],
@@ -848,9 +848,9 @@
           "custom_base": false,
           "changelog": "Wake every 3 hours to refresh the tile (#11)",
           "released_at": "2026-11-15T09:27:45Z",
-          "built_at": "2026-11-15T09:29:01Z",
+          "built_at": "2026-11-15T17:02:23Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67755845",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67830699",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
