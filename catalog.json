@@ -28,9 +28,36 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v1.8.5/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.0.0/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.0.0",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.0.0/bdh_app_cameras-2.0.0-py3-none-any.whl",
+          "sha256": "10e84455de02bb1f206e9fabc99246b943071d39f928730881ff3b733350577c",
+          "hub_api": 2,
+          "requires_sdk": "<1,>=0.23",
+          "requires": [
+            "Pillow>=10",
+            "requests",
+            "uiprotect<26,>=25"
+          ],
+          "permissions": [
+            "alerts",
+            "events.subscribe:ha/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "manifest_declared": true,
+          "changelog": "Cameras 2.0.0: run in its own container (hub_api 2) (#43)",
+          "released_at": "2026-11-15T00:08:32Z"
+        },
         {
           "version": "1.8.5",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v1.8.5/bdh_app_cameras-1.8.5-py3-none-any.whl",
