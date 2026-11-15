@@ -825,6 +825,33 @@
       "repo": "blackdiamondlodge/bdh-app-timers",
       "versions": [
         {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:3e6df1f3ac2301d3e85982fdc6f2e2a310ae5bca8410ea1b505352f74c122561",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:4e34c4c04a812c76b92a3cf9e2259630d080b9a8e3bdb96204b0a4069566713e",
+          "build": "gh-43753386710.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v2.0.0/bdh_app_timers-2.0.0-py3-none-any.whl",
+          "sha256": "6f1bf9d94328828fa68e53f9d3c92658f6b014a7e78437d1d1cbaa7d7d53aadc",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Timers 2.0.0: container runtime, name in card header with marquee (#5)",
+          "released_at": "2026-11-15T19:34:56Z",
+          "built_at": "2026-11-15T19:37:39Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67863429",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.1.0",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v1.1.0/bdh_app_timers-1.1.0-py3-none-any.whl",
           "sha256": "9be65ad0bf3c6c54e42602b9d6415620731197ca8c0133c13470bb4b0282d119",
