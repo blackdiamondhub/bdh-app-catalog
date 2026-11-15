@@ -610,9 +610,33 @@
     "sonos_control": {
       "name": "Music",
       "description": "Sonos room grouping, volume and playback control",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sonos-control/v2.5.1/sonos_control/static/sonos_control/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sonos-control/v2.6.0/sonos_control/static/sonos_control/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-sonos-control",
       "versions": [
+        {
+          "version": "2.6.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sonos_control@sha256:b146592d46a0bf16e2ca060844214e4a28eb14f5cce69885ba7f18bd8210fc58",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:245f7e2c29e8e4cc8fb40b02e91322f17b13d2f58232e7e8b9a6ccf9e5e87f12",
+          "build": "gh-43744510562.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sonos-control/releases/download/v2.6.0/bdh_app_sonos_control-2.6.0-py3-none-any.whl",
+          "sha256": "e099b2395c4bdadc6a7c275c281d04a54d47aee59c42328ab0e8951753b0937d",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Now playing: big centred play button, blurred art backdrop (2.6.0) (#9)",
+          "released_at": "2026-11-15T17:58:13Z",
+          "built_at": "2026-11-15T18:04:03Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67843717",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.1",
           "kind": "image",
