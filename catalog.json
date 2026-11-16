@@ -886,6 +886,42 @@
         }
       ]
     },
+    "speakers": {
+      "name": "Speakers",
+      "description": "Speaker grouping, volume and playback control for Sonos and Home Assistant media players",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-speakers/v3.0.0/speakers/static/speakers/hub/icon.svg",
+      "repo": "blackdiamondlodge/bdh-app-speakers",
+      "versions": [
+        {
+          "version": "3.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-speakers@sha256:78f9178754d6a1f5dd9944d276e37e58f90eb71a66cf8aced33e74298550c40c",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:6e06a8e5c68b5b21a25cebb579f727f0f3a010e780fbfbb8b11f50e815acfc2a",
+          "build": "gh-43794801937.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-speakers/releases/download/v3.0.0/bdh_app_speakers-3.0.0-py3-none-any.whl",
+          "sha256": "5762843eddbab38d3567eeb22b487dbd612c86387578b5ecdca1965f1df41a44",
+          "permissions": [
+            "ha.call:media_player.*",
+            "ha.read:media_player.*",
+            "media"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Version speakers 3.0.0 (v1.0.0 tag already used by sonos-control) (#12)",
+          "released_at": "2026-11-16T02:46:18Z",
+          "built_at": "2026-11-16T02:54:09Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67950293",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "stays": {
       "name": "Stays",
       "description": "Guest/owner modes during stays and the homepage lodge card",
