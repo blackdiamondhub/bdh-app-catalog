@@ -843,9 +843,33 @@
     "shuttle": {
       "name": "Shuttle",
       "description": "Sun Peaks in-resort shuttle times, live bus location and spoken reminders",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v1.0.1/shuttle/static/shuttle/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.0.0/shuttle/static/shuttle/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-shuttle",
       "versions": [
+        {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-shuttle@sha256:3d65c745bb413723cf250c60cfa7eddc1dd990e36f07239850030870493cb0e4",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:0196087b29d4d1b6074939286bb7458a9c76b850a7a0c6214e596ba07ce1b2e8",
+          "build": "gh-43881626955.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-shuttle/releases/download/v2.0.0/bdh_app_shuttle-2.0.0-py3-none-any.whl",
+          "sha256": "054da6f581047a7056efc54b9de708257fd01848944912b5f56701cc91d3704b",
+          "permissions": [],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Shuttle 2.0.0: run in a container (hub API 2) (#4)\n\n- Manifest: api_version 2, no permissions, network lan (AppDaemon on the LAN),\n  lifecycle always (minute-accurate tile status), 96 MB\n- Declare settings; reminders_api_key is a secret read via bdh_sdk.secrets,\n  falling back to the plain setting\n- bdh-sdk>=0.31; manifest and FakeBroker tests; README container section",
+          "released_at": "2026-11-16T14:01:04Z",
+          "built_at": "2026-11-16T14:03:28Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68146474",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "1.0.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-shuttle/releases/download/v1.0.1/bdh_app_shuttle-1.0.1-py3-none-any.whl",
