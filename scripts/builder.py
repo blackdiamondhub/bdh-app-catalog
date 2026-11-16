@@ -77,13 +77,13 @@ def plan(catalog, base, releases, apps=None, rebuild_all=False):
 
     for repo, tag in sorted(releases.items()):
         app_id, app = by_repo.get(repo, (None, None))
+        app_id = app_id or repo.split("bdh-app-", 1)[1]
         if not selected(repo, app_id):
             continue
         version = tag.removeprefix("v")
         if app and any(v["version"] == version for v in app["versions"]):
             continue
-        include.append({"repo": repo, "tag": tag, "app": app_id or repo.split("bdh-app-", 1)[1],
-                        "reason": "new"})
+        include.append({"repo": repo, "tag": tag, "app": app_id, "reason": "new"})
     planned = {i["repo"] for i in include}
     for app_id, app in sorted(catalog["apps"].items()):
         if app["repo"] in planned or not selected(app["repo"], app_id):

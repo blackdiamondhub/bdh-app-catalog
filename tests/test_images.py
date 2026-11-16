@@ -163,6 +163,7 @@ class BuilderTest(unittest.TestCase):
                          [("new", "v1.0.0", "new"), ("demo", "v2.0.0", "rebuild")])
         self.assertEqual(len(builder.plan(catalog, BASE2, releases, rebuild_all=True)), 3)
         self.assertEqual([i["app"] for i in builder.plan(catalog, BASE2, releases, apps=["demo"])], ["demo"])
+        self.assertEqual([i["app"] for i in builder.plan(catalog, BASE2, releases, apps=["new"])], ["new"])
 
     def test_apply_new_version_and_rebuild(self):
         catalog = catalog_with(demo=[image_entry()])
