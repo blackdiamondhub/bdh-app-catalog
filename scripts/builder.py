@@ -66,14 +66,29 @@ def latest_release(repo):
     return rel["tagName"]
 
 
+def _norm(name):
+    return name.strip().lower().replace("-", "_")
+
+
 def plan(catalog, base, releases, apps=None, rebuild_all=False):
     """``releases`` maps repo -> latest tag that publishes bdh-app.json."""
     include = []
     by_repo = {app["repo"]: (app_id, app) for app_id, app in catalog["apps"].items()}
-    wanted = set(apps or ())
+    wanted = {_norm(a) for a in apps or ()}
+
+    def names(repo, app_id):
+        short = repo.split("/", 1)[1]
+        return {_norm(app_id), _norm(short), _norm(short.removeprefix("bdh-app-"))}
+
+    known = set()
+    for repo in set(releases) | set(by_repo):
+        known |= names(repo, by_repo.get(repo, (repo.split("bdh-app-", 1)[-1],))[0])
+    unknown = sorted(wanted - known)
+    if unknown:
+        raise ValueError(f"unknown app(s): {', '.join(unknown)}")
 
     def selected(repo, app_id=None):
-        return not wanted or app_id in wanted or repo.split("/", 1)[1] in wanted
+        return not wanted or bool(wanted & names(repo, app_id or ""))
 
     for repo, tag in sorted(releases.items()):
         app_id, app = by_repo.get(repo, (None, None))
@@ -215,7 +230,7 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
     pl = sub.add_parser("plan")
-    pl.add_argument("--apps", default="", help="comma-separated app ids or repo names")
+    pl.add_argument("--apps", default="", help="comma-separated app ids or repo names (- and _ are interchangeable)")
     pl.add_argument("--rebuild-all", action="store_true")
     pl.add_argument("--catalog", default=str(bc.CATALOG))
     en = sub.add_parser("entry")

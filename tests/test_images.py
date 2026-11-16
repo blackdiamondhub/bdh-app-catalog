@@ -165,6 +165,15 @@ class BuilderTest(unittest.TestCase):
         self.assertEqual([i["app"] for i in builder.plan(catalog, BASE2, releases, apps=["demo"])], ["demo"])
         self.assertEqual([i["app"] for i in builder.plan(catalog, BASE2, releases, apps=["new"])], ["new"])
 
+    def test_plan_app_filter_normalises_names_and_rejects_unknown(self):
+        catalog = catalog_with(demo=[image_entry()])
+        releases = {f"{bc.ORG}/bdh-app-snow-report": "v1.0.0"}
+        for name in ("snow_report", "snow-report", "bdh-app-snow-report", "Snow_Report"):
+            self.assertEqual([i["repo"] for i in builder.plan(catalog, BASE2, releases, apps=[name])],
+                             [f"{bc.ORG}/bdh-app-snow-report"], name)
+        with self.assertRaisesRegex(ValueError, "nope"):
+            builder.plan(catalog, BASE2, releases, apps=["snow_report", "nope"])
+
     def test_apply_new_version_and_rebuild(self):
         catalog = catalog_with(demo=[image_entry()])
         app = {"name": "Demo", "description": "A demo", "repo": f"{bc.ORG}/bdh-app-demo"}
