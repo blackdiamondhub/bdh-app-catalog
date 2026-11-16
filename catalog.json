@@ -1287,9 +1287,35 @@
     "weather": {
       "name": "Weather",
       "description": "Weather for any location (now, 24 hours, 7 days, air quality, alerts)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v2.0.1/weather/static/weather/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v2.0.2/weather/static/weather/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-weather",
       "versions": [
+        {
+          "version": "2.0.2",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-weather@sha256:a8d70e29140b7b7217e0c1f02b1a0091273b91d50b4174e19d0948a4d018d563",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:7d07e2cf19980097cc38d448fc4d3f4dddc1336ac123feeb8e7af58f7d0e5662",
+          "build": "gh-43812524377.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-weather/releases/download/v2.0.2/bdh_app_weather-2.0.2-py3-none-any.whl",
+          "sha256": "60cb0adcd8ca591248a56f8f557b08d9d33f6a89fcbea86776d0cc51abc64ff8",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Require bdh-sdk 0.30 (2.0.2) (#12)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
+          "released_at": "2026-11-16T05:44:28Z",
+          "built_at": "2026-11-16T05:48:36Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67984361",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.1",
           "kind": "image",
