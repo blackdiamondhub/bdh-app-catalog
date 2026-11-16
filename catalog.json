@@ -1501,9 +1501,47 @@
     "vacation_mode": {
       "name": "Vacation Mode",
       "description": "Vacation / home mode switching via Home Assistant and the bdl_modes AppDaemon app",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-vacation-mode/v2.0.0/vacation_mode/static/vacation_mode/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-vacation-mode/v2.0.1/vacation_mode/static/vacation_mode/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-vacation-mode",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-vacation_mode@sha256:1038e975aa2f83609150c64c0cb79e988f37ee173f9c238b330971bee8419165",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:1096f79b61ce4c37ff2e13e783b7963c9b58fdf506f5b65f6eb5ededed07f457",
+          "build": "gh-43885823246.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-vacation-mode/releases/download/v2.0.1/bdh_app_vacation_mode-2.0.1-py3-none-any.whl",
+          "sha256": "2385b076b3c04e08fb221f7d5f7b6d39020073719b4c24e08f5eafe0372be6ce",
+          "permissions": [
+            "ha.call:climate.set_hvac_mode",
+            "ha.call:climate.set_preset_mode",
+            "ha.call:climate.set_temperature",
+            "ha.call:input_boolean.turn_off",
+            "ha.call:input_boolean.turn_on",
+            "ha.call:number.set_value",
+            "ha.call:switch.turn_off",
+            "ha.call:switch.turn_on",
+            "ha.read:climate.*",
+            "ha.read:input_boolean.home_away_mode_enabled",
+            "ha.read:number.*",
+            "ha.read:sensor.hvac_load_shift_metrics_outdoor_avg_day",
+            "ha.read:switch.*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Return 403 to anonymous visitors instead of a login redirect (2.0.1) (#8)\n\nIn the app container there is no hub login page, and Django's\nlogin_required redirect imports contrib.auth models the runtime doesn't\ninstall, so anonymous requests crashed with a 500.",
+          "released_at": "2026-11-16T14:24:10Z",
+          "built_at": "2026-11-16T14:27:54Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68157918",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
