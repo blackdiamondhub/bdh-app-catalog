@@ -7,6 +7,32 @@
       "repo": "blackdiamondlodge/bdh-app-announcements",
       "versions": [
         {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-announcements@sha256:d6ef2866b42c8cfffcde16fd39d563345464be058c81864e18e88ede1252f2c8",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:6e06a8e5c68b5b21a25cebb579f727f0f3a010e780fbfbb8b11f50e815acfc2a",
+          "build": "gh-43793052685.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-announcements/releases/download/v2.0.0/bdh_app_announcements-2.0.0-py3-none-any.whl",
+          "sha256": "004bb3c6eafd8b48947e444b466700bfc026d56185b65da0c1e1d2eb81649fbd",
+          "permissions": [
+            "speakers"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Run as a container app (2.0.0) (#4)",
+          "released_at": "2026-11-16T02:32:14Z",
+          "built_at": "2026-11-16T02:36:03Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67946625",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-announcements/releases/download/v1.0.1/bdh_app_announcements-1.0.1-py3-none-any.whl",
           "sha256": "673b2659c2711b44e2057969bdc7f0bf0454b7cc7e1407a48294a8af1d9323b6",
