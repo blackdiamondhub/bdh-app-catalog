@@ -124,13 +124,15 @@ jobs:
       - name: Catalog entry
         run: |
           rel=$(gh release view "$TAG" -R "$REPO" --json publishedAt,tagName)
-          subject=$(gh api "repos/$REPO/commits/$TAG" --jq .commit.message | head -1)
+          # Release notes: the tagged commit's full message, minus git trailers.
+          notes=$(gh api "repos/$REPO/commits/$TAG" --jq .commit.message \
+            | grep -viE '^(co-authored-by|signed-off-by):' || true)
           mkdir -p out
           python scripts/builder.py entry --artifacts art --repo "$REPO" --tag "$TAG" \
             --image "$IMAGE@${{ steps.push.outputs.digest }}" --base "$BASE" \
             --build "gh-${{ github.run_id }}.${{ github.run_attempt }}" \
             --attestation-url "${{ steps.attest.outputs.attestation-url }}" \
-            --changelog "$subject" --released-at "$(jq -r .publishedAt <<<"$rel" | sed 's/\.000//')" \
+            --changelog "$notes" --released-at "$(jq -r .publishedAt <<<"$rel" | sed 's/\.000//')" \
             -o "out/${{ matrix.reason }}-$APP.json"
           cp smoke.json "out/smoke-$APP.json"
           cat "out/${{ matrix.reason }}-$APP.json"
