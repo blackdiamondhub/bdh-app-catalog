@@ -1173,9 +1173,35 @@
     "sunpeaks_webcams": {
       "name": "Webcams",
       "description": "Sun Peaks resort webcam viewer",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/v2.0.0/sunpeaks_webcams/static/sunpeaks_webcams/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/v2.0.1/sunpeaks_webcams/static/sunpeaks_webcams/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-sunpeaks-webcams",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:8bfc31fb9fddb39d250b623855a4cdd4a0079b09c8160d60e84218f94f20c425",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:7d07e2cf19980097cc38d448fc4d3f4dddc1336ac123feeb8e7af58f7d0e5662",
+          "build": "gh-43812821909.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/releases/download/v2.0.1/bdh_app_sunpeaks_webcams-2.0.1-py3-none-any.whl",
+          "sha256": "f874a48f15f61ebca3b9f410ce0cc1bc4e69321c16250d7e07e703dc6c1d48d4",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "backgrounds"
+          ],
+          "custom_base": false,
+          "changelog": "Require bdh-sdk 0.30 (2.0.1) (#7)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
+          "released_at": "2026-11-16T05:45:06Z",
+          "built_at": "2026-11-16T05:51:38Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67984846",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
