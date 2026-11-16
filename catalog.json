@@ -678,9 +678,36 @@
     "lift_status": {
       "name": "Lift Status",
       "description": "Sun Peaks lift and trail status",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-lift-status/v2.0.0/lift_status/static/lift_status/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-lift-status/v2.0.1/lift_status/static/lift_status/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-lift-status",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-lift_status@sha256:662ef56797f3d3452f881eb4613a8670acebc78cc1f203875476ef6c96cba203",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:7d07e2cf19980097cc38d448fc4d3f4dddc1336ac123feeb8e7af58f7d0e5662",
+          "build": "gh-43812821909.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-lift-status/releases/download/v2.0.1/bdh_app_lift_status-2.0.1-py3-none-any.whl",
+          "sha256": "9fe6f4786589b9f8c7f347fb808815b375fef7b051bf677d5b854f9999831ba2",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "season",
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Require bdh-sdk 0.30 (2.0.1) (#8)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
+          "released_at": "2026-11-16T05:45:12Z",
+          "built_at": "2026-11-16T05:51:26Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67984816",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
