@@ -1115,9 +1115,9 @@
           "version": "2.0.0",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-restaurants@sha256:516ebb5e18e1281f1b6d98c8cc1f41354b8e4da093729df635466c4e99678742",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:1fcf773a06fc9d920c12a3b0437ce6cbeff9d544635da3c77ce8f499342105fe",
-          "build": "gh-43965409938.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-restaurants@sha256:ce84729a6c5070e5d29f5ba0e8d37fdf3cd7cea2422059db9017ca25ab55dbeb",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:1d55bb7ed4c6e4fe3a3cca2f1ea57c1f8efec33dd114409eba1fec1d8ee40957",
+          "build": "gh-43981624557.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-restaurants/releases/download/v2.0.0/bdh_app_restaurants-2.0.0-py3-none-any.whl",
           "sha256": "f193ffbbae66bbd7d7d6265022d410a7181840af9d0cbae32edfe61d9cac4b35",
           "permissions": [],
@@ -1129,9 +1129,9 @@
           "custom_base": false,
           "changelog": "Restaurants 2.0.0: container runtime (hub API 2) (#15)\n\n- Manifest: api_version 2, no permissions, outbound network, on_demand\n  lifecycle with wake_every=3600, memory 96 MB.\n- Google Places key is now a SECRET setting read via bdh_sdk.secrets\n  (legacy GOOGLE_PLACES_API_KEY env and plain app_setting fallback).\n- shortlist_url exposed as a setting.\n- Tests for manifest, broker-backed secret/settings and appdata round-trip.\n- README: container section and data migration steps.",
           "released_at": "2026-11-16T14:03:12Z",
-          "built_at": "2026-11-16T21:59:28Z",
+          "built_at": "2026-11-16T23:43:41Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68343407",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68378229",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
