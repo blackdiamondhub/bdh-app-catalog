@@ -100,13 +100,13 @@ class PullRequestRulesTest(unittest.TestCase):
     def test_version_bump_needs_no_label(self):
         new = copy.deepcopy(self.base)
         new["apps"]["demo"]["versions"].insert(0, image_entry(version="2.1.0", digest="c"))
-        self.assertEqual(validate.check_pr(new, self.base, set()), [])
+        self.assertEqual(validate.check_pr(new, self.base), [])
 
     def test_two_apps_in_one_pr_are_rejected(self):
         new = copy.deepcopy(self.base)
         new["apps"]["demo"]["versions"].insert(0, image_entry(version="2.1.0", digest="c"))
         new["apps"]["other"]["versions"].insert(0, image_entry("other", version="2.1.0", digest="c"))
-        errors = validate.check_pr(new, self.base, {bc.HUMAN_REVIEW_LABEL})
+        errors = validate.check_pr(new, self.base)
         self.assertTrue(any("changes 2 apps" in e for e in errors))
 
     def test_base_bump_may_touch_every_app(self):
@@ -114,28 +114,24 @@ class PullRequestRulesTest(unittest.TestCase):
         for app in new["apps"].values():
             app["versions"][0].update(image=app["versions"][0]["image"][:-64] + "d" * 64,
                                       base=BASE2, build="gh-9.1")
-        self.assertEqual(validate.check_pr(new, self.base, set()), [])
+        self.assertEqual(validate.check_pr(new, self.base), [])
         new["apps"]["other"]["versions"][0]["base"] = f"{bc.BASE_REPO}@sha256:{'3' * 64}"
-        self.assertTrue(validate.check_pr(new, self.base, set()))
+        self.assertTrue(validate.check_pr(new, self.base))
         new["apps"]["other"]["versions"][0]["base"] = BASE2
         new["apps"]["other"]["versions"][0]["changelog"] = "sneaky"
-        self.assertTrue(validate.check_pr(new, self.base, set()))
+        self.assertTrue(validate.check_pr(new, self.base))
 
-    def test_sensitive_changes_need_human_review(self):
+    def test_manifest_changes_and_new_apps_need_no_label(self):
         for field, value in (("permissions", ["alerts", "ha.write"]), ("network", "lan"),
                              ("companions", ["go2rtc"]), ("custom_base", True)):
             with self.subTest(field=field):
                 new = copy.deepcopy(self.base)
                 new["apps"]["demo"]["versions"].insert(
                     0, image_entry(version="2.1.0", digest="c", **{field: value}))
-                errors = validate.check_pr(new, self.base, set())
-                self.assertTrue(any(bc.HUMAN_REVIEW_LABEL in e for e in errors), errors)
-                self.assertEqual(validate.check_pr(new, self.base, {bc.HUMAN_REVIEW_LABEL}), [])
-
-    def test_new_app_needs_human_review(self):
+                self.assertEqual(validate.check_pr(new, self.base), [])
         new = copy.deepcopy(self.base)
         new["apps"].update(catalog_with(third=[image_entry("third")])["apps"])
-        self.assertTrue(any("new app" in e for e in validate.check_pr(new, self.base, set())))
+        self.assertEqual(validate.check_pr(new, self.base), [])
 
 
 class RegistryCheckTest(unittest.TestCase):
@@ -185,10 +181,9 @@ class BuilderTest(unittest.TestCase):
         self.assertEqual(builder.apply(catalog, [rebuilt]), (["demo"], []))
         v = catalog["apps"]["demo"]["versions"][0]
         self.assertEqual((v["base"], v["changelog"]), (BASE2, ""))
-        self.assertEqual(validate.check_immutable(catalog, before) + validate.check_pr(catalog, before, set()), [])
+        self.assertEqual(validate.check_immutable(catalog, before) + validate.check_pr(catalog, before), [])
         out = builder.outputs(before, catalog, [rebuilt], ["demo"], [])
         self.assertEqual(out["branch"], f"builder/base-{'2' * 12}")
-        self.assertEqual(out["human_review"], "false")
 
     def test_entry_from_artifacts(self):
         with tempfile.TemporaryDirectory() as tmp:
