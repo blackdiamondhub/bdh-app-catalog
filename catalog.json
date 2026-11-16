@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.1/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.3/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.3",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:58cd28160d5315e046831baa21a5327740b38659a7177c0b51bdf51c32810333",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b7138fbdc45bcc6b0336efe6b80e95eaeb94c0a47e06551be92b385cb244c92f",
+          "build": "gh-43936076528.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.3/bdh_app_cameras-2.5.3-py3-none-any.whl",
+          "sha256": "af8d8fdb86e3010fb87ac34e14d5191f9bc57356810907463e6842f7ca949df4",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Bound snapshot decodes to stop cameras OOM kills (#58)\n\n* Bound snapshot decodes to stop cameras OOM kills\n\nScrubbing fired many historical snapshot requests at once; each decoded the\n~1.6 MB full-size frame and spawned an extra unbounded thread to re-decode it\nfor the other warm width. On top of the ~81 MiB idle baseline that hit the\n128 MiB cgroup limit (kernel OOM kill 2026-11-16 18:51 UTC).\n\n- One decode per frame: warm widths are cut from the same image, largest first.\n- At most 2 decodes at a time (semaphore); no per-request warm threads.\n\n\n* Keep pyproject line endings\n\n\n* Show replay controls when a replay pauses behind hidden chrome\n\nThe soak caught paused replays with the scrubber hidden: hideChrome won't hide while paused, but nothing re-showed chrome that was already hidden when the video later paused.\n\n\n---------",
+          "released_at": "2026-11-16T19:05:15Z",
+          "built_at": "2026-11-16T19:09:01Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68277534",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.1",
           "kind": "image",
