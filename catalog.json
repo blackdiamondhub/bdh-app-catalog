@@ -1501,9 +1501,47 @@
     "vacation_mode": {
       "name": "Vacation Mode",
       "description": "Vacation / home mode switching via Home Assistant and the bdl_modes AppDaemon app",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-vacation-mode/v1.1.3/vacation_mode/static/vacation_mode/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-vacation-mode/v2.0.0/vacation_mode/static/vacation_mode/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-vacation-mode",
       "versions": [
+        {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-vacation_mode@sha256:deb62e364b9fc7379fb1a7212b01f2b1ac098837c72338e58e37f076a3005501",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:0196087b29d4d1b6074939286bb7458a9c76b850a7a0c6214e596ba07ce1b2e8",
+          "build": "gh-43882847294.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-vacation-mode/releases/download/v2.0.0/bdh_app_vacation_mode-2.0.0-py3-none-any.whl",
+          "sha256": "fdef3b23466df48cb0e53d9212ffcaf3cd3935f7f8575e7c30d8a3eb84e3440a",
+          "permissions": [
+            "ha.call:climate.set_hvac_mode",
+            "ha.call:climate.set_preset_mode",
+            "ha.call:climate.set_temperature",
+            "ha.call:input_boolean.turn_off",
+            "ha.call:input_boolean.turn_on",
+            "ha.call:number.set_value",
+            "ha.call:switch.turn_off",
+            "ha.call:switch.turn_on",
+            "ha.read:climate.*",
+            "ha.read:input_boolean.home_away_mode_enabled",
+            "ha.read:number.*",
+            "ha.read:sensor.hvac_load_shift_metrics_outdoor_avg_day",
+            "ha.read:switch.*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Vacation mode 2.0.0: hub API 2 container (#7)\n\n- HA access via bdh_sdk.ha (broker-mediated) instead of direct requests to HOMEASSISTANT_URL\n- modes_api_key is now a SECRET setting (secrets.get with legacy BDL_MODES_API_KEY fallback)\n- Manifest: api_version 2, least-privilege ha.read/ha.call grants, network lan, lifecycle always, 96 MB\n- Tests: HA mocks via bdh_sdk.ha, manifest permission-coverage test, FakeBroker integration tests\n- README: container section and settings to seed",
+          "released_at": "2026-11-16T14:06:33Z",
+          "built_at": "2026-11-16T14:10:51Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68149814",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "1.1.3",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-vacation-mode/releases/download/v1.1.3/bdh_app_vacation_mode-1.1.3-py3-none-any.whl",
