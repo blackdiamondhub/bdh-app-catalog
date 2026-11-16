@@ -788,9 +788,33 @@
     "restaurants": {
       "name": "Restaurants",
       "description": "Sun Peaks restaurants with Google ratings, hours, photos and a guest shortlist",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-restaurants/v1.2.1/restaurants/static/restaurants/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-restaurants/v2.0.0/restaurants/static/restaurants/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-restaurants",
       "versions": [
+        {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-restaurants@sha256:e232cf9bc59cc3df541d31ae1fe01d26b39edfe43bcf7f511c65837a94d76cc0",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:0196087b29d4d1b6074939286bb7458a9c76b850a7a0c6214e596ba07ce1b2e8",
+          "build": "gh-43882114349.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-restaurants/releases/download/v2.0.0/bdh_app_restaurants-2.0.0-py3-none-any.whl",
+          "sha256": "f193ffbbae66bbd7d7d6265022d410a7181840af9d0cbae32edfe61d9cac4b35",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Restaurants 2.0.0: container runtime (hub API 2) (#15)\n\n- Manifest: api_version 2, no permissions, outbound network, on_demand\n  lifecycle with wake_every=3600, memory 96 MB.\n- Google Places key is now a SECRET setting read via bdh_sdk.secrets\n  (legacy GOOGLE_PLACES_API_KEY env and plain app_setting fallback).\n- shortlist_url exposed as a setting.\n- Tests for manifest, broker-backed secret/settings and appdata round-trip.\n- README: container section and data migration steps.",
+          "released_at": "2026-11-16T14:03:12Z",
+          "built_at": "2026-11-16T14:06:31Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68147804",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "1.2.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-restaurants/releases/download/v1.2.1/bdh_app_restaurants-1.2.1-py3-none-any.whl",
