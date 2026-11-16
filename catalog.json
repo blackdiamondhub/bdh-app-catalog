@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.0/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.1/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:3af5569575cee1cb30b649390285dd7b33c4ad4d328d2410e4c58ca1128ce373",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b7138fbdc45bcc6b0336efe6b80e95eaeb94c0a47e06551be92b385cb244c92f",
+          "build": "gh-43928649789.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.1/bdh_app_cameras-2.5.1-py3-none-any.whl",
+          "sha256": "3b6b6137e850c4b3ce6df193cf6739ba8b9ba4209498750d59aceef5e90784cf",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Fix clip OOM; recover stuck/stalled streams; no black frame on start (#56)\n\n- Event clips: export to a disk cache under BDH_DATA_DIR and stream them\n  (with Range support) instead of buffering whole MP4s in memory.  Opening\n  events OOM-killed the 128 MiB container, which also restarted go2rtc.\n- Player watchdog: restart a tile (backing off up to 30 s) that never\n  starts, whose peer connection closed/failed, or whose decoded frame\n  count stops moving while it shows LIVE.\n- Keep the video invisible until it has presented real frames (poster\n  shows meanwhile); reveal high-res only after its first real frame.\n- Start a new tab's streams on the next tick; more stream state in the\n  remote frame stats.",
+          "released_at": "2026-11-16T18:22:36Z",
+          "built_at": "2026-11-16T18:26:48Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68261831",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.0",
           "kind": "image",
