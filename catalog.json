@@ -503,9 +503,33 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.3/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.4/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.0.4",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:55b6af2b55e7c4a07841450de9b4de0ad3555e0208285b293f07a7ab32b2886c",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:7d07e2cf19980097cc38d448fc4d3f4dddc1336ac123feeb8e7af58f7d0e5662",
+          "build": "gh-43812821909.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.0.4/bdh_app_calendar-2.0.4-py3-none-any.whl",
+          "sha256": "01b38e1c17b9e9c7860ee15d51223dec56f7628d932801f0484446148adabcc3",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Require bdh-sdk 0.30 (2.0.4) (#11)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
+          "released_at": "2026-11-16T05:44:39Z",
+          "built_at": "2026-11-16T05:51:25Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67984813",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.3",
           "kind": "image",
@@ -654,9 +678,36 @@
     "lift_status": {
       "name": "Lift Status",
       "description": "Sun Peaks lift and trail status",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-lift-status/v2.0.0/lift_status/static/lift_status/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-lift-status/v2.0.1/lift_status/static/lift_status/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-lift-status",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-lift_status@sha256:662ef56797f3d3452f881eb4613a8670acebc78cc1f203875476ef6c96cba203",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:7d07e2cf19980097cc38d448fc4d3f4dddc1336ac123feeb8e7af58f7d0e5662",
+          "build": "gh-43812821909.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-lift-status/releases/download/v2.0.1/bdh_app_lift_status-2.0.1-py3-none-any.whl",
+          "sha256": "9fe6f4786589b9f8c7f347fb808815b375fef7b051bf677d5b854f9999831ba2",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "season",
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Require bdh-sdk 0.30 (2.0.1) (#8)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
+          "released_at": "2026-11-16T05:45:12Z",
+          "built_at": "2026-11-16T05:51:26Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67984816",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
@@ -1313,9 +1364,35 @@
     "weather": {
       "name": "Weather",
       "description": "Weather for any location (now, 24 hours, 7 days, air quality, alerts)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v2.0.1/weather/static/weather/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v2.0.2/weather/static/weather/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-weather",
       "versions": [
+        {
+          "version": "2.0.2",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-weather@sha256:a8d70e29140b7b7217e0c1f02b1a0091273b91d50b4174e19d0948a4d018d563",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:7d07e2cf19980097cc38d448fc4d3f4dddc1336ac123feeb8e7af58f7d0e5662",
+          "build": "gh-43812524377.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-weather/releases/download/v2.0.2/bdh_app_weather-2.0.2-py3-none-any.whl",
+          "sha256": "60cb0adcd8ca591248a56f8f557b08d9d33f6a89fcbea86776d0cc51abc64ff8",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Require bdh-sdk 0.30 (2.0.2) (#12)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
+          "released_at": "2026-11-16T05:44:28Z",
+          "built_at": "2026-11-16T05:48:36Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67984361",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.1",
           "kind": "image",
@@ -1394,9 +1471,33 @@
     "wifi": {
       "name": "WiFi",
       "description": "Wi-Fi QR codes for guests",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-wifi/v2.2.0/wifi/static/wifi/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-wifi/v2.2.1/wifi/static/wifi/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-wifi",
       "versions": [
+        {
+          "version": "2.2.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-wifi@sha256:6ea155f0418b45595875b546a515ed9a24287b524d0eadc45154f22ceebdc522",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:7d07e2cf19980097cc38d448fc4d3f4dddc1336ac123feeb8e7af58f7d0e5662",
+          "build": "gh-43812524377.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-wifi/releases/download/v2.2.1/bdh_app_wifi-2.2.1-py3-none-any.whl",
+          "sha256": "395e6defa611648ef0742b435aab90d2667f8bab56a8893b107961760aca93a6",
+          "permissions": [],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Require bdh-sdk 0.30 (2.2.1) (#11)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
+          "released_at": "2026-11-16T05:44:32Z",
+          "built_at": "2026-11-16T05:48:40Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67984385",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.2.0",
           "kind": "image",
