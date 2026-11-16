@@ -209,7 +209,5 @@ jobs:
               }
             fi
             echo "- [$title]($url)" >> "$GITHUB_STEP_SUMMARY"
-            if [ "$review" != true ]; then
-              gh pr merge "$url" --squash --auto --delete-branch || true
-            fi
+            gh pr merge "$url" --squash --auto --delete-branch || true
           done
