@@ -1015,6 +1015,36 @@
       "repo": "blackdiamondlodge/bdh-app-stays",
       "versions": [
         {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-stays@sha256:fae0c484e0fcbb2eee19cea4963c68b4336f99b4dbe16cdf679c1cf67301474d",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:7d07e2cf19980097cc38d448fc4d3f4dddc1336ac123feeb8e7af58f7d0e5662",
+          "build": "gh-43812524377.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-stays/releases/download/v2.0.1/bdh_app_stays-2.0.1-py3-none-any.whl",
+          "sha256": "fbd677f33337c7342fb6225d5a9161ded2cf30ee1f728730aaa4a4a4fbaa3b2e",
+          "permissions": [
+            "ha.read:input_select.bdl_occupancy",
+            "ha.read:sensor.bdl_modes_status",
+            "ha.read:sensor.bdl_stay_*",
+            "ha.read:sensor.hot_tub_current_temperature",
+            "ha.read:sensor.main_floor_temperature"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Require bdh-sdk 0.30 (2.0.1) (#5)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
+          "released_at": "2026-11-16T05:44:35Z",
+          "built_at": "2026-11-16T05:48:44Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67984407",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "2.0.0",
           "kind": "image",
           "hub_api": 2,
