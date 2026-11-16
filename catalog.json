@@ -763,9 +763,49 @@
     "radiant": {
       "name": "Radiant Heat",
       "description": "Radiant heating and heat-pump plant dashboard (Home Assistant)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-radiant/v1.2.0/radiant/static/radiant/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-radiant/v2.0.0/radiant/static/radiant/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-radiant",
       "versions": [
+        {
+          "version": "2.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-radiant@sha256:b6718de1e34070fef41f135e29be180b573a88d85d83a6b6a92159b86314abe5",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:0196087b29d4d1b6074939286bb7458a9c76b850a7a0c6214e596ba07ce1b2e8",
+          "build": "gh-43881818263.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-radiant/releases/download/v2.0.0/bdh_app_radiant-2.0.0-py3-none-any.whl",
+          "sha256": "e37d47ea28ef13c8abacd8daa1ab7737c8df1fd4b42c1423b6f224c0efae3629",
+          "permissions": [
+            "ha.call:climate.set_temperature",
+            "ha.read:binary_sensor.aeco_1988_*",
+            "ha.read:binary_sensor.mechanical_room_*",
+            "ha.read:climate.aeco_1988_climate",
+            "ha.read:climate.basement_bunk_rooms",
+            "ha.read:climate.basement_master",
+            "ha.read:climate.main_floor",
+            "ha.read:climate.master_bedroom",
+            "ha.read:climate.ski_room",
+            "ha.read:input_boolean.home_away_mode_enabled",
+            "ha.read:sensor.aeco_1988_*",
+            "ha.read:sensor.mechanical_room_*",
+            "ha.read:sensor.thermux_*",
+            "ha.read:sensor.usl_environmental_temperature_3",
+            "ha.read:switch.aeco_1988_*"
+          ],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Radiant 2.0.0: hub API 2 container manifest (#6)\n\n- api_version 2, least-privilege ha.read grants for the plant entities and\n  ha.call:climate.set_temperature, network none, on_demand + wake_every 300, 96 MB\n- setpoint_debounce_s becomes a hub Setting (env is not visible in the container)\n- bdh-sdk[ha]>=0.31\n- ManifestTests and FakeBroker tests for states, setpoint and the debounce setting",
+          "released_at": "2026-11-16T14:01:11Z",
+          "built_at": "2026-11-16T14:04:58Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68147147",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "1.2.0",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-radiant/releases/download/v1.2.0/bdh_app_radiant-1.2.0-py3-none-any.whl",
