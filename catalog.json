@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.3/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.5/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.5",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:6ffafad94f33ae8768e8e8937de1ea18c8fa1bc69fc2af55c3032833266052df",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:8939bee71537024f7751f201bc2843c90209401abce55687849feba9164f2713",
+          "build": "gh-43940592287.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.5/bdh_app_cameras-2.5.5-py3-none-any.whl",
+          "sha256": "c74e5ab44af7d6e69af88ba873e4d20dc9f5fce325398afb7c344a767bc9919b",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Replay diagnostics trail (2.5.5) (#60)\n\nRecord a per-scrubber trail of media events, retries, swaps, play() rejections and chrome hides, and expose it via the stats hook as cameras.scrub so soaks can root-cause 'paused, rs=0, chrome hidden' replay states.",
+          "released_at": "2026-11-16T19:32:09Z",
+          "built_at": "2026-11-16T19:34:51Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68287818",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.3",
           "kind": "image",
