@@ -167,15 +167,13 @@ run re-downloads every wheel. `--network`:
   image's rootfs `diff_ids` start with its `base`'s (a compatibility check:
   the app was built on that runtime).
 
-On pull requests (`--pr --labels …`; the check re-runs when labels change):
+On pull requests (`--pr`):
 
 - **one app per PR.** Only the builder's base bump may touch several apps,
   and only if every change is a rebuild of an existing version onto one
   common new `base`.
-- **`human-review` label required** for a new app, any `custom_base` entry,
-  and a new version whose `permissions`, `network`, `companions` or
-  `custom_base` differ from the app's previous version. Version and digest
-  bumps alone need no label and may auto-merge.
+- no label is needed for new or widened permissions, network or companions:
+  the hub admin approves those when installing or updating the app.
 - the image repo must be `ghcr.io/blackdiamondlodge/bdh-app-<same id>`
   (enforced on every run).
 

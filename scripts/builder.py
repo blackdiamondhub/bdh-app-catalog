@@ -33,7 +33,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import bdhcatalog as bc  # noqa: E402
 import registry  # noqa: E402
-import validate  # noqa: E402
 
 HUB_API = 2
 APP_CONFIG = "bdh-app.json"
@@ -209,8 +208,7 @@ def outputs(base_catalog, catalog, built, rebuilds, news):
         digest = next(iter(entries.values()))["base"].rsplit(":", 1)[1][:12]
         branch = f"builder/base-{digest}"
         title = f"Rebuild {', '.join(sorted(rebuilds))} on base {digest}"
-    review = bool(validate.check_pr(catalog, base_catalog, set()))
-    return {"branch": branch, "title": title, "human_review": str(review).lower()}
+    return {"branch": branch, "title": title}
 
 
 def main(argv=None):

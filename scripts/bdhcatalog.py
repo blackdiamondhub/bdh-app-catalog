@@ -25,9 +25,6 @@ IMAGE_PREFIX = f"ghcr.io/{ORG}/"
 BASE_REPO = f"{IMAGE_PREFIX}bdh-app-runtime"
 # Fields of an image entry that a rebuild (same release, new base) changes.
 REBUILD_FIELDS = {"image", "base", "build", "built_at", "attestation"}
-# Changing these from one version to the next needs a human-reviewed PR.
-SENSITIVE_FIELDS = ("permissions", "network", "companions", "custom_base")
-HUMAN_REVIEW_LABEL = "human-review"
 
 # Mirrors bdh_sdk.plugins / bdh_sdk.provides so a wheel can be read without
 # importing it (or the SDK).

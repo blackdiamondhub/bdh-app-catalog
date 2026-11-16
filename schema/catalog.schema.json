@@ -192,7 +192,7 @@
           }
         },
         "custom_base": {
-          "description": "The app adds its own Dockerfile steps (bdh-extra.Dockerfile); needs human review.",
+          "description": "The app adds its own Dockerfile steps (bdh-extra.Dockerfile).",
           "type": "boolean"
         },
         "changelog": {

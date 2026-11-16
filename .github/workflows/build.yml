@@ -189,7 +189,6 @@ jobs:
             python scripts/builder.py apply $group --github-output out.env
             branch=$(grep '^branch=' out.env | cut -d= -f2-)
             title=$(grep '^title=' out.env | cut -d= -f2-)
-            review=$(grep '^human_review=' out.env | cut -d= -f2-)
             rm out.env
             git show origin/main:catalog.json > "$RUNNER_TEMP/base.json"
             python scripts/validate.py --base "$RUNNER_TEMP/base.json"
@@ -197,11 +196,6 @@ jobs:
             git commit -qam "$title" -m "Built by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             git push -qf origin "$branch"
             body="Built by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID (smoke reports in the run summary)."
-            if [ "$review" = true ]; then
-              body="$body
-
-          Changes permissions, network, companions or custom_base (or adds an app): needs a human review and the \`human-review\` label."
-            fi
             url=$(gh pr list --head "$branch" --json url --jq '.[0].url' || true)
             if [ -z "$url" ]; then
               url=$(gh pr create --head "$branch" --base main --title "$title" --body "$body" 2>&1) || {

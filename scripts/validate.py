@@ -12,13 +12,10 @@ wheel_url, sha256 and manifest and is never removed (set ``yanked``
 instead). An image entry may be rebuilt: image, base, build, built_at and
 attestation change together.
 
-``--pr --labels a,b`` adds the rules for pull requests (against ``--base``):
-
-- a PR changes one app, unless it is the builder's base bump (every change
-  is a rebuild of an existing version onto one new base);
-- changing permissions, network, companions or custom_base relative to the
-  app's previous version, adding an app, or any custom_base entry needs the
-  ``human-review`` label. Version and digest bumps need nothing.
+``--pr`` adds the rule for pull requests (against ``--base``): a PR changes
+one app, unless it is the builder's base bump (every change is a rebuild of
+an existing version onto one new base). New or widened permissions are
+approved by the hub admin at install/update time, not here.
 
 ``--network`` downloads the wheels of new/changed versions (all of them
 without ``--base``), checks their sha256, that the wheel's PluginSpec id and
@@ -139,15 +136,6 @@ def check_immutable(catalog, base):
     return errors
 
 
-def _newest(versions, exclude=None):
-    live = [v for v in versions if not v.get("yanked") and v.get("version") != exclude]
-    return max(live, key=lambda v: bc.version_key(v["version"]), default=None)
-
-
-def _sensitive(entry):
-    return {f: entry.get(f, False if f == "custom_base" else None) for f in bc.SENSITIVE_FIELDS}
-
-
 def is_base_bump(catalog, base):
     """Every change is a rebuild of an existing image version onto one base."""
     bases = set()
@@ -171,7 +159,7 @@ def is_base_bump(catalog, base):
     return len(bases) == 1
 
 
-def check_pr(catalog, base, labels):
+def check_pr(catalog, base):
     """Rules for a pull request against ``base`` (see the module docs)."""
     errors = []
     base = base or {"apps": {}}
@@ -180,33 +168,6 @@ def check_pr(catalog, base, labels):
     if len(changed) > 1 and not is_base_bump(catalog, base):
         errors.append(f"this PR changes {len(changed)} apps ({', '.join(changed)}); "
                       "change one app per PR (only the builder's base bump may change several)")
-    if bc.HUMAN_REVIEW_LABEL in labels:
-        return errors
-    for app_id in changed:
-        app = catalog["apps"].get(app_id)
-        old_app = base["apps"].get(app_id)
-        if app is None:
-            continue
-        if old_app is None:
-            errors.append(f"{app_id}: new app; needs the {bc.HUMAN_REVIEW_LABEL} label")
-            continue
-        old_versions = {v["version"]: v for v in old_app.get("versions", [])}
-        for v in app.get("versions", []):
-            if old_versions.get(v["version"]) == v:
-                continue
-            where = f"{app_id} {v['version']}"
-            if v.get("custom_base"):
-                errors.append(f"{where}: custom_base image; needs the {bc.HUMAN_REVIEW_LABEL} label")
-                continue
-            if v["version"] in old_versions:
-                continue  # immutability covers the manifest of an existing version
-            prev = _newest(old_app.get("versions", []))
-            if prev is None:
-                continue
-            diff = [f for f, value in _sensitive(v).items() if _sensitive(prev)[f] != value]
-            if diff:
-                errors.append(f"{where}: {', '.join(diff)} changed from {prev['version']}; "
-                              f"needs the {bc.HUMAN_REVIEW_LABEL} label")
     return errors
 
 
@@ -296,7 +257,6 @@ def main(argv=None):
     p.add_argument("--base", help="the catalog.json this change is based on")
     p.add_argument("--network", action="store_true", help="download and verify changed wheels and images")
     p.add_argument("--pr", action="store_true", help="apply the pull request rules against --base")
-    p.add_argument("--labels", default="", help="comma-separated labels of the pull request")
     args = p.parse_args(argv)
 
     catalog = bc.load_catalog(args.catalog)
@@ -316,7 +276,7 @@ def main(argv=None):
     if not errors and base is not None:
         errors += check_immutable(catalog, base)
     if not errors and args.pr:
-        errors += check_pr(catalog, base, {lab.strip() for lab in args.labels.split(",") if lab.strip()})
+        errors += check_pr(catalog, base)
     if not errors and args.network:
         errors += check_network(catalog, base)
 
