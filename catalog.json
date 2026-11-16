@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.6/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.7/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.7",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:16b7ba8d036639aebf4de6bce427eb1e2f7f1de0a261fcaa40cfc491e0e6d61c",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:f3d19c9c3a868b2fa7282d37fc05e9840ec087e4fd99fc394f94f60c453baf40",
+          "build": "gh-43979762723.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.7/bdh_app_cameras-2.5.7-py3-none-any.whl",
+          "sha256": "4212cda50c90e93cd784447cd243ab65043b529a7483229709ae59f27b0f0083",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Inline cached posters so cards never flash black on load (2.5.7) (#62)\n\nSoak black-frame spans were all 'poster-loading': the poster's own\nrequest landed 0.3-0.6 s after the page, after the first frame was due.\nCached stills are now embedded as data URIs for the visible site, and\nother sites' posters load eagerly instead of lazily so switching site\ndoesn't flash black either.",
+          "released_at": "2026-11-16T23:24:00Z",
+          "built_at": "2026-11-16T23:31:16Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68374575",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.6",
           "kind": "image",
