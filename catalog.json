@@ -405,6 +405,37 @@
         }
       ]
     },
+    "feedback": {
+      "name": "Feedback",
+      "description": "Guest feedback inbox behind the top bar's feedback pill",
+      "repo": "blackdiamondlodge/bdh-app-feedback",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-feedback@sha256:26508571179225f1ae337587fcb4bd2edfac36296627a2384fb6471a836c1308",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:6e06a8e5c68b5b21a25cebb579f727f0f3a010e780fbfbb8b11f50e815acfc2a",
+          "build": "gh-43798374473.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-feedback/releases/download/v1.0.0/bdh_app_feedback-1.0.0-py3-none-any.whl",
+          "sha256": "cd38740b63f3d17a31244f6b91b789d6eb792d308d7de7bf5502ce5a384b5562",
+          "permissions": [],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Feedback 1.0.0 (#1)",
+          "released_at": "2026-11-16T03:24:51Z",
+          "built_at": "2026-11-16T03:29:15Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/67957703",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "flights": {
       "name": "Flights",
       "description": "Track flights with FlightAware and get delay, gate and landing alerts",
