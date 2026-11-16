@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.5/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.6/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.6",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:e55f823ca3ca58673780c70e30351fae625b7b9aeaf62e03e3f456a260f65dee",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:8939bee71537024f7751f201bc2843c90209401abce55687849feba9164f2713",
+          "build": "gh-43949080222.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.6/bdh_app_cameras-2.5.6-py3-none-any.whl",
+          "sha256": "4eaa684aeff0cada8f1c4447a14636e6e228c681677c58b1a9f334870de97475",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Keep decode heap from creeping into the OOM killer (2.5.6) (#61)\n\nScrub bursts decode Protect frames on top of a heap that glibc kept and\nfragmented: the app's baseline crept from ~68 to ~106 MiB over a soak and a\nscrub drag's ~30 MiB transient hit the 128 MiB limit. Fix glibc's mmap\nthreshold so big pixel blocks are returned on free, trim the heap when a\nburst of decodes ends, and raise the container limit to 192 MiB.",
+          "released_at": "2026-11-16T20:20:59Z",
+          "built_at": "2026-11-16T20:23:29Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68306086",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.5",
           "kind": "image",
