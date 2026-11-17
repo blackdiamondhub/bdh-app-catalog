@@ -1703,11 +1703,35 @@
       ]
     },
     "sunpeaks_events": {
-      "name": "Sun Peaks Events",
+      "name": "Sunpeaks Events",
       "description": "Sun Peaks Resort events as a shareable calendar feed",
       "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-events/v1.0.0/sunpeaks_events/static/sunpeaks_events/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-sunpeaks-events",
       "versions": [
+        {
+          "version": "1.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_events@sha256:07e76d411ec02c50e7067859528c66e1b8cefeade74d1a9eadb3612847e55ba1",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:669a5e4bcd528517e9c1c01dd3e296181dfe4a4410b69dc79b63481613ec7ec0",
+          "build": "gh-44004071209.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-events/releases/download/v1.0.1/bdh_app_sunpeaks_events-1.0.1-py3-none-any.whl",
+          "sha256": "22a76405a287b41e1f9c1efdc10c02c8e7def53cf7a17bf4fa67ec132baed616",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop the home-screen tile: background feed app (1.0.1) (#2)\n\nThe hub's waker now runs tile-less apps' status hooks every wake_every,\nso the feed still refreshes without a tile.",
+          "released_at": "2026-11-17T02:33:35Z",
+          "built_at": "2026-11-17T02:36:22Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68428766",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "1.0.0",
           "kind": "image",
