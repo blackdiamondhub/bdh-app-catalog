@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.7/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.8/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.8",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:58fc493fdb242ce53a706431a912194b903449a80f876d758dbdde6e780fd147",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:1d55bb7ed4c6e4fe3a3cca2f1ea57c1f8efec33dd114409eba1fec1d8ee40957",
+          "build": "gh-43989945243.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.8/bdh_app_cameras-2.5.8-py3-none-any.whl",
+          "sha256": "b272c4a6079d99b6536ea4ce0f73b6d18a6e03fb8fa9c7eb55d207a6a86cb683",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Fullscreen falls back to low-res on hi-res restart; doorbell popup poster (2.5.8) (#63)\n\n- restartStream: a failed fullscreen high-res stream no longer stops the\n  whole card. Low-res restarts at once and only the high-res retry waits\n  for the backoff (it could leave fullscreen empty for up to 30 s after a\n  go2rtc restart).\n- stopStream clears a pending restart even when the stream is inactive.\n- Opening fullscreen resets the high-res backoff.\n- Doorbell popup: cached live still under the video, which stays hidden\n  until it has presented real frames (no black while connecting). Cold\n  cache warms in the background, never blocking the popup.",
+          "released_at": "2026-11-17T00:42:12Z",
+          "built_at": "2026-11-17T00:44:45Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68396240",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.7",
           "kind": "image",
