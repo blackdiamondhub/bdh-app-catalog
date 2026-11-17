@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.8/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.9/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.9",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:c4cc541ac6f3d557505d94817fa0e6adae36fe25ebd3b4d590c7e0e7c89360ff",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:669a5e4bcd528517e9c1c01dd3e296181dfe4a4410b69dc79b63481613ec7ec0",
+          "build": "gh-43992189361.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.9/bdh_app_cameras-2.5.9-py3-none-any.whl",
+          "sha256": "a24d483905f7ce1f874cb034b07b9cbb0e1a8f02e035bc41d1dc94b6e6b87082",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Stream keeper registers Protect cameras without a page load (2.5.9) (#64)\n\nAfter an app update the app and go2rtc restart with nothing registered,\nand an already-open wall display never reloads, so go2rtc stayed empty\nand every tile sat on 'connecting'. The keeper now seeds its wanted set\nfrom the (cached) Protect camera list on every pass.",
+          "released_at": "2026-11-17T00:59:12Z",
+          "built_at": "2026-11-17T01:01:47Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68400694",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.8",
           "kind": "image",
