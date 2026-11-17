@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.11/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.12/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.12",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:20e908fb58d3131ab9059bb3354cd2fe9294ccdca77da21300995b9cb5540eb8",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.12/bdh_app_cameras-2.5.12-py3-none-any.whl",
+          "sha256": "5c08dc41ecec3e42b8c131c0ba0c0dbd16fe5f3437e68d7b072607ba765ca96d",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#67)",
+          "released_at": "2026-11-17T03:35:03Z",
+          "built_at": "2026-11-17T03:45:47Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446352",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.11",
           "kind": "image",
@@ -953,9 +983,33 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.1.1/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.1.2/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.1.2",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:b1e6eac071768ab471761b261aea775244a1cd279c7d6313abde09b3bb905247",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.1.2/bdh_app_calendar-2.1.2-py3-none-any.whl",
+          "sha256": "785952e55a48685c040075c98391ee9bff71f1ee47385b8691478fa565ae8aa6",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#14)",
+          "released_at": "2026-11-17T03:34:45Z",
+          "built_at": "2026-11-17T03:45:46Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446347",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.1.1",
           "kind": "image",
@@ -1176,9 +1230,36 @@
     "lift_status": {
       "name": "Lift Status",
       "description": "Sun Peaks lift and trail status",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-lift-status/v2.0.1/lift_status/static/lift_status/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-lift-status/v2.0.2/lift_status/static/lift_status/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-lift-status",
       "versions": [
+        {
+          "version": "2.0.2",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-lift_status@sha256:dec5b0e3a402b404f4362adc9132d9f3d70a8169ae5cce76b4e766f47d1178b4",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-lift-status/releases/download/v2.0.2/bdh_app_lift_status-2.0.2-py3-none-any.whl",
+          "sha256": "a66b99c50e3fedc2255ac308bb034b72ec65bed98005e87f25d7eb5bd375c8cb",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "season",
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#9)",
+          "released_at": "2026-11-17T03:36:05Z",
+          "built_at": "2026-11-17T03:45:44Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446335",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.1",
           "kind": "image",
@@ -1261,9 +1342,49 @@
     "radiant": {
       "name": "Radiant Heat",
       "description": "Radiant heating and heat-pump plant dashboard (Home Assistant)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-radiant/v2.0.0/radiant/static/radiant/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-radiant/v2.0.1/radiant/static/radiant/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-radiant",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-radiant@sha256:8cc0aa6baeb6c3c891bddb473c0fa7cf9a5cce1cbc598a3dbf2d1b2c5b2e60ac",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-radiant/releases/download/v2.0.1/bdh_app_radiant-2.0.1-py3-none-any.whl",
+          "sha256": "93773a396a7c32241c099905d94cf6b9bdea779b234523afcdcb7d811d7c7283",
+          "permissions": [
+            "ha.call:climate.set_temperature",
+            "ha.read:binary_sensor.aeco_1988_*",
+            "ha.read:binary_sensor.mechanical_room_*",
+            "ha.read:climate.aeco_1988_climate",
+            "ha.read:climate.basement_bunk_rooms",
+            "ha.read:climate.basement_master",
+            "ha.read:climate.main_floor",
+            "ha.read:climate.master_bedroom",
+            "ha.read:climate.ski_room",
+            "ha.read:input_boolean.home_away_mode_enabled",
+            "ha.read:sensor.aeco_1988_*",
+            "ha.read:sensor.mechanical_room_*",
+            "ha.read:sensor.thermux_*",
+            "ha.read:sensor.usl_environmental_temperature_3",
+            "ha.read:switch.aeco_1988_*"
+          ],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#7)",
+          "released_at": "2026-11-17T03:34:51Z",
+          "built_at": "2026-11-17T03:45:42Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446331",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
@@ -1326,9 +1447,33 @@
     "restaurants": {
       "name": "Restaurants",
       "description": "Sun Peaks restaurants with Google ratings, hours, photos and a guest shortlist",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-restaurants/v2.0.0/restaurants/static/restaurants/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-restaurants/v2.0.1/restaurants/static/restaurants/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-restaurants",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-restaurants@sha256:b58bb2a4fdec5236545a7da5570a740b1feefc6253dd0f823a9172f3bfbdd5ce",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-restaurants/releases/download/v2.0.1/bdh_app_restaurants-2.0.1-py3-none-any.whl",
+          "sha256": "241071b2c1254ecafae2c3b23504e0d81a87450755a21f822cfa278c5404f6f7",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#16)",
+          "released_at": "2026-11-17T03:39:32Z",
+          "built_at": "2026-11-17T03:45:36Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446278",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
@@ -1689,9 +1834,37 @@
     "speakers": {
       "name": "Speakers",
       "description": "Speaker grouping, volume and playback control for Sonos and Home Assistant media players",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-speakers/v3.0.0/speakers/static/speakers/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-speakers/v3.0.1/speakers/static/speakers/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-speakers",
       "versions": [
+        {
+          "version": "3.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-speakers@sha256:a01dad07937cbe3272fb785f7042845ab8f841c26297f8b6b9d9fceb63df5e7c",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-speakers/releases/download/v3.0.1/bdh_app_speakers-3.0.1-py3-none-any.whl",
+          "sha256": "31d0801547e265c0ef25a234c647090680c99d3ae7d888b490f77ca0c0ce96be",
+          "permissions": [
+            "ha.call:media_player.*",
+            "ha.read:media_player.*",
+            "media"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#13)",
+          "released_at": "2026-11-17T03:34:37Z",
+          "built_at": "2026-11-17T03:45:38Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446293",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "3.0.0",
           "kind": "image",
