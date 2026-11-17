@@ -843,9 +843,33 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.0.4/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.1.0/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.1.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:9ba6b5c0cd3d4b91246a54ffb2f49d412d3cb4c3d4ca7bec6112915d302ac727",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:669a5e4bcd528517e9c1c01dd3e296181dfe4a4410b69dc79b63481613ec7ec0",
+          "build": "gh-43993194538.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.1.0/bdh_app_calendar-2.1.0-py3-none-any.whl",
+          "sha256": "2c179348111a926c545ca15109223c5f06396d001deb91feaedf95c9803b045d",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Calendar 2.1.0: feeds from other apps, event posters (#12)\n\n- 'From an app' feeds read text/calendar shares via bdh_sdk.shares (manifest reads=text/calendar), cached by share revision; revoked/missing shares show a feed error instead of crashing.\n- Bounded iCal extras for every feed: URL, IMAGE (bdh-share: resolved for app feeds, https only otherwise), DESCRIPTION, LOCATION, X-BDH-PRICE, X-BDH-SCHEDULE. Feeds are streamed and trimmed to 500 events / 2 MB.\n- Poster popup (photo or gradient + big date, frosted panel, schedule, server-side QR) for events with details; lean popup kept for plain events.\n- Requires bdh-sdk[qr] >= 0.35.",
+          "released_at": "2026-11-17T01:00:39Z",
+          "built_at": "2026-11-17T01:09:22Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68402791",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.4",
           "kind": "image",
