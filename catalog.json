@@ -2491,9 +2491,33 @@
     "wifi": {
       "name": "WiFi",
       "description": "Wi-Fi QR codes for guests",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-wifi/v2.2.1/wifi/static/wifi/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-wifi/v2.2.2/wifi/static/wifi/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-wifi",
       "versions": [
+        {
+          "version": "2.2.2",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-wifi@sha256:23778e050c796b5e8833b008b2af5f810a18c210a1c7f02b7cb9438077fc9dad",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-wifi/releases/download/v2.2.2/bdh_app_wifi-2.2.2-py3-none-any.whl",
+          "sha256": "5c25c51768487f971d96d15e8b44a184a93b59b6067a6a65f40cd5d60ef46600",
+          "permissions": [],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#12)",
+          "released_at": "2026-11-17T03:34:09Z",
+          "built_at": "2026-11-17T03:45:48Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446357",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.2.1",
           "kind": "image",
