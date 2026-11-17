@@ -2152,6 +2152,33 @@
       "repo": "blackdiamondlodge/bdh-app-timers",
       "versions": [
         {
+          "version": "2.0.5",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:f4ccb43f9d766c2497edbfe0901b8c109b2ee12da23487a52eb3be26761d52b7",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v2.0.5/bdh_app_timers-2.0.5-py3-none-any.whl",
+          "sha256": "21b38809534f1f8e66ae1c57c0c66d9c6d4f3591263c66f2965cef17347a0b2c",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Timers 2.0.5: drop hub-navbar offset inside the iframe, align header (#10)\n\n* Drop hub-navbar offsets inside iframe; add layout guard test\n\n\n* BrokerTests: patch only the worker's threading, not the SDK rpc thread\n\n\n---------",
+          "released_at": "2026-11-17T03:41:44Z",
+          "built_at": "2026-11-17T03:45:40Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446306",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "2.0.4",
           "kind": "image",
           "hub_api": 2,
