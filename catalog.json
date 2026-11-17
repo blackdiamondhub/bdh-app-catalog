@@ -1624,6 +1624,38 @@
         }
       ]
     },
+    "sunpeaks_events": {
+      "name": "Sun Peaks Events",
+      "description": "Sun Peaks Resort events as a shareable calendar feed",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-events/v1.0.0/sunpeaks_events/static/sunpeaks_events/hub/icon.svg",
+      "repo": "blackdiamondlodge/bdh-app-sunpeaks-events",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_events@sha256:de203c500a3d7f59e31a9dd505d59c5fbe2f79e4bf12e4909c7500c91e2c5af0",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:669a5e4bcd528517e9c1c01dd3e296181dfe4a4410b69dc79b63481613ec7ec0",
+          "build": "gh-43992587689.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-events/releases/download/v1.0.0/bdh_app_sunpeaks_events-1.0.0-py3-none-any.whl",
+          "sha256": "73912b0f5f2cbce7180260b3cb40b7fd5a03f4a8d917213b63ab4e13b59d26fb",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Sun Peaks events app: scrape events, publish iCalendar share with WebP images (#1)",
+          "released_at": "2026-11-17T01:02:11Z",
+          "built_at": "2026-11-17T01:04:47Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68401483",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "sunpeaks_webcams": {
       "name": "Webcams",
       "description": "Sun Peaks resort webcam viewer",
