@@ -1176,9 +1176,36 @@
     "lift_status": {
       "name": "Lift Status",
       "description": "Sun Peaks lift and trail status",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-lift-status/v2.0.1/lift_status/static/lift_status/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-lift-status/v2.0.2/lift_status/static/lift_status/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-lift-status",
       "versions": [
+        {
+          "version": "2.0.2",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-lift_status@sha256:dec5b0e3a402b404f4362adc9132d9f3d70a8169ae5cce76b4e766f47d1178b4",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-lift-status/releases/download/v2.0.2/bdh_app_lift_status-2.0.2-py3-none-any.whl",
+          "sha256": "a66b99c50e3fedc2255ac308bb034b72ec65bed98005e87f25d7eb5bd375c8cb",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "season",
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#9)",
+          "released_at": "2026-11-17T03:36:05Z",
+          "built_at": "2026-11-17T03:45:44Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446335",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.1",
           "kind": "image",
