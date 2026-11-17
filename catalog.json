@@ -1326,9 +1326,33 @@
     "restaurants": {
       "name": "Restaurants",
       "description": "Sun Peaks restaurants with Google ratings, hours, photos and a guest shortlist",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-restaurants/v2.0.0/restaurants/static/restaurants/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-restaurants/v2.0.1/restaurants/static/restaurants/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-restaurants",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-restaurants@sha256:b58bb2a4fdec5236545a7da5570a740b1feefc6253dd0f823a9172f3bfbdd5ce",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-restaurants/releases/download/v2.0.1/bdh_app_restaurants-2.0.1-py3-none-any.whl",
+          "sha256": "241071b2c1254ecafae2c3b23504e0d81a87450755a21f822cfa278c5404f6f7",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#16)",
+          "released_at": "2026-11-17T03:39:32Z",
+          "built_at": "2026-11-17T03:45:36Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446278",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
