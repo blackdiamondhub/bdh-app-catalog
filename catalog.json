@@ -1405,9 +1405,33 @@
     "shuttle": {
       "name": "Shuttle",
       "description": "Sun Peaks in-resort shuttle times, live bus location and spoken reminders",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.0.0/shuttle/static/shuttle/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.0.1/shuttle/static/shuttle/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-shuttle",
       "versions": [
+        {
+          "version": "2.0.1",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-shuttle@sha256:2dfbf75aaa90c77496dee8204528b7c8364e89c5984683fc87fd35660c685e21",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44012320206.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-shuttle/releases/download/v2.0.1/bdh_app_shuttle-2.0.1-py3-none-any.whl",
+          "sha256": "70cdd2d68f87217215daa6e5b64c53c8efe12b210fb8dae3c49affed9cf21af9",
+          "permissions": [],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#5)",
+          "released_at": "2026-11-17T03:39:37Z",
+          "built_at": "2026-11-17T03:45:42Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68446323",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.0",
           "kind": "image",
