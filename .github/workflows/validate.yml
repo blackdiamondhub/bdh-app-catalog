@@ -40,11 +40,14 @@ jobs:
         # immutable. Scheduled/manual runs check every version.
         env:
           EVENT: ${{ github.event_name }}
-          BASE_REF: ${{ github.base_ref }}
           BEFORE: ${{ github.event.before }}
         run: |
+          # PRs check out GitHub's merge commit, which can predate the live
+          # base branch when sibling catalog PRs merge seconds apart. Compare
+          # against that commit's own base parent so a just-merged version on
+          # main doesn't look "removed".
           case "$EVENT" in
-            pull_request) ref="origin/${BASE_REF}" ;;
+            pull_request) ref="HEAD^1" ;;
             push) ref="$BEFORE" ;;
             *) ref="" ;;
           esac
