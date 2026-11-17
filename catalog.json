@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.9/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.10/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.10",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:6797ca23d09bf5ef6071bfa06f1c65a854b138fdcf560d7f75ae25e21c9d26d5",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:669a5e4bcd528517e9c1c01dd3e296181dfe4a4410b69dc79b63481613ec7ec0",
+          "build": "gh-44003133659.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.10/bdh_app_cameras-2.5.10-py3-none-any.whl",
+          "sha256": "6d9a04ab4bcd205b9d29c99dfbd3a2275f540bec0086cdce420b6ec6e9d338db",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "fix: live tiles rendered below their posters (2.5.10) (#65)\n\nA two-line {# #} comment in the card markup isn't a Django comment (they're\nsingle-line only), so it rendered as text in each card and pushed the\nvideo-stream down 48-72px while the absolutely-positioned poster stayed put.\nUse {% comment %} and assert no '{#' leaks into the page.\n\nAlso demote the per-call 'Camera cache HIT' log to debug: the stream keeper\nnow calls get_protect_cameras every 10s.",
+          "released_at": "2026-11-17T02:25:23Z",
+          "built_at": "2026-11-17T02:28:49Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68426666",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.9",
           "kind": "image",
