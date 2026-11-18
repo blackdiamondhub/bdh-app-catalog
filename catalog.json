@@ -2007,9 +2007,38 @@
     "speakers": {
       "name": "Speakers",
       "description": "Speaker grouping, volume and playback control for Sonos and Home Assistant media players",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-speakers/v3.1.0b1/speakers/static/speakers/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-speakers/v3.2.0b1/speakers/static/speakers/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-speakers",
       "versions": [
+        {
+          "version": "3.2.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-speakers@sha256:c6ee5975d4161e1975d21c1aae7bcdb609a1ae1cd9abf680f5b2abf140534613",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44375803571.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-speakers/releases/download/v3.2.0b1/bdh_app_speakers-3.2.0b1-py3-none-any.whl",
+          "sha256": "7d9f204f5aa7c9809b9b9ccd5e3d0588b9d59950d13df9676ca9266cdd68d1c3",
+          "permissions": [
+            "ha.call:media_player.*",
+            "ha.read:media_player.*",
+            "media"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Quiet hours in the app: settings, admin lift, slider cap and volume enforcer (#15)\n\nReplaces the AppDaemon sonos_night dependency. Quiet hours (start/end,\nlimit, rooms) are app settings; an admin can lift the limit for the rest\nof the night from the Speakers page; sliders stop at the limit with a\ntoast; a background enforcer subscribes to the quiet rooms' volume events\n(plus a 30 s sweep) and turns outside changes back down.",
+          "released_at": "2026-11-18T18:59:15Z",
+          "built_at": "2026-11-18T19:01:39Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69299326",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "3.1.0b1",
           "kind": "image",
