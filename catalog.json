@@ -1135,6 +1135,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.2b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:12f50d817af48a0c560bbb25404b195ef53744c38e1d16b90cfcd407cf18d77d",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44401556841.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.2b1/bdh_app_flights-0.1.2b1-py3-none-any.whl",
+          "sha256": "87c71b973c5b2e7f3aba1e0f06b5cceb2e287612fab52e839b2ead6a0ac3f549",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Show gate arrival time and poll every minute near landing (#2)\n\nThe card showed runway touchdown (est_on) while FlightAware shows gate\narrival (est_in), and polling stopped at touchdown and ran every 5 min in\nthe air, so the card lagged ('In air' after landing) and never saw the gate.\n\n- Arrival labels use est_in (gate); 'Landing now' within 2 min of touchdown\n- Poll every 60 s in the last 15 min and after touchdown until act_in\n  (max 45 min); 'Taxiing to C10' / 'At gate C10 1:02 PM'\n- 0.1.2b1",
+          "released_at": "2026-11-18T21:23:45Z",
+          "built_at": "2026-11-18T21:28:18Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69359574",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.1",
           "kind": "image",
           "hub_api": 2,
