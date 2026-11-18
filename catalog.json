@@ -54,9 +54,39 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.14/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.5.15/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.5.15",
+          "kind": "image",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:b3d33d01615817b9a51f988bd16852af406438d9a56e2b51cb70c81a1a00e9d1",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44206107517.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.15/bdh_app_cameras-2.5.15-py3-none-any.whl",
+          "sha256": "0f50ffa3a563d768fb1d92f0ea467680d1eeb10775359bd6154fa8ae02b4a548",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Events rail: update incrementally instead of rebuilding every 30 s (2.5.15) (#70)\n\nThe rail re-fetched the last 24 h of events every 30 s and rebuilt every\nrow (button + lazy thumbnail). At Mercer Island (~600 events/day) that was\na ~350 ms main-thread long task every 30 s on the UC-Display21 wall\ndisplays, independent of stream count; Sun Peaks (~9 events) showed none.\n\nNow an unchanged response is skipped, and rows are kept by event id and\nreconciled in place: new events are inserted at the top, expired ones\nremoved, and existing rows (and their decoded thumbnails) left alone.",
+          "released_at": "2026-11-17T23:15:09Z",
+          "built_at": "2026-11-18T00:15:18Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/68883494",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.14",
           "kind": "image",
