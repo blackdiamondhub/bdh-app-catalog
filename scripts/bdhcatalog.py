@@ -45,6 +45,10 @@ API2_MIN_SDK = (0, 20)
 
 VERSION_RE = re.compile(r"^(\d+(?:\.\d+)*)(?:(a|b|rc)(\d+))?$")
 _PRE_ORDER = {"a": 0, "b": 1, "rc": 2, None: 3}
+# Release channels. A PEP 440 pre-release (aN/bN/rcN) is published as a beta;
+# promote.py may later move it to stable (same image). Absent means stable.
+STABLE, BETA = "stable", "beta"
+CHANNELS = (STABLE, BETA)
 
 
 def version_key(version):
@@ -55,6 +59,22 @@ def version_key(version):
     release = tuple(int(p) for p in m.group(1).split("."))
     release += (0,) * (4 - len(release))
     return release, _PRE_ORDER[m.group(2)], int(m.group(3) or 0)
+
+
+def is_prerelease(version):
+    m = VERSION_RE.match(version)
+    if not m:
+        raise ValueError(f"unsupported version {version!r}")
+    return m.group(2) is not None
+
+
+def channel_for(version):
+    """The channel a version is first published in."""
+    return BETA if is_prerelease(version) else STABLE
+
+
+def channel(entry):
+    return entry.get("channel", STABLE)
 
 
 def sha256_file(path):

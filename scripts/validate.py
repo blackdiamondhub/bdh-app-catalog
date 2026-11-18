@@ -5,12 +5,16 @@ Offline checks: the JSON Schema, plus what a schema can't say -- versions are
 unique and newest first, wheel URLs point at the app's own repo and the tag
 for that version, each repo holds one app id, image entries name
 ``ghcr.io/blackdiamondlodge/bdh-app-<their id>``, and a hub API 2+ version is
-an image (a hub API 2+ wheel may only remain as a yanked entry).
+an image (a hub API 2+ wheel may only remain as a yanked entry), and a
+pre-release version (aN/bN/rcN) declares its ``channel`` while a final
+version is never beta.
 
 ``--base OLD.json`` also enforces immutability: a published version keeps its
 wheel_url, sha256 and manifest and is never removed (set ``yanked``
 instead). An image entry may be rebuilt: image, base, build, built_at and
-attestation change together.
+attestation change together. A version is added in the channel it implies
+(a pre-release is beta) and its channel may only change from beta to stable
+(scripts/promote.py).
 
 ``--pr`` adds the rule for pull requests (against ``--base``): a PR changes
 one app, unless it is the builder's base bump (every change is a rebuild of
@@ -78,6 +82,11 @@ def check_semantics(catalog):
             except ValueError as exc:
                 errors.append(f"{where}: {exc}")
                 continue
+            if bc.is_prerelease(version):
+                if "channel" not in v:
+                    errors.append(f"{where}: a pre-release version must declare its channel")
+            elif bc.channel(v) == bc.BETA:
+                errors.append(f"{where}: only pre-release versions (aN/bN/rcN) can be beta")
             url = v.get("wheel_url", "")
             prefix = f"{bc.release_url_prefix(repo)}v{version}/"
             if not url.startswith(prefix):
@@ -122,8 +131,12 @@ def check_immutable(catalog, base):
                 errors.append(f"{where}: kind changed; published versions are immutable")
                 continue
             mutable = MUTABLE | (bc.REBUILD_FIELDS if bc.is_image(old) else set())
+            if bc.channel(old) != bc.channel(new) and \
+                    (bc.channel(old), bc.channel(new)) != (bc.BETA, bc.STABLE):
+                errors.append(f"{where}: channel changed from {bc.channel(old)} to {bc.channel(new)}; "
+                              "a version may only be promoted from beta to stable")
             for field in set(old) | set(new):
-                if field in mutable:
+                if field in mutable or field == "channel":
                     continue
                 if old.get(field) != new.get(field):
                     errors.append(f"{where}: {field} changed; published versions are immutable")
@@ -133,6 +146,19 @@ def check_immutable(catalog, base):
                     errors.append(f"{where}: {', '.join(sorted(rebuilt))} changed without a new image")
             elif "attestation" in old and old["attestation"] != new.get("attestation"):
                 errors.append(f"{where}: attestation changed or removed")
+    for app_id, app in catalog.get("apps", {}).items():
+        old_app = base.get("apps", {}).get(app_id, {})
+        old_versions = {v["version"] for v in old_app.get("versions", [])}
+        for v in app.get("versions", []):
+            if v["version"] in old_versions:
+                continue
+            try:
+                want = bc.channel_for(v["version"])
+            except ValueError:
+                continue
+            if bc.channel(v) != want:
+                errors.append(f"{app_id} {v['version']}: a new version is added as {want} "
+                              "(promote it later with scripts/promote.py)")
     return errors
 
 

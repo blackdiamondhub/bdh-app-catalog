@@ -17,7 +17,7 @@ on:
         required: false
         default: ""
       rebuild_all:
-        description: "Rebuild every app's newest image version"
+        description: "Rebuild every app's newest image version (per channel)"
         type: boolean
         default: false
   schedule:
@@ -133,9 +133,9 @@ jobs:
             --build "gh-${{ github.run_id }}.${{ github.run_attempt }}" \
             --attestation-url "${{ steps.attest.outputs.attestation-url }}" \
             --changelog "$notes" --released-at "$(jq -r .publishedAt <<<"$rel" | sed 's/\.000//')" \
-            -o "out/${{ matrix.reason }}-$APP.json"
-          cp smoke.json "out/smoke-$APP.json"
-          cat "out/${{ matrix.reason }}-$APP.json"
+            -o "out/${{ matrix.reason }}-$APP-${TAG#v}.json"
+          cp smoke.json "out/smoke-$APP-${TAG#v}.json"
+          cat "out/${{ matrix.reason }}-$APP-${TAG#v}.json"
           {
             echo "### $APP ${TAG#v}"
             echo '```json'
@@ -144,7 +144,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         with:
-          name: entry-${{ matrix.app }}
+          name: entry-${{ matrix.app }}-${{ matrix.tag }}
           path: out/
 
   catalog:

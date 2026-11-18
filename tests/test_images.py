@@ -9,6 +9,7 @@ from types import SimpleNamespace
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 import bdhcatalog as bc  # noqa: E402
 import builder  # noqa: E402
+import promote  # noqa: E402
 import registry  # noqa: E402
 import validate  # noqa: E402
 
@@ -216,6 +217,80 @@ class BuilderTest(unittest.TestCase):
             args.image = f"{bc.image_repo('other')}@sha256:{'a' * 64}"
             with self.assertRaises(SystemExit):
                 builder.make_entry(args)
+
+
+class ChannelTest(unittest.TestCase):
+    def beta(self, version="2.1.0b1", **extra):
+        return image_entry(version=version, **{"digest": "b", "channel": "beta", **extra})
+
+    def test_versions_and_channels(self):
+        self.assertEqual(valid(catalog_with(demo=[self.beta(), image_entry()])), [])
+        self.assertEqual(valid(catalog_with(demo=[self.beta(channel="stable")])), [])
+        no_channel = image_entry(version="2.1.0b1")
+        self.assertTrue(any("declare its channel" in e for e in valid(catalog_with(demo=[no_channel]))))
+        final_beta = image_entry(channel="beta")
+        self.assertTrue(any("only pre-release" in e for e in valid(catalog_with(demo=[final_beta]))))
+        self.assertTrue(validate.check_schema(catalog_with(demo=[self.beta(channel="nightly")])))
+
+    def test_new_versions_join_their_channel_and_only_beta_is_promoted(self):
+        base = catalog_with(demo=[image_entry()])
+        added = catalog_with(demo=[self.beta(), image_entry()])
+        self.assertEqual(validate.check_immutable(added, base), [])
+        as_stable = catalog_with(demo=[self.beta(channel="stable"), image_entry()])
+        self.assertTrue(any("added as beta" in e for e in validate.check_immutable(as_stable, base)))
+        new_app = catalog_with(demo=[image_entry()], other=[image_entry("other", "1.0.0rc1", channel="stable")])
+        self.assertTrue(any("added as beta" in e for e in validate.check_immutable(new_app, base)))
+        self.assertTrue(any("only be promoted" in e for e in validate.check_immutable(added, as_stable)))
+
+    def test_promote_flips_the_channel_only(self):
+        base = catalog_with(demo=[self.beta(), image_entry()])
+        catalog = copy.deepcopy(base)
+        promote.promote(catalog, "demo", "v2.1.0b1")
+        entry = catalog["apps"]["demo"]["versions"][0]
+        self.assertEqual(entry, {**self.beta(), "channel": "stable"})
+        self.assertEqual(valid(catalog) + validate.check_immutable(catalog, base)
+                         + validate.check_pr(catalog, base), [])
+        for args in (("demo", "2.1.0b1"), ("demo", "2.0.0"), ("demo", "9.9.9"), ("nope", "2.1.0b1")):
+            with self.assertRaises(SystemExit, msg=args):
+                promote.promote(catalog, *args)
+
+    def test_newest_release_per_channel_by_pep440(self):
+        tags = ["v2.9.0", "v2.10.0", "v2.11.0b2", "v2.11.0rc1", "v2.11.0a5", "junk", "v2.9.0b1"]
+        self.assertEqual(builder.newest_per_channel(tags), ["v2.10.0", "v2.11.0rc1"])
+        self.assertEqual(builder.newest_per_channel(["v1.0.0"]), ["v1.0.0"])
+
+    def test_plan_builds_betas_and_rebuilds_each_channel(self):
+        repo = f"{bc.ORG}/bdh-app-demo"
+        catalog = catalog_with(demo=[image_entry()])
+        plan = builder.plan(catalog, BASE1, {repo: ["v2.0.0", "v2.1.0b1"]})
+        self.assertEqual([(i["tag"], i["reason"]) for i in plan], [("v2.1.0b1", "new")])
+        # Stable first when both are new; the next run picks up the beta.
+        plan = builder.plan(catalog, BASE1, {repo: ["v2.0.1", "v2.1.0b1"]})
+        self.assertEqual([i["tag"] for i in plan], ["v2.0.1"])
+        # An old pre-release (before the cataloged stable) is never added.
+        self.assertEqual(builder.plan(catalog, BASE1, {repo: ["v2.0.0", "v2.0.0b1"]}), [])
+        # A stable fix ships while a newer beta is out.
+        catalog = catalog_with(demo=[self.beta(), image_entry()])
+        plan = builder.plan(catalog, BASE1, {repo: ["v2.0.1", "v2.1.0b1"]})
+        self.assertEqual([i["tag"] for i in plan], ["v2.0.1"])
+        plan = builder.plan(catalog, BASE2, {repo: ["v2.0.0", "v2.1.0b1"]})
+        self.assertEqual([(i["tag"], i["reason"]) for i in plan],
+                         [("v2.0.0", "rebuild"), ("v2.1.0b1", "rebuild")])
+        promoted = catalog_with(demo=[self.beta(channel="stable"), image_entry()])
+        self.assertEqual([i["tag"] for i in builder.plan(promoted, BASE2, {})], ["v2.1.0b1"])
+
+    def test_apply_keeps_the_channel(self):
+        catalog = catalog_with(demo=[image_entry()])
+        app = {"name": "Demo", "description": "", "repo": f"{bc.ORG}/bdh-app-demo"}
+        before = copy.deepcopy(catalog)
+        builder.apply(catalog, [{"app_id": "demo", "app": app, "entry": self.beta()}])
+        self.assertEqual(catalog["apps"]["demo"]["versions"][0]["channel"], "beta")
+        self.assertEqual(valid(catalog) + validate.check_immutable(catalog, before), [])
+        promote.promote(catalog, "demo", "2.1.0b1")
+        rebuilt = self.beta(digest="e", base=BASE2)
+        self.assertEqual(builder.apply(catalog, [{"app_id": "demo", "app": app, "entry": rebuilt}]),
+                         (["demo"], []))
+        self.assertEqual(catalog["apps"]["demo"]["versions"][0]["channel"], "stable")
 
 
 if __name__ == "__main__":

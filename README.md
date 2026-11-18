@@ -56,6 +56,7 @@ a hub API 2 wheel entry may only remain yanked):
 {
   "version": "2.1.0",
   "kind": "image",
+  "channel": "stable",               // or "beta" (see Beta releases); absent = stable
   "hub_api": 2,
   "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:…",   // always ghcr.io/blackdiamondlodge/bdh-app-<id>, by digest
   "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:…",    // the runtime it was built FROM
@@ -91,8 +92,12 @@ Field notes:
 - **`name`, `description`, `icon`** follow the newest version. The icon is the
   first tile's icon, pinned to the release tag.
 - **One app per repo, one repo per app.** An app id can't move to another repo.
-- **Published versions are immutable.** Only `changelog`, `yanked` and a newly
-  added `attestation` may change; versions and apps are never removed. Retire a
+- **`channel`** is `beta` for a PEP 440 pre-release (`2.3.0a1`, `2.3.0b1`,
+  `2.3.0rc1`) when it is added and `stable` otherwise; absent means `stable`.
+  A final version is never beta, and a pre-release always says its channel.
+- **Published versions are immutable.** Only `changelog`, `yanked`, a newly
+  added `attestation` and a promotion (`channel` from `beta` to `stable`) may
+  change; versions and apps are never removed. Retire a
   version (or a whole app, like `scenes`) by setting `yanked`.
 - The file is in canonical form (`json.dumps(indent=2)`, apps sorted, versions
   newest first, LF). Always edit it with the scripts.
@@ -112,10 +117,13 @@ an optional declarative `apt` list) and, for `custom_base` apps only,
 builder. Every 6 hours, or on demand
 (`gh workflow run build.yml -f apps=cameras`, `-f rebuild_all=true`), it:
 
-1. plans (`scripts/builder.py plan`): the latest release of each app repo that
-   publishes `bdh-app.json` and isn't in the catalog, plus a rebuild of every
-   app whose newest image isn't on the current `bdh-app-runtime:hub-api-2`
-   digest (so a base bump rebuilds every app);
+1. plans (`scripts/builder.py plan`): the newest release of each app repo that
+   publishes `bdh-app.json` and isn't in the catalog (GitHub pre-releases
+   included: those become beta versions; when a new stable and a new beta are
+   both waiting, the stable goes first and the beta follows on the next run),
+   plus a rebuild of every app whose newest image of each channel isn't on
+   the current `bdh-app-runtime:hub-api-2` digest (so a base bump rebuilds
+   every app);
 2. per app: downloads the release artifacts and verifies their attestations
    (signer: the SDK's `app-release.yml`), builds the image from the SDK's
    template (`builder/build_app.sh`, FROM the base by digest), smoke-tests it
@@ -136,12 +144,39 @@ PR. If the org doesn't let Actions open PRs, the run summary links the branch
 and you open the PR by hand. Either way, a branch pushed with `GITHUB_TOKEN`
 doesn't trigger `validate` until a human opens or updates the PR.
 
+### Beta releases and promotion
+
+Each hub subscribes to one channel (`channel` in its `site.toml`, default
+`stable`; Mercer Island runs `beta`). A stable hub sees only `stable`
+versions; a beta hub sees both and runs the newest (PEP 440 order). To ship
+an app change:
+
+1. Release it as a pre-release first: set the app's version to `X.Y.ZbN` (or
+   `aN`/`rcN`) and push to `main`. `app-release.yml` publishes it as a GitHub
+   pre-release, the builder builds it and adds it with `"channel": "beta"`,
+   and beta hubs auto-update to it. Iterate with `bN+1` as needed.
+2. Promote it once it has proven itself:
+
+   ```sh
+   gh workflow run promote.yml -R blackdiamondlodge/bdh-app-catalog -f app=weather -f version=2.3.0b1
+   ```
+
+   [`promote.yml`](.github/workflows/promote.yml) runs
+   `scripts/promote.py <app> <version>` and opens a PR that flips the entry
+   to `stable` (auto-merged once `validate` passes). It is the same image,
+   digest and all; nothing is rebuilt, so stable hubs get exactly what beta
+   hubs ran. The version keeps its `bN` suffix; release a clean `X.Y.Z` later
+   only if you want one (it is added as a new stable version).
+
+A stable fix can still ship while a beta is out: release `X.Y.(Z+1)`, which
+is added as stable and is newer than every stable version.
+
 ### Hub API 1: wheels
 
 `scripts/add_version.py --wheel …` adds a hub API 1 wheel (it refuses hub API
 2+). `scripts/sync_releases.py [bdh-app-x …]` catches the catalog up with the
-latest release of each repo: wheel-only releases go through `add_version.py`,
-releases with `bdh-app.json` dispatch the builder.
+newest stable release and newest pre-release of each repo: wheel-only releases
+go through `add_version.py`, releases with `bdh-app.json` dispatch the builder.
 
 ## Validation
 
@@ -209,6 +244,10 @@ On pull requests (`--pr`):
   store is opened. If the fetch fails, keep using the last good copy. A GitHub
   outage must never break installed apps.
 - Reject a catalog whose `schema` is not one you know.
+- Honour the hub's channel: a `stable` hub ignores versions whose `channel`
+  is `beta` (they are neither installable nor offered as updates); a `beta`
+  hub considers both. Pick "latest" by PEP 440 order, and never downgrade an
+  installed beta when a hub moves back to `stable`.
 - Don't offer versions that are `yanked`, whose `hub_api` is newer than the
   hub's, or whose `requires_sdk` the hub's SDK doesn't meet.
 - Hub API 2 hubs install only `kind: image` entries for hub API 2+ apps:
