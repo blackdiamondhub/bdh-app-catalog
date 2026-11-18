@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b2/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b3/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b3",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:84199a6254be1d4e8631fed759a1e6d37dbf1beeea8609e6c0ca497424c061c2",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44391397219.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b3/bdh_app_cameras-2.6.0b3-py3-none-any.whl",
+          "sha256": "a63dac3110414304bc85ccab2149ebc5b5fea23d803e1074235a9c80215e64f4",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Restore grid status badges; add test-only ?selfreport=1 (2.6.0b3) (#73)\n\nHiding the badges (b2) made no difference to dropped frames (16.2% vs\n16.9-17.5%), so they're back. ?selfreport=1 logs per-10 s painted-frame\ndrops and rAF fps via diag/events, so the page can be measured when\nloaded on its own, without the hub page around it.",
+          "released_at": "2026-11-18T20:27:34Z",
+          "built_at": "2026-11-18T20:30:45Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69337477",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b2",
           "kind": "image",
