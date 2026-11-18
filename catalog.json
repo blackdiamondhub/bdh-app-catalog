@@ -2007,9 +2007,38 @@
     "speakers": {
       "name": "Speakers",
       "description": "Speaker grouping, volume and playback control for Sonos and Home Assistant media players",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-speakers/v3.0.1/speakers/static/speakers/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-speakers/v3.1.0b1/speakers/static/speakers/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-speakers",
       "versions": [
+        {
+          "version": "3.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-speakers@sha256:9cd7938a53daeb6dd46b2299bc8c862259f10bdf5c4a1fd0605dc2265772046e",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44374501909.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-speakers/releases/download/v3.1.0b1/bdh_app_speakers-3.1.0b1-py3-none-any.whl",
+          "sha256": "e71ef3fb7c2950213af3f3201d1044ed2bcdf9bbc461371b882a6d054d535656",
+          "permissions": [
+            "ha.call:media_player.*",
+            "ha.read:media_player.*",
+            "media"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "speakers 3.1.0b1: drop the sonos_control settings fallback (#14)\n\nIn container mode the broker refuses another app's settings, so the\nfallback never worked and logged a 403 + audit entry per lookup.\nSettings are read only under speakers (BDH_SPEAKERS_*, [apps.speakers]).",
+          "released_at": "2026-11-18T17:51:09Z",
+          "built_at": "2026-11-18T18:54:19Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69296959",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "3.0.1",
           "kind": "image",
