@@ -1166,6 +1166,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.3b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:ad953c52f2ed9012b30931e8c82eaa3c648e830affdd72caaa920775cee53f75",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44410743308.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b2/bdh_app_flights-0.1.3b2-py3-none-any.whl",
+          "sha256": "450600b3f7e00c75019966d2a005291e19046cadd9d6f8370217aeb5a841bf86",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop landed flights 10 minutes after touchdown (#4)\n\nLanded flights now expire 10 min after touchdown (was 3 h). The worker\nalso wakes at each flight's expiry so it is pruned on time.",
+          "released_at": "2026-11-18T22:21:04Z",
+          "built_at": "2026-11-18T22:22:46Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69381046",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.3b1",
           "kind": "image",
           "channel": "beta",
