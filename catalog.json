@@ -1100,9 +1100,34 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.1.2/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-calendar/v2.2.0/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.2.0",
+          "kind": "image",
+          "channel": "stable",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:e52d66f83ba9767cddb119a07f9cc4383b3e0fc3b7b293fbc07774eedb5b0f5c",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:be3d220df5bbbbb449116e6dc6c5b94da42186f06933be23b92ed6bfca4414bd",
+          "build": "gh-44255753363.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.2.0/bdh_app_calendar-2.2.0-py3-none-any.whl",
+          "sha256": "81ebfdfcfd09b6433b64fc334e1860fa53a0a6d4b4784a4db4477b06ad0f8d78",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Calendar 2.2.0: Glass/Paper looks, day view, draggable week columns (#15)\n\n* Calendar 2.2.0: Glass and Paper looks, day view, draggable week columns\n\nAdds a Look setting (Glass / Paper / Classic, Glass by default), a day view, week columns that drag independently through 24h with a directional reset button and now-follow, and a month fit rule that lists community event names only when they all fit.\n\n\n* Keep peek pills off events; fold cramped overlaps into +N\n\n- Reserve slim peek strips at the top/bottom of each scroll viewport so\n  pills never cover the first/last visible events.\n- Week columns: when side-by-side lanes would be narrower than a name,\n  fold the extra overlaps into a +N chip that opens the day view.\n- Fit titles to block height; single-line blocks shrink the time first.\n- Hide the hour label under the now pill.\n\n\n* Phone week: 3 day columns, swipe by day, week date strip\n\nOn phones (<=600px wide, glass/paper) the week view shows 3 day columns\nstarting at the anchor day. A sideways swipe shifts by one day (axis locked\nover the first 10px so vertical per-column drag-scroll still works), the\narrows shift by 3, and a 7-day strip with event dots shows and jumps the\nvisible range. Overlap +N threshold drops to 30px on phones. The phone day\nand week titles drop the current year and use a short weekday so they fit.\n\nAdds selenium tests for the phone week layout, swipe vs vertical drag and\nstrip taps.\n\n\n* README: phone week layout\n\n\n---------",
+          "released_at": "2026-11-18T00:00:57Z",
+          "built_at": "2026-11-18T07:03:30Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69001838",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.1.2",
           "kind": "image",
