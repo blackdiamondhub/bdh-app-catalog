@@ -115,6 +115,14 @@
         "kind": {
           "const": "image"
         },
+        "channel": {
+          "description": "Release channel. A PEP 440 pre-release (aN/bN/rcN) is added as beta; promoting it (scripts/promote.py) flips it to stable with the same build. Stable hubs only see stable versions. Absent means stable.",
+          "enum": [
+            "stable",
+            "beta"
+          ],
+          "default": "stable"
+        },
         "hub_api": {
           "description": "Hub API version (bdh_sdk.API_VERSION) the app is built for.",
           "type": "integer",
@@ -258,6 +266,14 @@
         },
         "kind": {
           "const": "wheel"
+        },
+        "channel": {
+          "description": "Release channel. A PEP 440 pre-release (aN/bN/rcN) is added as beta; promoting it (scripts/promote.py) flips it to stable with the same build. Stable hubs only see stable versions. Absent means stable.",
+          "enum": [
+            "stable",
+            "beta"
+          ],
+          "default": "stable"
         },
         "wheel_url": {
           "description": "GitHub release asset of the app repo, tag v<version>.",

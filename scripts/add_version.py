@@ -55,6 +55,7 @@ def build_entry(info, args, sha256, url):
 
     entry = {
         "version": info["version"],
+        "channel": bc.channel_for(info["version"]),
         "wheel_url": url,
         "sha256": sha256,
         "hub_api": hub_api,
@@ -104,6 +105,7 @@ def add_version(args):
                 "versions are immutable (bump the version, or pass --replace)")
         if not args.attestation_url and "attestation" in existing:
             entry["attestation"] = existing["attestation"]
+        entry["channel"] = bc.channel(existing)
         app["versions"].remove(existing)
     app["versions"].append(entry)
 

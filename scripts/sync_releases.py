@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Add the latest GitHub release of each app repo to catalog.json.
+"""Add the latest GitHub releases of each app repo to catalog.json.
+
+Both the newest stable release and the newest pre-release (a beta, e.g.
+v2.3.0b1, published as a GitHub pre-release) are considered.
 
 Hub API 1 releases (a wheel only) are added with add_version.py. Releases
 that publish bdh-app.json (hub API 2+, built as images) are handed to the
@@ -19,6 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import add_version  # noqa: E402
 import bdhcatalog as bc  # noqa: E402
+from builder import newest_per_channel  # noqa: E402
 
 
 def gh(*args):
@@ -34,10 +38,21 @@ def app_repos():
 def sync(repo_name, catalog_path, dispatch=True):
     repo = f"{bc.ORG}/{repo_name}"
     try:
-        rel = json.loads(gh("release", "view", "-R", repo, "--json", "tagName,publishedAt,assets"))
+        rels = json.loads(gh("release", "list", "-R", repo, "--limit", "100",
+                             "--json", "tagName,isDraft"))
     except subprocess.CalledProcessError:
+        rels = []
+    tags = newest_per_channel(r["tagName"] for r in rels if not r.get("isDraft"))
+    if not tags:
         print(f"{repo}: no release, skipped")
         return
+    for tag in tags:
+        rel = json.loads(gh("release", "view", tag, "-R", repo, "--json", "tagName,publishedAt,assets"))
+        sync_release(repo, rel, catalog_path, dispatch)
+
+
+def sync_release(repo, rel, catalog_path, dispatch):
+    repo_name = repo.split("/", 1)[1]
     if any(a["name"] == "bdh-app.json" for a in rel["assets"]):
         catalog = bc.load_catalog(catalog_path) if Path(catalog_path).exists() else {"apps": {}}
         version = rel["tagName"].removeprefix("v")

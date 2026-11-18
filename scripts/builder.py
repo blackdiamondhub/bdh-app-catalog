@@ -3,11 +3,12 @@
 
     builder.py plan [--apps a,b] [--rebuild-all]
         Decide what to build. Prints {"base": ..., "include": [...]} for a
-        job matrix: the latest release of each app repo that publishes
-        bdh-app.json and isn't in the catalog yet ("new"), plus the newest
-        image version of each app whose base is not the current
-        bdh-app-runtime:hub-api-<N> ("rebuild"). --rebuild-all rebuilds
-        every app's newest image version.
+        job matrix: per app repo, the newest release that publishes
+        bdh-app.json and isn't in the catalog yet ("new"; GitHub
+        pre-releases count, so betas are built too), plus the newest image
+        version of each channel (stable, and beta if newer) whose base is
+        not the current bdh-app-runtime:hub-api-<N> ("rebuild").
+        --rebuild-all rebuilds each channel's newest image version.
 
     builder.py entry --artifacts DIR --repo R --tag T --image REF@DIGEST \\
             --base REF@DIGEST --build ID --attestation-url URL -o entry.json
@@ -16,8 +17,9 @@
 
     builder.py apply ENTRY.json...
         Put built entries into catalog.json. A rebuild replaces the image
-        fields of its version; a new version is added (and the app is created
-        if it is new). Prints the branch name, PR title and whether a human
+        fields of its version (keeping its channel); a new version is added
+        in the channel its version implies (a PEP 440 pre-release is beta),
+        and the app is created if it is new. Prints the branch name, PR title and whether a human
         review is needed as GitHub outputs.
 """
 import argparse
@@ -36,7 +38,7 @@ import registry  # noqa: E402
 
 HUB_API = 2
 APP_CONFIG = "bdh-app.json"
-ENTRY_KEYS = ("version", "kind", "hub_api", "image", "base", "build", "wheel_url", "sha256",
+ENTRY_KEYS = ("version", "kind", "channel", "hub_api", "image", "base", "build", "wheel_url", "sha256",
               "permissions", "network", "lifecycle", "memory_mb", "companions", "provides",
               "custom_base", "changelog", "released_at", "built_at", "attestation", "yanked")
 
@@ -55,23 +57,64 @@ def app_repos():
                   if r["name"].startswith("bdh-app-") and r["name"] != "bdh-app-catalog")
 
 
-def latest_release(repo):
+def newest_per_channel(tags):
+    """The newest (PEP 440) stable and pre-release tag among ``tags``."""
+    newest = {}
+    for tag in tags:
+        version = tag.removeprefix("v")
+        try:
+            key = bc.version_key(version)
+        except ValueError:
+            continue
+        channel = bc.channel_for(version)
+        if channel not in newest or key > newest[channel][0]:
+            newest[channel] = (key, tag)
+    return [newest[c][1] for c in bc.CHANNELS if c in newest]
+
+
+def latest_releases(repo):
+    """The newest stable release and the newest pre-release of ``repo`` that
+    publish bdh-app.json. ``gh release view`` alone would only find the
+    "latest" release, which GitHub never sets to a pre-release."""
     try:
-        rel = json.loads(gh("release", "view", "-R", repo, "--json", "tagName,assets"))
+        rels = json.loads(gh("release", "list", "-R", repo, "--limit", "100",
+                             "--json", "tagName,isDraft"))
     except subprocess.CalledProcessError:
-        return None
-    names = {a["name"] for a in rel["assets"]}
-    if APP_CONFIG not in names:
-        return None
-    return rel["tagName"]
+        return []
+    tags = []
+    for tag in newest_per_channel(r["tagName"] for r in rels if not r.get("isDraft")):
+        try:
+            rel = json.loads(gh("release", "view", tag, "-R", repo, "--json", "assets"))
+        except subprocess.CalledProcessError:
+            continue
+        if APP_CONFIG in {a["name"] for a in rel["assets"]}:
+            tags.append(tag)
+    return tags
 
 
 def _norm(name):
     return name.strip().lower().replace("-", "_")
 
 
+def _is_new(app, version):
+    """Whether a release not in the catalog yet should be added: a stable
+    release must be newer than the app's stable versions, a pre-release newer
+    than all of them (old releases that were never cataloged stay out)."""
+    if app is None:
+        return True
+    if any(v["version"] == version for v in app["versions"]):
+        return False
+    key = bc.version_key(version)
+    beta = bc.is_prerelease(version)
+    return all(key > bc.version_key(v["version"]) for v in app["versions"]
+               if beta or bc.channel(v) == bc.STABLE)
+
+
 def plan(catalog, base, releases, apps=None, rebuild_all=False):
-    """``releases`` maps repo -> latest tag that publishes bdh-app.json."""
+    """``releases`` maps repo -> the tags that publish bdh-app.json (the
+    newest stable release and the newest pre-release; a single tag is
+    accepted too). At most one new version per app is planned per run,
+    stable first; the next run picks up the other."""
     include = []
     by_repo = {app["repo"]: (app_id, app) for app_id, app in catalog["apps"].items()}
     wanted = {_norm(a) for a in apps or ()}
@@ -90,15 +133,16 @@ def plan(catalog, base, releases, apps=None, rebuild_all=False):
     def selected(repo, app_id=None):
         return not wanted or bool(wanted & names(repo, app_id or ""))
 
-    for repo, tag in sorted(releases.items()):
+    for repo, tags in sorted(releases.items()):
         app_id, app = by_repo.get(repo, (None, None))
         app_id = app_id or repo.split("bdh-app-", 1)[1]
         if not selected(repo, app_id):
             continue
-        version = tag.removeprefix("v")
-        if app and any(v["version"] == version for v in app["versions"]):
-            continue
-        include.append({"repo": repo, "tag": tag, "app": app_id, "reason": "new"})
+        tags = [tags] if isinstance(tags, str) else tags
+        new = [t for t in tags if _is_new(app, t.removeprefix("v"))]
+        if new:
+            tag = min(new, key=lambda t: bc.is_prerelease(t.removeprefix("v")))
+            include.append({"repo": repo, "tag": tag, "app": app_id, "reason": "new"})
     planned = {i["repo"] for i in include}
     for app_id, app in sorted(catalog["apps"].items()):
         if app["repo"] in planned or not selected(app["repo"], app_id):
@@ -106,10 +150,18 @@ def plan(catalog, base, releases, apps=None, rebuild_all=False):
         images = [v for v in app["versions"] if bc.is_image(v) and not v.get("yanked")]
         if not images:
             continue
-        newest = max(images, key=lambda v: bc.version_key(v["version"]))
-        if rebuild_all or newest["base"] != base:
-            include.append({"repo": app["repo"], "tag": f"v{newest['version']}", "app": app_id,
-                            "reason": "rebuild"})
+        # Stable hubs run the newest stable version, beta hubs the newest of all.
+        targets = []
+        stable = [v for v in images if bc.channel(v) == bc.STABLE]
+        for group in (stable, images):
+            if group:
+                newest = max(group, key=lambda v: bc.version_key(v["version"]))
+                if newest not in targets:
+                    targets.append(newest)
+        for newest in targets:
+            if rebuild_all or newest["base"] != base:
+                include.append({"repo": app["repo"], "tag": f"v{newest['version']}", "app": app_id,
+                                "reason": "rebuild"})
     return include
 
 
@@ -143,6 +195,7 @@ def make_entry(args):
     entry = {
         "version": config["version"],
         "kind": "image",
+        "channel": bc.channel_for(config["version"]),
         "hub_api": manifest.get("api_version", HUB_API),
         "image": args.image,
         "base": args.base,
@@ -222,7 +275,7 @@ def outputs(base_catalog, catalog, built, rebuilds, news):
     else:
         digest = next(iter(entries.values()))["base"].rsplit(":", 1)[1][:12]
         branch = f"builder/base-{digest}"
-        title = f"Rebuild {', '.join(sorted(rebuilds))} on base {digest}"
+        title = f"Rebuild {', '.join(sorted(set(rebuilds)))} on base {digest}"
     return {"branch": branch, "title": title}
 
 
@@ -255,9 +308,9 @@ def main(argv=None):
         base = current_base()
         releases = {}
         for repo in app_repos():
-            tag = latest_release(repo)
-            if tag:
-                releases[repo] = tag
+            tags = latest_releases(repo)
+            if tags:
+                releases[repo] = tags
         apps = [a.strip() for a in args.apps.split(",") if a.strip()]
         include = plan(catalog, base, releases, apps, args.rebuild_all)
         print(json.dumps({"base": base, "include": include}))
