@@ -1166,6 +1166,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.3b3",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:e6cdd388bb4f2fac0bead5186f8be61d788ca13fd3faaa27eb0a666eb8efa03d",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44423153641.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b3/bdh_app_flights-0.1.3b3-py3-none-any.whl",
+          "sha256": "bfc8577b4f308c24a1fc5a281f6b4be5a6de41d77b1d100759002701e34337b9",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Remove FlightAware cost numbers from the UI (#5)\n\nDrops the monthly spend in the header and the per-search cost hint.\nThe budget limit and the 'budget used up' warning are unchanged.",
+          "released_at": "2026-11-18T23:43:17Z",
+          "built_at": "2026-11-18T23:44:30Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69410879",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.3b2",
           "kind": "image",
           "channel": "beta",
