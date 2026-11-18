@@ -1135,6 +1135,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.3b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:7a69512d644668ebd80ef7c534bb2176e72f2387764852f35a551636252dc643",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44408688560.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b1/bdh_app_flights-0.1.3b1-py3-none-any.whl",
+          "sha256": "4ecf35b2a9dc99da7aa16d64c28889ec29fc4796beb152d1dd0991171c9b07f8",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Search airports by city or name, with type-ahead and home pre-fill (#3)\n\nBundled OurAirports list (offline, no AeroAPI cost). Route search accepts\ncity, airport name, IATA/ICAO or 'City (CODE)'. Destination pre-fills with\nthe hub's nearest major airport.",
+          "released_at": "2026-11-18T22:08:21Z",
+          "built_at": "2026-11-18T22:10:14Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69376275",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.2b1",
           "kind": "image",
           "channel": "beta",
