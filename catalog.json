@@ -1166,6 +1166,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.3b6",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:6605db6e43aab81165285c9fe77672efa61bbbae144534a5a562959ed65a47ee",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44435004900.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b6/bdh_app_flights-0.1.3b6-py3-none-any.whl",
+          "sha256": "91f56edac01e82f40ee20fafcd9142ff4911e171f9e14fca738ce6ba4e3f5486",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Label airport calls on the usage page instead of 'not made by this hub' (0.1.3b6) (#8)",
+          "released_at": "2026-11-19T01:09:49Z",
+          "built_at": "2026-11-19T01:12:49Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69436337",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.3b5",
           "kind": "image",
           "channel": "beta",
