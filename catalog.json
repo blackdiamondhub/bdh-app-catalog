@@ -1166,6 +1166,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.3b5",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:97831e694a28d55cc81cf1b97d1f348eae14937f373d23d3d59fe93d9817a5b8",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44433923162.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b5/bdh_app_flights-0.1.3b5-py3-none-any.whl",
+          "sha256": "a41ded8ba5f183dddcfccdac4df7f224603693b4af90a188e6b6ebda48d11ccd",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop the monthly limit card from the usage page (0.1.3b5) (#7)",
+          "released_at": "2026-11-19T01:01:43Z",
+          "built_at": "2026-11-19T01:04:59Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69434195",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.3b4",
           "kind": "image",
           "channel": "beta",
