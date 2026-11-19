@@ -1166,6 +1166,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.3b4",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:4944f3f459a429746e97ac802fb13b7cf6710a093a67ac871dbf435411930163",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:a3e00f558f802f9027b58a0d537293d3dfcc53a721f8c0c0f8186850ff23cdfb",
+          "build": "gh-44430796438.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b4/bdh_app_flights-0.1.3b4-py3-none-any.whl",
+          "sha256": "f0a665c089a3ab89f30307c77d3534781819b9b73b9870204c531b6da4bcfa09",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Real FlightAware usage, admin-only usage page, stop polling at touchdown (0.1.3b4) (#6)\n\n- Read month-to-date usage from FlightAware /account/usage (cached 5 min, stale fallback)\n- Spending limit is a CHOICE setting (\\/5/10/20/50); enforced against real total\n- Admin-only Settings > Flights usage page with per-kind breakdown and refresh\n- Flights app shows no totals, only a 95% warning / limit reached / off banner\n- Poll every 2 min on final approach; stop at touchdown",
+          "released_at": "2026-11-19T00:38:00Z",
+          "built_at": "2026-11-19T00:40:55Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/69427395",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.3b3",
           "kind": "image",
           "channel": "beta",
