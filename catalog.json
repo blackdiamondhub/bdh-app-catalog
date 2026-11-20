@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b13/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b14/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b14",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:0847bfbc2bcc054ff2eb4ccec07acc0254196ef22cef6999841f5e0dcbf375ac",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44837909176.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b14/bdh_app_cameras-2.6.0b14-py3-none-any.whl",
+          "sha256": "6cadc6784ec1354809c4bbd73baf16be4339c904583d2831632179089f3a307f",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Pop-up: send alert hold/hangup in the embed-host format (2.6.0b14) (#87)\n\nThe hub loads alert pop-ups in /apps/cameras/_bare/, so the pop-up's parent\nis the bare page, not the alert overlay; the old {bdhAlert} message was\ndropped there and the pop-up closed mid-conversation. Send\n{bdh:1, type:'alert', cmd}, which the hub's embed-host relays to the overlay\n(BlackDiamondHub #372).",
+          "released_at": "2026-11-20T23:33:32Z",
+          "built_at": "2026-11-20T23:36:42Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70376661",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b13",
           "kind": "image",
