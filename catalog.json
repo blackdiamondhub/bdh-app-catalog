@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b8/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b9/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b9",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:b6bd0689592b9f32edd0356fd101d437d8285374d66bdaa694e31d41ef736531",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:9ce3365decc02b2fcfcdad1af63d0f61e97618c140e8457c50ec675ae916c76f",
+          "build": "gh-44807159972.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b9/bdh_app_cameras-2.6.0b9-py3-none-any.whl",
+          "sha256": "d388a62617ed63f8e4e72e409a79daca0aac3cd30e600ae393899c23c91dbe22",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Popup picker: group entities by device via ha.get_registry; collapsible HA sections (#80)\n\nThe picker used ha.ws_commands, which needs the admin-only ha.ws grant, so the\nbroker refused it and every entity landed under 'No device'. Use the read-only\nha.registry op (bdh-sdk 0.38, now with areas) instead, and test against a\nFakeBroker that enforces the manifest's permissions.\n\nEach Home Assistant instance's section can now be collapsed; the choice is\nremembered on the device.",
+          "released_at": "2026-11-20T19:57:06Z",
+          "built_at": "2026-11-20T20:01:58Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70308946",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b8",
           "kind": "image",
