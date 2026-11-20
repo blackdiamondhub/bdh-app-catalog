@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b5/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b6/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b6",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:514f3b2c7d48e8d0500f85fe459cbcf0916f64e41c6d444260a1ac2ba4994032",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:62aaba3ff30cf689157d1568b6255ed79f6bd2c2d2f62fce20ac8a6176804c82",
+          "build": "gh-44771796246.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b6/bdh_app_cameras-2.6.0b6-py3-none-any.whl",
+          "sha256": "2e98ba1f01f09ece3841370a3a2412bf246acd630995a8ea110218d38a15faa2",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Show a fresh poster when returning to a site tab (2.6.0b6) (#76)\n\nStopping a tile left it marked has-frame with its dead source attached, so\nswitching back to a tab showed a black/frozen video over the poster until the\nnew stream's first frames. Stopping now saves the tile's last frame as its\nposter and hides the video until the restarted stream presents frames.",
+          "released_at": "2026-11-20T16:15:30Z",
+          "built_at": "2026-11-20T16:18:14Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70222763",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b5",
           "kind": "image",
