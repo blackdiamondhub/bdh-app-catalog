@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b11/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b12/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b12",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:1bc6f41d98473e5d9ace0af7cfeb12342c21a56bc8dc59cb3442dc82f3e9b0f8",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:9ce3365decc02b2fcfcdad1af63d0f61e97618c140e8457c50ec675ae916c76f",
+          "build": "gh-44820142404.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b12/bdh_app_cameras-2.6.0b12-py3-none-any.whl",
+          "sha256": "f7287ff28ecb2df0d3d77b34bf8b6bb5e5ce10ec7bdeff4463a2cc8965a0a1e2",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Talk: kiosk callbacks in iframes, red talk button, popup talk + sound (#84)\n\n* Talk: kiosk callbacks in iframes, red talk button, popup talk + sound\n\n- Shared _talk_style/_talk_script partials for camera page and doorbell popup\n- Listen for kiosk talk callbacks re-posted to nested frames (kiosk v1.4)\n- Bigger 128px talk button, red when talking, pulsing ring while connecting\n- Popup: speaker on by default, mic muted, bottom-centred talk button\n\n\n* Bump to 2.6.0b12\n\n\n---------",
+          "released_at": "2026-11-20T21:23:23Z",
+          "built_at": "2026-11-20T21:26:28Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70338643",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b11",
           "kind": "image",
