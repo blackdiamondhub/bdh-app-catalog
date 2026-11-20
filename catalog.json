@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b10/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b11/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b11",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:d3c622ae233896dd922158103c66fc5c386ba41ef4d42a000c406d63c93c244b",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:9ce3365decc02b2fcfcdad1af63d0f61e97618c140e8457c50ec675ae916c76f",
+          "build": "gh-44817608018.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b11/bdh_app_cameras-2.6.0b11-py3-none-any.whl",
+          "sha256": "2baad430dbf711d73a4cfa4d697a4310d27db3a601150fe5c0c521d2d6d6d217",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Popup settings: tell same-named HA instances apart (2.6.0b11) (#83)\n\nBoth hubs had two connections named 'Home Assistant', so the popup showed two\nidentical section headers and entity labels. When names collide, label by\nsite (then id).",
+          "released_at": "2026-11-20T20:57:48Z",
+          "built_at": "2026-11-20T21:09:57Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70332984",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b10",
           "kind": "image",
