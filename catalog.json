@@ -3027,6 +3027,35 @@
       "repo": "blackdiamondlodge/bdh-app-timers",
       "versions": [
         {
+          "version": "2.0.6b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:8fa4b49eff20214de1099745a0b76be1b13d7bd1ee817ab07871642d64d33988",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44832527442.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v2.0.6b1/bdh_app_timers-2.0.6b1-py3-none-any.whl",
+          "sha256": "da5bc81bd429378dc3b495766cf5d32366f0fa9c6d007e86040618619fc91e72",
+          "permissions": [
+            "alerts",
+            "media",
+            "speakers"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Test release for the hub approval flow (2.0.6b1) (#11)\n\n* Test release for the hub approval flow: also ask for media (2.0.6b1)\n\nTemporary. The next release drops it again.\n\n\n* Fix expected permission order (manifest sorts)\n\n\n---------",
+          "released_at": "2026-11-20T22:51:45Z",
+          "built_at": "2026-11-20T22:55:33Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70366127",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "2.0.5",
           "kind": "image",
           "hub_api": 2,
