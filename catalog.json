@@ -2793,9 +2793,36 @@
     "sunpeaks_webcams": {
       "name": "Webcams",
       "description": "Sun Peaks resort webcam viewer",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/v2.0.2/sunpeaks_webcams/static/sunpeaks_webcams/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/v2.0.3b1/sunpeaks_webcams/static/sunpeaks_webcams/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-sunpeaks-webcams",
       "versions": [
+        {
+          "version": "2.0.3b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:ee1b351de4278b5025292249e5e6c997411c7550ca814bef1b29e9cc61fa305e",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:9ce3365decc02b2fcfcdad1af63d0f61e97618c140e8457c50ec675ae916c76f",
+          "build": "gh-44809958453.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/releases/download/v2.0.3b1/bdh_app_sunpeaks_webcams-2.0.3b1-py3-none-any.whl",
+          "sha256": "996801674129bce37c3ca80dcab7eb6b86773aa02c0c0595b425b2571b141904",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "backgrounds"
+          ],
+          "custom_base": false,
+          "changelog": "Serve latest capture bytes instead of redirecting (#11)\n\nThe hub's _raw proxy doesn't follow redirects, so the screensaver Live cam\ngot a 404 from /latest/<slug>.jpg and fell back. Fetch and cache the newest\ncapture per camera and return the image itself; 502 on upstream failure.\nAdds a test that every provided screensaver URL serves an image directly.",
+          "released_at": "2026-11-20T20:14:59Z",
+          "built_at": "2026-11-20T20:18:30Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70315532",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.2",
           "kind": "image",
