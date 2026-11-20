@@ -3085,6 +3085,34 @@
       "repo": "blackdiamondlodge/bdh-app-timers",
       "versions": [
         {
+          "version": "2.0.6b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:26493651bfe7680ccebb955a6663798e20af3d7adedaee50e98c05e0e928ac85",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44835233210.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v2.0.6b2/bdh_app_timers-2.0.6b2-py3-none-any.whl",
+          "sha256": "9eb3c8177b502d91b3f1eeb109ffb3ca7b4efd5153f7486d2f82b56e196663c5",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Drop the temporary media permission (2.0.6b2) (#12)",
+          "released_at": "2026-11-20T23:13:15Z",
+          "built_at": "2026-11-20T23:15:58Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70371209",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "2.0.6b1",
           "kind": "image",
           "channel": "beta",
