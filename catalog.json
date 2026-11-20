@@ -2136,9 +2136,34 @@
     "shuttle": {
       "name": "Shuttle",
       "description": "Sun Peaks in-resort shuttle times, live bus location and spoken reminders",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.0.1/shuttle/static/shuttle/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.0.2b1/shuttle/static/shuttle/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-shuttle",
       "versions": [
+        {
+          "version": "2.0.2b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-shuttle@sha256:a07d6a1cedb973d3e6414e96ae0eba5bcfe6eca7f8f976ee2305a7309541c1f9",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:62aaba3ff30cf689157d1568b6255ed79f6bd2c2d2f62fce20ac8a6176804c82",
+          "build": "gh-44785917618.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-shuttle/releases/download/v2.0.2b1/bdh_app_shuttle-2.0.2b1-py3-none-any.whl",
+          "sha256": "0624bfe066ad45aed4776b6804d38de179c032080bcc0c60957fc08d5c7aadd6",
+          "permissions": [],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Stop label: 'near hot tub' instead of 'out front' (#6)",
+          "released_at": "2026-11-20T17:23:30Z",
+          "built_at": "2026-11-20T17:44:05Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70256377",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.1",
           "kind": "image",
