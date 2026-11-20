@@ -2167,9 +2167,37 @@
     "shuttle": {
       "name": "Shuttle",
       "description": "Sun Peaks in-resort shuttle times, live bus location and spoken reminders",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.0.2b1/shuttle/static/shuttle/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.1.0b1/shuttle/static/shuttle/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-shuttle",
       "versions": [
+        {
+          "version": "2.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-shuttle@sha256:edb008486e0561b67783573c4b618e3f0d66f456837eb14e39ad83cf6e79eaeb",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:9ce3365decc02b2fcfcdad1af63d0f61e97618c140e8457c50ec675ae916c76f",
+          "build": "gh-44809568086.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-shuttle/releases/download/v2.1.0b1/bdh_app_shuttle-2.1.0b1-py3-none-any.whl",
+          "sha256": "aa694acbfc41ececd53b92f51d3eb15b76cb20653a220f605f0488d975f4ec1c",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Hub-native reminders: screen pop-up + chosen speakers (no AppDaemon) (#7)\n\n* Hub-native shuttle reminders: screen pop-up + chosen speakers\n\nReminders no longer go through the bdl_shuttle AppDaemon app. The app keeps\nthem in its own state and a background thread fires them: an alert pops up\non every hub screen (bdh_sdk.alerts) and plays on the speakers\n(bdh_sdk.speakers), regardless of night hours.\n\nThe admin picks which speakers reminders may use (new 'speakers' setting,\nplus volume and chime); the reminder dialog offers 'All speakers' or a subset.\nNeeds the alerts and speakers permissions; network drops to outbound.\n\n\n* Selenium test: surface the dialog's error on a failed save\n\n\n---------",
+          "released_at": "2026-11-20T20:09:56Z",
+          "built_at": "2026-11-20T20:15:40Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70314527",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.2b1",
           "kind": "image",
