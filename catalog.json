@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b12/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b13/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b13",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:622b95f7d976316ca10da80ead9f036e8bd3b2754b7926e61e66a5711b721b45",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44833221885.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b13/bdh_app_cameras-2.6.0b13-py3-none-any.whl",
+          "sha256": "8257f8f57b7bfa5c6d11cae0d8fffc85f1cfa9fb71aebce03c14d5165b727bb7",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Pop-up: hold the hub alert open while talking, add Hang up (#85)\n\n* Pop-up: hold the hub alert open while talking, add Hang up\n\nThe hub closed the doorbell pop-up when its countdown ran out, even mid\nconversation. While the mic is on the pop-up now posts {bdhAlert: 'hold'}\nto the hub (release on mute), and a Hang up button stops the mic and asks\nthe hub to close the pop-up. Needs BlackDiamondHub #370.\n\n\n* Test: wait for async postMessage before checking what the hub heard\n\n\n* Test: restore test_popup_without_kiosk_has_sound_but_no_talk header\n\n\n---------",
+          "released_at": "2026-11-20T21:53:27Z",
+          "built_at": "2026-11-20T22:59:45Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70367215",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b12",
           "kind": "image",
