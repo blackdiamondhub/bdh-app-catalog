@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b6/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b7/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b7",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:04d85d2a21f5e6c6cb1a0239e2929be7938667d858b980a4cdb43a649f2ab192",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:62aaba3ff30cf689157d1568b6255ed79f6bd2c2d2f62fce20ac8a6176804c82",
+          "build": "gh-44781318121.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b7/bdh_app_cameras-2.6.0b7-py3-none-any.whl",
+          "sha256": "5e1ff6d54ff52edf4d8af1943e8c91f098496014a1a6785033309876223cdec1",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Keep admin replay players hidden in the grid (2.6.0b7) (#77)\n\n* Keep admin replay players hidden in the grid (2.6.0b7)\n\n.cam-card video { display:block } out-ranked the .cam-replay/.cam-still hide rule, so two empty replay <video>s sat over each live stream for signed-in users. Android WebView draws a play-button placeholder on them.\n\n\n* Test: use the Protect path so admin replay markup renders\n\n\n* Test: check rendered boxes, not own display\n\n\n---------",
+          "released_at": "2026-11-20T17:12:24Z",
+          "built_at": "2026-11-20T17:15:33Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70245174",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b6",
           "kind": "image",
