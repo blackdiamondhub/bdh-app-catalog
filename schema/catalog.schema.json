@@ -195,6 +195,7 @@
             "enum": [
               "stats",
               "backgrounds",
+              "saver",
               "season"
             ]
           }
@@ -343,6 +344,7 @@
             "enum": [
               "stats",
               "backgrounds",
+              "saver",
               "season"
             ]
           }

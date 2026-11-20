@@ -33,7 +33,7 @@ plus the semantic rules enforced by [`scripts/validate.py`](scripts/validate.py)
           "lifecycle": "on_demand",  // always | on_demand
           "memory_mb": 96,           // 48..256
           "companions": [],          // e.g. ["go2rtc"]
-          "provides": ["stats"],     // stats | backgrounds | season
+          "provides": ["stats"],     // stats | backgrounds | saver | season
           "manifest_declared": false,
           "changelog": "Point to Settings > General for the hub location (1.6.1) (#7)",
           "released_at": "2026-11-14T04:10:46Z",
