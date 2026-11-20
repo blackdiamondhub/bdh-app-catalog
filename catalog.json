@@ -2886,9 +2886,36 @@
     "sunpeaks_webcams": {
       "name": "Webcams",
       "description": "Sun Peaks resort webcam viewer",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/v2.0.3b1/sunpeaks_webcams/static/sunpeaks_webcams/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/v2.1.0b1/sunpeaks_webcams/static/sunpeaks_webcams/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-sunpeaks-webcams",
       "versions": [
+        {
+          "version": "2.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:4e6c28975be32269a3d22282a9dab939781473fc3b8a0fa152a2d70699db1268",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44832465585.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/releases/download/v2.1.0b1/bdh_app_sunpeaks_webcams-2.1.0b1-py3-none-any.whl",
+          "sha256": "73a3efae6f20461f16ca1a85cc1f4d3e9548a33523e2434bc7642032c91ee242",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "saver"
+          ],
+          "custom_base": false,
+          "changelog": "Provide 'Mountain cams' screen saver source (SDK 0.39 SAVER), 2.1.0b1 (#12)\n\nReplaces the deprecated BACKGROUNDS provider with a declared SaverSource\n(live kind, one SaverImage per camera, label = camera name).",
+          "released_at": "2026-11-20T22:44:10Z",
+          "built_at": "2026-11-20T22:53:54Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70365745",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.3b1",
           "kind": "image",
