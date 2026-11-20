@@ -77,6 +77,34 @@ class CatalogTest(unittest.TestCase):
         self.assertTrue(v["manifest_declared"])
         self.assertEqual(validate.check_schema(catalog) + validate.check_semantics(catalog), [])
 
+    def test_every_capability_is_readable_and_valid(self):
+        # Each SDK provides constant must parse from a wheel and pass the schema.
+        names = ", ".join(bc.CAPABILITIES)
+        plugin = (f"from bdh_sdk import PluginSpec\nfrom bdh_sdk.provides import {names}\n"
+                  "spec = PluginSpec(id=\"demo\", app=\"demo\", provides={"
+                  + ", ".join(f'{k}: "demo.provides.{v}"' for k, v in bc.CAPABILITIES.items()) + "})\n")
+        catalog = self.add(make_wheel(self.tmp.name, plugin=plugin))
+        self.assertEqual(catalog["apps"]["demo"]["versions"][0]["provides"], sorted(bc.CAPABILITIES.values()))
+        self.assertEqual(validate.check_schema(catalog), [])
+
+    def test_schema_provides_enums_match_capabilities(self):
+        schema = json.loads((Path(__file__).resolve().parents[1] / "schema" / "catalog.schema.json").read_text())
+        enums = []
+
+        def walk(node):
+            if isinstance(node, dict):
+                if "provides" in node and isinstance(node["provides"], dict):
+                    enums.append(node["provides"]["items"]["enum"])
+                for value in node.values():
+                    walk(value)
+            elif isinstance(node, list):
+                for value in node:
+                    walk(value)
+        walk(schema)
+        self.assertTrue(enums)
+        for enum in enums:
+            self.assertEqual(set(enum), set(bc.CAPABILITIES.values()))
+
     def test_defaults_and_old_sdk_mean_hub_api_1(self):
         v = self.add(make_wheel(self.tmp.name, plugin=PLAIN_PLUGIN))["apps"]["demo"]["versions"][0]
         self.assertEqual(v["hub_api"], 1)

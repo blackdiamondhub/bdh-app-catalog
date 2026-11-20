@@ -30,7 +30,7 @@ REBUILD_FIELDS = {"image", "base", "build", "built_at", "attestation"}
 # importing it (or the SDK).
 NETWORKS = {"NETWORK_NONE": "none", "NETWORK_OUTBOUND": "outbound", "NETWORK_LAN": "lan"}
 LIFECYCLES = {"LIFECYCLE_ALWAYS": "always", "LIFECYCLE_ON_DEMAND": "on_demand"}
-CAPABILITIES = {"STATS": "stats", "BACKGROUNDS": "backgrounds", "SEASON": "season"}
+CAPABILITIES = {"STATS": "stats", "BACKGROUNDS": "backgrounds", "SAVER": "saver", "SEASON": "season"}
 DEFAULT_MEMORY_MB = 96
 DEFAULTS = {
     "permissions": [],
