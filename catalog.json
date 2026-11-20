@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b7/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b8/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b8",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:01a194d693100cf4a735eb4f47a18886ea42a09543a2ff5a28962304fe7ffaea",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:62aaba3ff30cf689157d1568b6255ed79f6bd2c2d2f62fce20ac8a6176804c82",
+          "build": "gh-44785487645.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b8/bdh_app_cameras-2.6.0b8-py3-none-any.whl",
+          "sha256": "c0de604112461fa3cb5e96e8401766e24ef3a4fce51c0e1a384d14b9e3ff2050",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Cover page with tapped tile until fullscreen lands (2.6.0b8) (#79)\n\nAndroid WebView enters fullscreen in steps, briefly showing the grid and\nthe other tiles being stopped. The tapped card now goes position:fixed\nover the viewport immediately; cleared on refusal or exit.",
+          "released_at": "2026-11-20T17:37:46Z",
+          "built_at": "2026-11-20T17:41:27Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70255432",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b7",
           "kind": "image",
