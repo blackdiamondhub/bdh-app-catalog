@@ -2568,6 +2568,33 @@
       "repo": "blackdiamondlodge/bdh-app-sunpeaks-events",
       "versions": [
         {
+          "version": "1.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_events@sha256:fb41e4ba3f052dd50a1e931c350dddba8a63e9f5129a3ac3f76efa89d9f3ce88",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:62aaba3ff30cf689157d1568b6255ed79f6bd2c2d2f62fce20ac8a6176804c82",
+          "build": "gh-44779147765.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-events/releases/download/v1.1.0b1/bdh_app_sunpeaks_events-1.1.0b1-py3-none-any.whl",
+          "sha256": "2fbfa9aa36019c4e1dfe6d9339ebb12b2b81e680f2406f48461aaf132fb11a21",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [
+            "season"
+          ],
+          "custom_base": false,
+          "changelog": "Provide the Winter Opening Day date as a season hint (#3)",
+          "released_at": "2026-11-20T16:21:32Z",
+          "built_at": "2026-11-20T17:02:45Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70239991",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.1",
           "kind": "image",
           "hub_api": 2,
