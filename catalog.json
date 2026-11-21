@@ -1476,6 +1476,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.3b8",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:6ab663731bdaef986299124f5d740f2ab04da5b111a492df8fdc974cfd3f21d9",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44873150787.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b8/bdh_app_flights-0.1.3b8-py3-none-any.whl",
+          "sha256": "8a522ba1633307d6deba00825c17221e4e7d7ccb1db2bc42b4d8ed4ff24a56c0",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Flights: progress bar on its own row above airports on phones (0.1.3b8) (#10)",
+          "released_at": "2026-11-21T05:54:10Z",
+          "built_at": "2026-11-21T05:57:16Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70454587",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.3b7",
           "kind": "image",
           "channel": "beta",
