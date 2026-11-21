@@ -1814,6 +1814,38 @@
         }
       ]
     },
+    "gemstone": {
+      "name": "Lights",
+      "description": "Play, design and set up Gemstone Lights",
+      "repo": "blackdiamondlodge/bdh-app-gemstone",
+      "versions": [
+        {
+          "version": "0.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:d5268659e9b26d34725f653107b371e2602c3cec07d9e5415568be816de68bfc",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44957830956.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b1/bdh_app_gemstone-0.1.0b1-py3-none-any.whl",
+          "sha256": "a417d97c2e2b41d8cba2f5d30a507bcddde71ef2e0ca0c3f0ede9ccf976fd06a",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Gemstone Lights app 0.1.0b1 (#1)\n\nMulti-controller Gemstone Lights control: Tonight, Patterns, Create (auto-save,\nlive try, guest designs folder), admin Setup (house photo stylize, light-run\npath editor, blink first lights), 30-day guest-design cleanup worker.",
+          "released_at": "2026-11-21T22:37:43Z",
+          "built_at": "2026-11-21T22:40:11Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70626686",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
