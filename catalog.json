@@ -1476,6 +1476,34 @@
       "repo": "blackdiamondlodge/bdh-app-flights",
       "versions": [
         {
+          "version": "0.1.3b7",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:75cee2f6957b4ec7013c9cb30eddf0d97edd76cc50032d92f413d691685b2f71",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44871756439.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b7/bdh_app_flights-0.1.3b7-py3-none-any.whl",
+          "sha256": "462b7c46d8bd9d153acf7ad2fb74fffdda30b89ad2470e56320ff364299f3b0c",
+          "permissions": [
+            "alerts",
+            "ha.call:notify.*"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Fix Flights layout on phones (0.1.3b7) (#9)\n\nBare 1fr grid tracks let the detail card widen the page past the screen. Use minmax(0,1fr), add a <=600px phone layout (stacked footer buttons, bottom-sheet add dialog, full-width toast) and a test that rejects bare fr tracks.",
+          "released_at": "2026-11-21T05:27:59Z",
+          "built_at": "2026-11-21T05:38:44Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70451162",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.3b6",
           "kind": "image",
           "channel": "beta",
