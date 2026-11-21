@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:67b99cbf1f54ec7ee4ab63adce794514b51c280006c8f5d04e1d262ecd8297ef",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44960786762.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b2/bdh_app_gemstone-0.1.0b2-py3-none-any.whl",
+          "sha256": "ff2afe5d3ef5280158e50e0e8d9b98dbfc6c116146d5f80844e6780299aff9ac",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "0.1.0b2: avoid Bootstrap class collisions (#2)\n\nThe SDK base template loads Bootstrap 5.3.3, whose .card/.row/.btn/.toast\nrules broke card names, quick-colour chips, the Colours label and the toast.\nRename to g-* and add a regression test that rejects any Bootstrap class\nname in the app's CSS/HTML/JS. Pad the swatch row so the remove badge isn't\nclipped.",
+          "released_at": "2026-11-21T23:02:10Z",
+          "built_at": "2026-11-21T23:15:28Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70632147",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b1",
           "kind": "image",
           "channel": "beta",
