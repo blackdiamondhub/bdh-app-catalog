@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b3",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:ffbcd183233c07c7e61197ab9e299111045d9cea990c3f82b65f712eff26b413",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44962035237.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b3/bdh_app_gemstone-0.1.0b3-py3-none-any.whl",
+          "sha256": "65a75b2c980da2249f2c9b90193fbf156de0983dc03a0b0f0397d48513a769cc",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Lights switch: preview vs live toggle on every picture (0.1.0b3) (#3)\n\n- Header switch starts in the lights' real state; off = preview on picture, on = drives lights\n- Replaces Create's Live button and the undo toast; never auto-turns lights off\n- Tests guard switch presence, removed controls, and that every looked-up id exists",
+          "released_at": "2026-11-21T23:28:10Z",
+          "built_at": "2026-11-21T23:30:52Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70634656",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b2",
           "kind": "image",
           "channel": "beta",
