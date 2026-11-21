@@ -54,9 +54,40 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b14/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b15/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b15",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:4aff71938ec2a7927cefbba1c0db24766e2be11b63db87d63ad36b957ed7310b",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44933779258.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b15/bdh_app_cameras-2.6.0b15-py3-none-any.whl",
+          "sha256": "791b341818b7d1145039875437098cda9b77946eac40a9b1324392e8ab6eb8a2",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Echo cancellation for doorbell talkback (beta) (#88)\n\nOptional bdh-aec sidecar URL (Settings -> Advanced). When set, two-way\ncameras play full-screen/popup audio from <stream>_aec (Protect video +\necho-cancelled mic from the sidecar) and kiosk talk goes through the\nsidecar's /api/talk so it has the echo reference.",
+          "released_at": "2026-11-21T18:05:12Z",
+          "built_at": "2026-11-21T18:08:44Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70582271",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b14",
           "kind": "image",
