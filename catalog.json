@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b6",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:25fbb5d401a1df45b256df44e515d8a3c7750f3ac368ebb7654b10aa02ff3f87",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44968609884.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b6/bdh_app_gemstone-0.1.0b6-py3-none-any.whl",
+          "sha256": "73f88b241f0dcfd4cd1c433a3e35281d66538842f5e3aaffd1c0b21c77c95fd5",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Fix control band squeeze, sparser preview dots (0.1.0b6) (#6)",
+          "released_at": "2026-11-22T00:49:10Z",
+          "built_at": "2026-11-22T00:52:14Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70646995",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b5",
           "kind": "image",
           "channel": "beta",
