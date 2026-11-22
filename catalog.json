@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b4",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:a0232fb059f2f27e558fcafba0adfecfc9a82fe0708303ed104fd689f992d445",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44964780177.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b4/bdh_app_gemstone-0.1.0b4-py3-none-any.whl",
+          "sha256": "20da934ad77dffc91c3d0d5f9efdeda7648b2e51e86d135e90e12c3a03dd7cfb",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Move photos & light paths into Settings -> Gemstone (0.1.0b4) (#4)\n\nSetup leaves the app rail and becomes an admin-only hub Settings page\n(SettingsPage gemstone_settings). Generic wording (not 'house') for any\ncontroller. Tests cover the settings page, admin gating and per-page ids.",
+          "released_at": "2026-11-22T00:02:07Z",
+          "built_at": "2026-11-22T00:05:02Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70639828",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b3",
           "kind": "image",
           "channel": "beta",
