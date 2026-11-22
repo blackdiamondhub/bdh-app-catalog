@@ -1852,6 +1852,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b14",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:31b1dc41e67859b0a5aade090e0258f021ae2f22e1b847e7f97d945d975312e3",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:3165819df8e43c4f0df5fa056e3b368f73108f87ed7c1b782ca1ebff6b5109ac",
+          "build": "gh-45072480870.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b14/bdh_app_gemstone-0.1.0b14-py3-none-any.whl",
+          "sha256": "bc63e1f1b9fe57bceedc19efb74de08af1bd30d75252686dd9b588199c5e2383",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b14: Create back button, unclipped animation ring, pinned bar on return (#14)\n\n- Create view gets a Back button to Tonight.\n- Animation tile selection ring is drawn inside the tile so the grid can't clip it; swatch row padded for its ring.\n- Returning to Tonight re-checks the pinned bar (the observer only fires on change).\n- Tests: rings drawn inside, every view has a back button, Tonight re-syncs the pinned bar, heroHidden.",
+          "released_at": "2026-11-22T21:28:48Z",
+          "built_at": "2026-11-22T21:31:49Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70849376",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b13",
           "kind": "image",
           "channel": "beta",
