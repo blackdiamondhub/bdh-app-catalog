@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b5",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:f5698184be1b6d504a50e8f1951620b32fc370856cdd487c6468d41870991d27",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44967829875.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b5/bdh_app_gemstone-0.1.0b5-py3-none-any.whl",
+          "sha256": "f05b3ff017ae430bfadec89682b8b2b70daf558dcbf0db9fc9aaffb0a9e20251",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Simpler light-path editor (0.1.0b5) (#5)\n\n- Runs are just drawn paths: no LED counts, start marker or direction\n- Photos are shown as uploaded: Night/Drawing looks removed; old restyled\n  photos are restored to the original automatically\n- Remove blink\n- Tap a point to delete it, tap a line to cut it\n- Preview dots evenly spaced and sparser\n- Back link from Photos & light paths to the Gemstone settings",
+          "released_at": "2026-11-22T00:39:28Z",
+          "built_at": "2026-11-22T00:42:33Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70645537",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b4",
           "kind": "image",
           "channel": "beta",
