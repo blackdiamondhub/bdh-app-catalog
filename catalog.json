@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b13",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:30acc7501e55840f402fa8ea4cb04ab724c9fe21b259fe248c5b0da4798f0caa",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b5124111ca52c6d10e364ca1a0e8fc86a0d5a67f752d5a19e9c70090038b650a",
+          "build": "gh-45065905328.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b13/bdh_app_gemstone-0.1.0b13-py3-none-any.whl",
+          "sha256": "e35b914350c2791ce889f4d86f2880485d7358abf653a5d44e58d3c9d112f808",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b13: merge Patterns into Tonight (#13)\n\nTonight now holds favourites, an All patterns grid with sticky category\nchips, and a collapsed Gemstone library (lazy-loaded). Pattern cards get a\nheart toggle (new /api/fav/). A pinned now-playing bar appears when the hero\nscrolls away; its thumbnail is cropped to every light via fitBox. Lights-off\nis a dropdown. The Patterns page and search are removed; #patterns routes to\nTonight. Pure helpers moved to gemstone-core.js with node tests in CI.",
+          "released_at": "2026-11-22T20:18:38Z",
+          "built_at": "2026-11-22T20:22:00Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70836210",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b11",
           "kind": "image",
           "channel": "beta",
