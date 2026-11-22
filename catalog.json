@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b11",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:9b45d86285338cdfee26d77e89a23a164b542a8c5aa25acef67d183c327b3930",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-45060761756.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b11/bdh_app_gemstone-0.1.0b11-py3-none-any.whl",
+          "sha256": "381f748b326ff93ec1e0e8d29546979fe6814d389ca71a1bab809783d62b7c80",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b11: Tonight schedule + lights-off toggle, Autopilot event bar and settings page (#11)\n\n- Tonight: drop the power button and Keep-on-until; add a Schedule chip and\n  popover (sunset offset, off time capped at 22:00 for guests, lights off\n  tonight). Collapsible Autopilot bar on event nights; favourites scroll.\n- New admin-only Autopilot settings page (schedule, lights, pattern kinds,\n  brightness, holidays, teams, coming up) backed by pygemstone 0.3.0\n  events settings, raw fields preserved on write.\n- Worker keeps lights off while 'lights off tonight' is set.\n- Bump to 0.1.0b11, require pygemstone>=0.3.0.",
+          "released_at": "2026-11-22T19:03:50Z",
+          "built_at": "2026-11-22T19:27:48Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70826012",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b10",
           "kind": "image",
           "channel": "beta",
