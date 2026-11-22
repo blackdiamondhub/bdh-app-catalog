@@ -31,6 +31,7 @@ REBUILD_FIELDS = {"image", "base", "build", "built_at", "attestation"}
 NETWORKS = {"NETWORK_NONE": "none", "NETWORK_OUTBOUND": "outbound", "NETWORK_LAN": "lan"}
 LIFECYCLES = {"LIFECYCLE_ALWAYS": "always", "LIFECYCLE_ON_DEMAND": "on_demand"}
 CAPABILITIES = {"STATS": "stats", "BACKGROUNDS": "backgrounds", "SAVER": "saver", "SEASON": "season"}
+COMPANIONS = ("go2rtc", "aec")
 DEFAULT_MEMORY_MB = 96
 DEFAULTS = {
     "permissions": [],

@@ -87,23 +87,40 @@ class CatalogTest(unittest.TestCase):
         self.assertEqual(catalog["apps"]["demo"]["versions"][0]["provides"], sorted(bc.CAPABILITIES.values()))
         self.assertEqual(validate.check_schema(catalog), [])
 
-    def test_schema_provides_enums_match_capabilities(self):
+    @staticmethod
+    def schema_enums(field):
         schema = json.loads((Path(__file__).resolve().parents[1] / "schema" / "catalog.schema.json").read_text())
         enums = []
 
         def walk(node):
             if isinstance(node, dict):
-                if "provides" in node and isinstance(node["provides"], dict):
-                    enums.append(node["provides"]["items"]["enum"])
+                if field in node and isinstance(node[field], dict):
+                    enums.append(node[field]["items"]["enum"])
                 for value in node.values():
                     walk(value)
             elif isinstance(node, list):
                 for value in node:
                     walk(value)
         walk(schema)
+        return enums
+
+    def test_schema_provides_enums_match_capabilities(self):
+        enums = self.schema_enums("provides")
         self.assertTrue(enums)
         for enum in enums:
             self.assertEqual(set(enum), set(bc.CAPABILITIES.values()))
+
+    def test_schema_companion_enums_match_sdk(self):
+        enums = self.schema_enums("companions")
+        self.assertTrue(enums)
+        for enum in enums:
+            self.assertEqual(set(enum), set(bc.COMPANIONS))
+
+    def test_every_companion_is_readable_and_valid(self):
+        plugin = PLUGIN.replace('companions=("go2rtc",)', f"companions={bc.COMPANIONS!r}")
+        catalog = self.add(make_wheel(self.tmp.name, plugin=plugin))
+        self.assertEqual(catalog["apps"]["demo"]["versions"][0]["companions"], list(bc.COMPANIONS))
+        self.assertEqual(validate.check_schema(catalog), [])
 
     def test_defaults_and_old_sdk_mean_hub_api_1(self):
         v = self.add(make_wheel(self.tmp.name, plugin=PLAIN_PLUGIN))["apps"]["demo"]["versions"][0]
