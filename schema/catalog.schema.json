@@ -184,7 +184,8 @@
           "uniqueItems": true,
           "items": {
             "enum": [
-              "go2rtc"
+              "go2rtc",
+              "aec"
             ]
           }
         },
@@ -333,7 +334,8 @@
           "uniqueItems": true,
           "items": {
             "enum": [
-              "go2rtc"
+              "go2rtc",
+              "aec"
             ]
           }
         },
