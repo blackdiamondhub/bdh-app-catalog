@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b8",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:2a919fb3c5c7ef8421e7958243427dd380b457a1864d158e437e4597fef80930",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44978418897.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b8/bdh_app_gemstone-0.1.0b8-py3-none-any.whl",
+          "sha256": "ab423bb678ac781854157b2b48254cffdb7b215d688bbe16479e7b4241e36982",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "0.1.0b8: UUID pattern ids, static setup lights, card ring overlay, straight strips (#8)\n\n- Cloud rejected live/solid/spec pattern ids that weren't UUIDs (every\n  animation change failed); ids are now UUIDs, fake cloud enforces it.\n- Live pushes are serialized and coalesced.\n- Setup view: uniform static blue lights over thinner run lines.\n- Selected/preview card ring drawn by an ::after overlay above the canvas.\n- Card light previews are a straight line.",
+          "released_at": "2026-11-22T02:56:28Z",
+          "built_at": "2026-11-22T02:58:59Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70666666",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b7",
           "kind": "image",
           "channel": "beta",
