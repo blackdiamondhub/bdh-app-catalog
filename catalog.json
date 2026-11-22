@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b9",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:8639f48e997ef876d786950d9b67ce28a42a465ae81502e335c01d32f6d0744b",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44990001570.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b9/bdh_app_gemstone-0.1.0b9-py3-none-any.whl",
+          "sha256": "645baf44115a11df6bd3593cef5717cc449dd1ae775f55fd00b3708efdd5d1a6",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b9: show whole photo on hero with blurred side bars (#9)",
+          "released_at": "2026-11-22T05:31:12Z",
+          "built_at": "2026-11-22T05:36:03Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70687891",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b8",
           "kind": "image",
           "channel": "beta",
