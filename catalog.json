@@ -1815,10 +1815,35 @@
       ]
     },
     "gemstone": {
-      "name": "Lights",
+      "name": "Gemstone",
       "description": "Play, design and set up Gemstone Lights",
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
+        {
+          "version": "0.1.0b7",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:b972f527055177883fdb9b3a70d3987914c081d6cecb4f6476b1bd3d68b58c9c",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-44972603374.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b7/bdh_app_gemstone-0.1.0b7-py3-none-any.whl",
+          "sha256": "471fa77d7f1f9f66cff3ab4503699145943c00e0c8c63fc6d7bcf32ce23fbde8",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "0.1.0b7: snappy optimistic UI, no run names, wider dots, inset card ring, rename to Gemstone (#7)\n\n- Taps update the screen immediately; cloud writes run in the background and roll back on failure\n- Polls never overwrite a pending write; fewer re-renders and idle redraws\n- Runs are just drawn; no naming UI (server numbers them)\n- Wider dot spacing on cards and previews\n- Selected/preview card ring drawn inside the card so rows can't clip it\n- Tile renamed to Gemstone with a house-with-Christmas-lights icon\n- Tests for each class of bug",
+          "released_at": "2026-11-22T01:39:35Z",
+          "built_at": "2026-11-22T01:42:40Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70654695",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "0.1.0b6",
           "kind": "image",
