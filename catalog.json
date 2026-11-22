@@ -1820,6 +1820,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b10",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:9be65b1cc4c579c7c7cffb21737bc045d833a14ce09a65b875dcac1a49b28ebe",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b39872c681ad09ed80a447b589a44ceebeb88b5a08a81139c32e914d48c6affb",
+          "build": "gh-45049870348.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b10/bdh_app_gemstone-0.1.0b10-py3-none-any.whl",
+          "sha256": "970c83b79f3dcd36f9876d9a07501a179d0ead507e4e5b596a44ac24e1eadbf8",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Setup: show run direction with arrows and add reverse button (0.1.0b10) (#10)\n\nDirection is the run's point order; the button reverses the points (undoable, autosaved).",
+          "released_at": "2026-11-22T17:29:22Z",
+          "built_at": "2026-11-22T17:32:25Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70803690",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b9",
           "kind": "image",
           "channel": "beta",
