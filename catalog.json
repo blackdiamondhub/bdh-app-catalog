@@ -54,9 +54,41 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b15/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b16/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.6.0b16",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:9428372bf2ab31647ccb41a9f9e67ca97e8342e630b667cd10370784ff0eb083",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:3165819df8e43c4f0df5fa056e3b368f73108f87ed7c1b782ca1ebff6b5109ac",
+          "build": "gh-45071530620.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.6.0b16/bdh_app_cameras-2.6.0b16-py3-none-any.whl",
+          "sha256": "dfd39a83073092079b867b46524093a268ffc3d811e3d6c12daa1a0be44353d9",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc",
+            "aec"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Echo cancellation via the aec companion (2.6.0b16) (#89)\n\nDeclare the supervisor's aec companion and read BDH_AEC_URL instead of a\nhand-entered setting, so every hub that installs cameras gets it.",
+          "released_at": "2026-11-22T20:29:25Z",
+          "built_at": "2026-11-22T21:21:38Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70847520",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b15",
           "kind": "image",
