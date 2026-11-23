@@ -54,9 +54,41 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.6.0b16/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.7.0b1/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.7.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:a06d4e207df5c69d692a3d278d0e41c97e656c4c7864952f30df0e8378e6e8c3",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b67f1417b1028cf1f9f353270d5337e1e77ccb8c149826f56745f6a94cc08790",
+          "build": "gh-45258232983.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.7.0b1/bdh_app_cameras-2.7.0b1-py3-none-any.whl",
+          "sha256": "9c71cad7f1821e959f1c6e64554208153d7285a6f6aba39adf690c2375b37089",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc",
+            "aec"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Explicit guest rules: per-NVR/camera visibility, talk, PTZ, events window (#90)\n\nReplace the hardcoded \"guests see only the first NVR\" rules with a Guests\nsettings page and one policy module (cameras/policy.py) used by every\nendpoint serving camera data. Pop-ups get an Everyone / Only when signed in\naudience, sent as admins_only alerts (bdh-sdk 0.41). Version 2.7.0b1.",
+          "released_at": "2026-11-23T19:55:43Z",
+          "built_at": "2026-11-23T20:21:14Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71288694",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.6.0b16",
           "kind": "image",
