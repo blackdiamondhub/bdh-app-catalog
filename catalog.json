@@ -2955,9 +2955,37 @@
     "shuttle": {
       "name": "Shuttle",
       "description": "Sun Peaks in-resort shuttle times, live bus location and spoken reminders",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.1.0b1/shuttle/static/shuttle/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-shuttle/v2.1.0b2/shuttle/static/shuttle/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-shuttle",
       "versions": [
+        {
+          "version": "2.1.0b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-shuttle@sha256:dd8c339bf17bc58adfea4adce026a7b9a4defb86483bddeb8c6a4bcff962d109",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b67f1417b1028cf1f9f353270d5337e1e77ccb8c149826f56745f6a94cc08790",
+          "build": "gh-45262492248.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-shuttle/releases/download/v2.1.0b2/bdh_app_shuttle-2.1.0b2-py3-none-any.whl",
+          "sha256": "559ed7eb4055ce52679d150c9d4469eab3deea648731f0bf344ff85fd1eab5b8",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Keep Shuttle open without the screensaver (#8)",
+          "released_at": "2026-11-23T20:39:19Z",
+          "built_at": "2026-11-23T20:45:41Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71297487",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.1.0b1",
           "kind": "image",
