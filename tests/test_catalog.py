@@ -87,6 +87,16 @@ class CatalogTest(unittest.TestCase):
         self.assertEqual(catalog["apps"]["demo"]["versions"][0]["provides"], sorted(bc.CAPABILITIES.values()))
         self.assertEqual(validate.check_schema(catalog), [])
 
+    def test_every_fixed_permission_is_valid(self):
+        # Each SDK fixed-name grant (apps can't install without it) must pass the schema.
+        # Mirrors the fixed names in bdh_sdk/grants.py (CI doesn't install the SDK).
+        perms = ["alerts", "speakers", "media", "displays.read", "ha.ws"]
+        plugin = ("from bdh_sdk import PluginSpec\n"
+                  f"spec = PluginSpec(id=\"demo\", app=\"demo\", permissions={perms!r})\n")
+        catalog = self.add(make_wheel(self.tmp.name, plugin=plugin))
+        self.assertIn("displays.read", catalog["apps"]["demo"]["versions"][0]["permissions"])
+        self.assertEqual(validate.check_schema(catalog), [])
+
     @staticmethod
     def schema_enums(field):
         schema = json.loads((Path(__file__).resolve().parents[1] / "schema" / "catalog.schema.json").read_text())
