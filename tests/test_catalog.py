@@ -89,8 +89,8 @@ class CatalogTest(unittest.TestCase):
 
     def test_every_fixed_permission_is_valid(self):
         # Each SDK fixed-name grant (apps can't install without it) must pass the schema.
-        from bdh_sdk import grants
-        perms = [getattr(grants, name) for name in ("ALERTS", "SPEAKERS", "MEDIA", "DISPLAYS_READ")]
+        # Mirrors the fixed names in bdh_sdk/grants.py (CI doesn't install the SDK).
+        perms = ["alerts", "speakers", "media", "displays.read", "ha.ws"]
         plugin = ("from bdh_sdk import PluginSpec\n"
                   f"spec = PluginSpec(id=\"demo\", app=\"demo\", permissions={perms!r})\n")
         catalog = self.add(make_wheel(self.tmp.name, plugin=plugin))
