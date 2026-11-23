@@ -1852,6 +1852,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b20",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:e6a8ce433b600c2d9f14988f87fdafd4c551d6e6ecf2876d5ed2e65b48c39069",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b67f1417b1028cf1f9f353270d5337e1e77ccb8c149826f56745f6a94cc08790",
+          "build": "gh-45257963835.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b20/bdh_app_gemstone-0.1.0b20-py3-none-any.whl",
+          "sha256": "3c8edb1640b93ce736655c0285578aac7c317bc9159803b481092a676bd92958",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b20: instant design delete/undo; show Custom/Guest word on phones (#21)\n\nDelete took seconds: it waited for the cloud delete and a full reload of\nthe designs before the card went. Now the card goes and the Undo toast\nshows straight away, the delete goes out behind it, and the card comes\nback with an error if the delete fails. Undo is instant the same way.\nA reload while a delete is still going out keeps the card hidden.\n\nPhones now show 'Custom'/'Guest' next to the house/person icon instead of\njust the icon.",
+          "released_at": "2026-11-23T20:15:17Z",
+          "built_at": "2026-11-23T20:19:30Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71288082",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b19",
           "kind": "image",
           "channel": "beta",
