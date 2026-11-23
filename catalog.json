@@ -4020,6 +4020,42 @@
         }
       ]
     },
+    "unifi_screens": {
+      "name": "Unifi Screens",
+      "description": "A watchdog that recovers UniFi Connect kiosk screens (dry run)",
+      "repo": "blackdiamondlodge/bdh-app-unifi-screens",
+      "versions": [
+        {
+          "version": "0.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-unifi_screens@sha256:bf63edcc134fe1a7af99f889f1b16e28cf0de5edc02605dc832dcd9705f8df82",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45279701336.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-unifi-screens/releases/download/v0.1.0b1/bdh_app_unifi_screens-0.1.0b1-py3-none-any.whl",
+          "sha256": "a2ebdd97bc1cf452320f5fa4543d6b387b8966f06af3f5676f5ad248a1da0f5f",
+          "permissions": [
+            "alerts",
+            "displays.read",
+            "ha.call:notify.*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Wait for migrations before the worker's first tick\n\nThe container runtime starts the worker in AppConfig.ready() and only then\nruns migrate, so the first tick hit missing tables (image smoke test failed).",
+          "released_at": "2026-11-23T22:19:19Z",
+          "built_at": "2026-11-23T22:27:57Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71335389",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "vacation_mode": {
       "name": "Vacation Mode",
       "description": "Vacation / home mode switching via Home Assistant and the bdl_modes AppDaemon app",
