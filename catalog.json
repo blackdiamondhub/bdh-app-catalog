@@ -54,9 +54,41 @@
     "cameras": {
       "name": "Cameras",
       "description": "Live camera feeds via go2rtc and UniFi Protect",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.7.0b1/cameras/static/cameras/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-cameras/v2.7.0b2/cameras/static/cameras/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-cameras",
       "versions": [
+        {
+          "version": "2.7.0b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:e896a4bb42174b511b9a856eb3e002a01bf78352c0b028ad41449f3bb937e12a",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b1b281ba043a9325f1fe65663816c30c1ba9e2a4c02e6b6d37948ce9ae82ca44",
+          "build": "gh-45268486328.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.7.0b2/bdh_app_cameras-2.7.0b2-py3-none-any.whl",
+          "sha256": "e7c708eee165dde025989a71a410296e2673c013c70f826d30cbc8cb4617dd7e",
+          "permissions": [
+            "alerts",
+            "events.subscribe:+/state/#",
+            "ha.read:*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [
+            "go2rtc",
+            "aec"
+          ],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Relay go2rtc and talk through the app with guest checks (2.7.0b2) (#91)\n\n* Relay go2rtc and talk through the app with guest checks (2.7.0b2)\n\nBrowsers no longer talk to go2rtc or the echo canceller directly:\n- /cameras/api/ws?src=<stream> is a websocket on the app's own origin.\n  It checks policy.can_view for the requesting user and relays to\n  go2rtc's /api/ws on loopback.\n- /api/talk?src=<token>: talk_prepare (which already checks can_talk)\n  hands out a single-use, 30 s token. The kiosk connects with it to the\n  app's own port; the app redeems it and relays to aec (or go2rtc)\n  /api/talk.\n- /cameras/go2rtc/video-stream.js (and video-rtc.js) are served by the\n  app from go2rtc, so the page needs no go2rtc port.\n\nThis prepares the supervisor to bind go2rtc and aec to 127.0.0.1.\n\nRequires bdh-sdk 0.42 (websocket routes, wsrelay).\n\n\n* Share the live server's DB connection with the test websocket front\n\n\n---------",
+          "released_at": "2026-11-23T21:14:30Z",
+          "built_at": "2026-11-23T21:21:05Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71310448",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.7.0b1",
           "kind": "image",
