@@ -1852,6 +1852,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b15",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:018b43e29458b644692172d3b13c48b833d7e43c7fd1e3a675ee2193f163e194",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
+          "build": "gh-45092718229.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b15/bdh_app_gemstone-0.1.0b15-py3-none-any.whl",
+          "sha256": "ab2dee5cf2c861b80f9599e3866633b535c79d616c3c363927d774012f7fba25",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b15: grouped/capped patterns, recently played, strip colours, tidy titles, clean photo swap, still preview fix (#15)",
+          "released_at": "2026-11-23T01:05:25Z",
+          "built_at": "2026-11-23T01:08:56Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70892216",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b14",
           "kind": "image",
           "channel": "beta",
