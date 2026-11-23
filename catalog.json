@@ -2961,7 +2961,7 @@
         {
           "version": "2.1.0b2",
           "kind": "image",
-          "channel": "beta",
+          "channel": "stable",
           "hub_api": 2,
           "image": "ghcr.io/blackdiamondlodge/bdh-app-shuttle@sha256:dd8c339bf17bc58adfea4adce026a7b9a4defb86483bddeb8c6a4bcff962d109",
           "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b67f1417b1028cf1f9f353270d5337e1e77ccb8c149826f56745f6a94cc08790",
