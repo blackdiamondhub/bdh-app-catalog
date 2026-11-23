@@ -1852,6 +1852,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b18",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:60cfd3489d667702d84c457f88edbd15a6d736864c14a2a4e33f78f708241980",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
+          "build": "gh-45240464900.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b18/bdh_app_gemstone-0.1.0b18-py3-none-any.whl",
+          "sha256": "f32b0ce6799d44a94c4e37292ef696e0420bdf88feda440f839c0afac52dab29",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Gemstone 0.1.0b18: delete user designs with undo, card redesign (#19)\n\nCard ⋯ menu (and long press) with Edit / Edit a copy, favourite toggle and Delete for designs the user may delete; Create header delete button. Delete is immediate with an Undo toast (restore within 5 min). Managed folders and library copies are stock and can't be deleted; guests can delete only Guest designs. Cards tag Custom/Guest outside folder groups. Copies are named 'Name 2', 'Name 3'.",
+          "released_at": "2026-11-23T18:35:27Z",
+          "built_at": "2026-11-23T18:39:30Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71250339",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b17",
           "kind": "image",
           "channel": "beta",
