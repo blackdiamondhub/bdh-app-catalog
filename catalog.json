@@ -1852,6 +1852,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b16",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:1dbe2a3b6b6acf938206c1a66966b9e456c8ee636c5176ec1ed166dd43a775b2",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
+          "build": "gh-45116332372.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b16/bdh_app_gemstone-0.1.0b16-py3-none-any.whl",
+          "sha256": "f6394b34e7c65d9a73d6a7c967c5e3c5987d55acbe02edf823515d743aa8999b",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b16: fitting-room Create, LIVE badge, slim preview brightness + no blink, drop Admin label (#16)\n\n- Create no longer has a lights switch; 'Show on house' starts a try with an\n  undo token, 'Back' restores what was playing, 'Keep it' commits.\n- New designs are 'Untitled' / 'Untitled (n)'; name editable inline.\n- 'ON LIGHTS' badge -> 'LIVE'; slim strip dims with brightness (dimOf).\n- Slim preview no longer blinks on the 30 s refresh.\n- Tests for each of the above.",
+          "released_at": "2026-11-23T05:09:03Z",
+          "built_at": "2026-11-23T05:14:00Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70944040",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b15",
           "kind": "image",
           "channel": "beta",
