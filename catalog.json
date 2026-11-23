@@ -1852,6 +1852,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b19",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:722f1ac5e3d9d5560580b4fc1e4266109878641572f6edf8e3028f79bb30390a",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
+          "build": "gh-45248504076.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b19/bdh_app_gemstone-0.1.0b19-py3-none-any.whl",
+          "sha256": "f2c345245fc7472422c186f3dcf0bdcba0f7d9ad82837decb7d7f1b4e6f08bec",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b19: Discard changes in Create, '(copy)' names, Custom tag and heart on every card (#20)\n\n- Create: '↺ Discard changes' when editing a saved design restores the design (and folder)\n  it opened with, cancelling the pending auto-save.\n- Edit a copy names it 'Name (copy)', then '(copy 2)'...; copy titles keep the suffix.\n- Cards show the Custom/Guest tag and favourite heart in every row.",
+          "released_at": "2026-11-23T19:20:57Z",
+          "built_at": "2026-11-23T19:25:12Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71267157",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b18",
           "kind": "image",
           "channel": "beta",
