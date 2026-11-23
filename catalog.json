@@ -10,9 +10,9 @@
           "version": "2.0.0",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-announcements@sha256:9d2fa12d9af893642025c40e58013a17dc97990188a473491467834d34b4392d",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-announcements@sha256:f230067167d53214eb09a9055bedbbe8167b8b809ce23c083b03a9768a15d31b",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-announcements/releases/download/v2.0.0/bdh_app_announcements-2.0.0-py3-none-any.whl",
           "sha256": "004bb3c6eafd8b48947e444b466700bfc026d56185b65da0c1e1d2eb81649fbd",
           "permissions": [
@@ -26,9 +26,9 @@
           "custom_base": false,
           "changelog": "Run as a container app (2.0.0) (#4)",
           "released_at": "2026-11-16T02:32:14Z",
-          "built_at": "2026-11-23T07:30:06Z",
+          "built_at": "2026-11-23T23:50:20Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975718",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363746",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -62,9 +62,9 @@
           "kind": "image",
           "channel": "beta",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:e896a4bb42174b511b9a856eb3e002a01bf78352c0b028ad41449f3bb937e12a",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b1b281ba043a9325f1fe65663816c30c1ba9e2a4c02e6b6d37948ce9ae82ca44",
-          "build": "gh-45268486328.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:d224fed4eb70767d97b70ca45dde9fe19072971efcdd0ccbffabbb751831c5ee",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.7.0b2/bdh_app_cameras-2.7.0b2-py3-none-any.whl",
           "sha256": "e7c708eee165dde025989a71a410296e2673c013c70f826d30cbc8cb4617dd7e",
           "permissions": [
@@ -83,9 +83,9 @@
           "custom_base": false,
           "changelog": "Relay go2rtc and talk through the app with guest checks (2.7.0b2) (#91)\n\n* Relay go2rtc and talk through the app with guest checks (2.7.0b2)\n\nBrowsers no longer talk to go2rtc or the echo canceller directly:\n- /cameras/api/ws?src=<stream> is a websocket on the app's own origin.\n  It checks policy.can_view for the requesting user and relays to\n  go2rtc's /api/ws on loopback.\n- /api/talk?src=<token>: talk_prepare (which already checks can_talk)\n  hands out a single-use, 30 s token. The kiosk connects with it to the\n  app's own port; the app redeems it and relays to aec (or go2rtc)\n  /api/talk.\n- /cameras/go2rtc/video-stream.js (and video-rtc.js) are served by the\n  app from go2rtc, so the page needs no go2rtc port.\n\nThis prepares the supervisor to bind go2rtc and aec to 127.0.0.1.\n\nRequires bdh-sdk 0.42 (websocket routes, wsrelay).\n\n\n* Share the live server's DB connection with the test websocket front\n\n\n---------",
           "released_at": "2026-11-23T21:14:30Z",
-          "built_at": "2026-11-23T21:21:05Z",
+          "built_at": "2026-11-23T23:51:19Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71310448",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71364110",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -622,9 +622,9 @@
           "version": "2.5.15",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:d7885dbd56577abfc70ef7c6b0e8ec0423cdd39b96e4ea7d5e5259b67e2c984e",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:a408b2d816d761678a603231bd78eb3f6a91ccd5e120f339478e90d1d1811a79",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.5.15/bdh_app_cameras-2.5.15-py3-none-any.whl",
           "sha256": "0f50ffa3a563d768fb1d92f0ea467680d1eeb10775359bd6154fa8ae02b4a548",
           "permissions": [
@@ -642,9 +642,9 @@
           "custom_base": false,
           "changelog": "Events rail: update incrementally instead of rebuilding every 30 s (2.5.15) (#70)\n\nThe rail re-fetched the last 24 h of events every 30 s and rebuilt every\nrow (button + lazy thumbnail). At Mercer Island (~600 events/day) that was\na ~350 ms main-thread long task every 30 s on the UC-Display21 wall\ndisplays, independent of stream count; Sun Peaks (~9 events) showed none.\n\nNow an unchanged response is skipped, and rows are kept by event id and\nreconciled in place: new events are inserted at the top, expired ones\nremoved, and existing rows (and their decoded thumbnails) left alone.",
           "released_at": "2026-11-17T23:15:09Z",
-          "built_at": "2026-11-23T07:30:04Z",
+          "built_at": "2026-11-23T23:50:31Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975708",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363792",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -1399,9 +1399,9 @@
           "version": "2.0.2",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-device_control@sha256:57bb6394997a665b07345ff1fef9ecd1dd63b72863913b5269d20232b9515a3a",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-device_control@sha256:cf569bb37fa40947b668b770495161017e14afc100d2314ad8b13c2e38605721",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-device-control/releases/download/v2.0.2/bdh_app_device_control-2.0.2-py3-none-any.whl",
           "sha256": "5848408899f40a1227ce98ccc6ea87f2f731cdda6d9b7b3be0c2d2605651ac5c",
           "permissions": [
@@ -1439,9 +1439,9 @@
           "custom_base": false,
           "changelog": "Controls: pin the tab bar to the top of the iframe (2.0.2) (#11)\n\nThe sticky tab bar kept top: 62px from when the app was drawn under the\nhub navbar in-process. In the container the app is in an iframe below the\nnavbar, so the bar floated 62px down and the controls scrolled behind and\nabove it. Pin it at top: 0 and add a test that fails on navbar offsets.",
           "released_at": "2026-11-17T03:23:25Z",
-          "built_at": "2026-11-23T07:30:11Z",
+          "built_at": "2026-11-23T23:50:36Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975732",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363811",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -1575,9 +1575,9 @@
           "version": "1.0.0",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-feedback@sha256:2e74485a1006c4a46e38d4f12fa0fb034b082d71f3f4c81b163355ce06e665bf",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-feedback@sha256:0cafd745399b62201b0a838bd3094e79a23e04f1541592ebce6991520c834a46",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-feedback/releases/download/v1.0.0/bdh_app_feedback-1.0.0-py3-none-any.whl",
           "sha256": "cd38740b63f3d17a31244f6b91b789d6eb792d308d7de7bf5502ce5a384b5562",
           "permissions": [],
@@ -1589,9 +1589,9 @@
           "custom_base": false,
           "changelog": "Feedback 1.0.0 (#1)",
           "released_at": "2026-11-16T03:24:51Z",
-          "built_at": "2026-11-23T07:30:06Z",
+          "built_at": "2026-11-23T23:50:18Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975714",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363739",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         }
@@ -1607,9 +1607,9 @@
           "kind": "image",
           "channel": "beta",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:af0e5add7b70d64077d0c97d041b7b06f17b7b65eb60eac15636ccbf0f4dae5b",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:9e2ede29cc1558e182822dca2cf650936da44c6e1bbdaca102d20efbeec829b7",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.3b8/bdh_app_flights-0.1.3b8-py3-none-any.whl",
           "sha256": "8a522ba1633307d6deba00825c17221e4e7d7ccb1db2bc42b4d8ed4ff24a56c0",
           "permissions": [
@@ -1624,9 +1624,9 @@
           "custom_base": false,
           "changelog": "Flights: progress bar on its own row above airports on phones (0.1.3b8) (#10)",
           "released_at": "2026-11-21T05:54:10Z",
-          "built_at": "2026-11-23T07:30:02Z",
+          "built_at": "2026-11-23T23:50:16Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975695",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363729",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -1858,9 +1858,9 @@
           "version": "0.1.1",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:df4b962c35d353532650134fd12b14f8b10c7a4dadbadad9ab2da564dedc54ab",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-flights@sha256:0d0928f95e05b6560688dc2e1dc915a6fe44ac35259d9f41e22f5882bd241fe6",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-flights/releases/download/v0.1.1/bdh_app_flights-0.1.1-py3-none-any.whl",
           "sha256": "0cd20cf02583b77b120633da6ac684b44dd10a3acf7c2045a09f9e1a27c442a0",
           "permissions": [
@@ -1875,9 +1875,9 @@
           "custom_base": false,
           "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#1)",
           "released_at": "2026-11-17T03:35:26Z",
-          "built_at": "2026-11-23T07:29:59Z",
+          "built_at": "2026-11-23T23:50:23Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975677",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363754",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -1920,9 +1920,9 @@
           "kind": "image",
           "channel": "beta",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:e6a8ce433b600c2d9f14988f87fdafd4c551d6e6ecf2876d5ed2e65b48c39069",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:b67f1417b1028cf1f9f353270d5337e1e77ccb8c149826f56745f6a94cc08790",
-          "build": "gh-45257963835.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:71192ef1c6e3f217ddffe4615d027c5600c3cbc5a4757477c17e39e151c28682",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b20/bdh_app_gemstone-0.1.0b20-py3-none-any.whl",
           "sha256": "3c8edb1640b93ce736655c0285578aac7c317bc9159803b481092a676bd92958",
           "permissions": [],
@@ -1934,9 +1934,9 @@
           "custom_base": false,
           "changelog": "b20: instant design delete/undo; show Custom/Guest word on phones (#21)\n\nDelete took seconds: it waited for the cloud delete and a full reload of\nthe designs before the card went. Now the card goes and the Undo toast\nshows straight away, the delete goes out behind it, and the card comes\nback with an error if the delete fails. Undo is instant the same way.\nA reload while a delete is still going out keeps the card hidden.\n\nPhones now show 'Custom'/'Guest' next to the house/person icon instead of\njust the icon.",
           "released_at": "2026-11-23T20:15:17Z",
-          "built_at": "2026-11-23T20:19:30Z",
+          "built_at": "2026-11-23T23:50:27Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71288082",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363775",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -2403,9 +2403,9 @@
           "kind": "image",
           "channel": "stable",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:bc6ec2b52bfb942881b4e2763642ea2cccee5b0e7c32f10fc8a9486b1dae3de2",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-hub_calendar@sha256:431fe298d5f738e5a14617082f66fd33f465e042849b0eee6de6d623422931dc",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-calendar/releases/download/v2.2.0/bdh_app_calendar-2.2.0-py3-none-any.whl",
           "sha256": "81ebfdfcfd09b6433b64fc334e1860fa53a0a6d4b4784a4db4477b06ad0f8d78",
           "permissions": [],
@@ -2417,9 +2417,9 @@
           "custom_base": false,
           "changelog": "Calendar 2.2.0: Glass/Paper looks, day view, draggable week columns (#15)\n\n* Calendar 2.2.0: Glass and Paper looks, day view, draggable week columns\n\nAdds a Look setting (Glass / Paper / Classic, Glass by default), a day view, week columns that drag independently through 24h with a directional reset button and now-follow, and a month fit rule that lists community event names only when they all fit.\n\n\n* Keep peek pills off events; fold cramped overlaps into +N\n\n- Reserve slim peek strips at the top/bottom of each scroll viewport so\n  pills never cover the first/last visible events.\n- Week columns: when side-by-side lanes would be narrower than a name,\n  fold the extra overlaps into a +N chip that opens the day view.\n- Fit titles to block height; single-line blocks shrink the time first.\n- Hide the hour label under the now pill.\n\n\n* Phone week: 3 day columns, swipe by day, week date strip\n\nOn phones (<=600px wide, glass/paper) the week view shows 3 day columns\nstarting at the anchor day. A sideways swipe shifts by one day (axis locked\nover the first 10px so vertical per-column drag-scroll still works), the\narrows shift by 3, and a 7-day strip with event dots shows and jumps the\nvisible range. Overlap +N threshold drops to 30px on phones. The phone day\nand week titles drop the current year and use a short weekday so they fit.\n\nAdds selenium tests for the phone week layout, swipe vs vertical drag and\nstrip taps.\n\n\n* README: phone week layout\n\n\n---------",
           "released_at": "2026-11-18T00:00:57Z",
-          "built_at": "2026-11-23T07:30:04Z",
+          "built_at": "2026-11-23T23:50:26Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975704",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363767",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -2674,9 +2674,9 @@
           "version": "2.0.2",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-lift_status@sha256:2e5fa412f8a0218b08b7a819f15439874144d301b6c6aa83df018353ed82367b",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-lift_status@sha256:91fb17255b9562628662e1138179f434f2fe6f503ad126cfc8e6f1baf9a6d228",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-lift-status/releases/download/v2.0.2/bdh_app_lift_status-2.0.2-py3-none-any.whl",
           "sha256": "a66b99c50e3fedc2255ac308bb034b72ec65bed98005e87f25d7eb5bd375c8cb",
           "permissions": [],
@@ -2691,9 +2691,9 @@
           "custom_base": false,
           "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#9)",
           "released_at": "2026-11-17T03:36:05Z",
-          "built_at": "2026-11-23T07:30:54Z",
+          "built_at": "2026-11-23T23:50:18Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975924",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363735",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -2786,9 +2786,9 @@
           "version": "2.0.1",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-radiant@sha256:2013a3c45175c155f8330cebdc2e8e2671b6d9203f5d86486c27729ee141121c",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-radiant@sha256:97c3f6d1999d3c45f15166e8c220766e8da48928db1ac902455c4ac3c988642b",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-radiant/releases/download/v2.0.1/bdh_app_radiant-2.0.1-py3-none-any.whl",
           "sha256": "93773a396a7c32241c099905d94cf6b9bdea779b234523afcdcb7d811d7c7283",
           "permissions": [
@@ -2816,9 +2816,9 @@
           "custom_base": false,
           "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#7)",
           "released_at": "2026-11-17T03:34:51Z",
-          "built_at": "2026-11-23T07:30:01Z",
+          "built_at": "2026-11-23T23:50:30Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975683",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363784",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -2891,9 +2891,9 @@
           "version": "2.0.1",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-restaurants@sha256:976ee26d0640d4c0cc960fae5283f396d1bb6ff65080f9304c4c1d632c725c53",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-restaurants@sha256:81393e7b36ab37cd99a2651d1cac6060b8349abf1b508c15d1e51c2ec9b19952",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-restaurants/releases/download/v2.0.1/bdh_app_restaurants-2.0.1-py3-none-any.whl",
           "sha256": "241071b2c1254ecafae2c3b23504e0d81a87450755a21f822cfa278c5404f6f7",
           "permissions": [],
@@ -2905,9 +2905,9 @@
           "custom_base": false,
           "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#16)",
           "released_at": "2026-11-17T03:39:32Z",
-          "built_at": "2026-11-23T07:30:42Z",
+          "built_at": "2026-11-23T23:50:35Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975873",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363810",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3234,9 +3234,9 @@
           "version": "3.2.0",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-snow_report@sha256:5cc01c970714b5894162379fe0afcff437770bafecbd626896bf6062d9a3a3bd",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-snow_report@sha256:c157c97f7222c042a4ac713de6ced0520c2cca7c505754cea7a676dec60b024a",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-snow-report/releases/download/v3.2.0/bdh_app_snow_report-3.2.0-py3-none-any.whl",
           "sha256": "fa95b29bb53c9bfa4dd1f81f1f24e647783df5e93353bae224add22d1b57ada9",
           "permissions": [],
@@ -3250,9 +3250,9 @@
           "custom_base": false,
           "changelog": "Tile shows up top, mid and base temperatures (#14)\n\nStatus now carries SDK 0.34 readings so the hub tile shows the top\ntemperature big with mid and base below, replacing the hub's own\nbuilt-in Mountain conditions tile.",
           "released_at": "2026-11-16T23:04:53Z",
-          "built_at": "2026-11-23T07:30:16Z",
+          "built_at": "2026-11-23T23:50:20Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975748",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363745",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3368,9 +3368,9 @@
           "version": "2.6.0",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-sonos_control@sha256:460ccf87e5ca3b2f69c070ff2a323784f338c121bb1e69e2e538aff02bc80ae3",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sonos_control@sha256:2e28bdf5e0230dcff5ae18be11b381afbf6d20145e1dba613cd97d584af921eb",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sonos-control/releases/download/v2.6.0/bdh_app_sonos_control-2.6.0-py3-none-any.whl",
           "sha256": "e099b2395c4bdadc6a7c275c281d04a54d47aee59c42328ab0e8951753b0937d",
           "permissions": [],
@@ -3382,9 +3382,9 @@
           "custom_base": false,
           "changelog": "Now playing: big centred play button, blurred art backdrop (2.6.0) (#9)",
           "released_at": "2026-11-15T17:58:13Z",
-          "built_at": "2026-11-23T07:30:57Z",
+          "built_at": "2026-11-23T23:50:22Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975944",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363753",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3444,9 +3444,9 @@
           "kind": "image",
           "channel": "beta",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-speakers@sha256:3b948942c6aea6397b42e4211b0e24750bf732fdc55e08274f2809f660e7b738",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-speakers@sha256:a08ce0e665e0f8e83d30bbff8e0a1658ed2e7854263af8941726ba9a00db128a",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-speakers/releases/download/v3.2.0b1/bdh_app_speakers-3.2.0b1-py3-none-any.whl",
           "sha256": "7d9f204f5aa7c9809b9b9ccd5e3d0588b9d59950d13df9676ca9266cdd68d1c3",
           "permissions": [
@@ -3462,9 +3462,9 @@
           "custom_base": false,
           "changelog": "Quiet hours in the app: settings, admin lift, slider cap and volume enforcer (#15)\n\nReplaces the AppDaemon sonos_night dependency. Quiet hours (start/end,\nlimit, rooms) are app settings; an admin can lift the limit for the rest\nof the night from the Speakers page; sliders stop at the limit with a\ntoast; a background enforcer subscribes to the quiet rooms' volume events\n(plus a 30 s sweep) and turns outside changes back down.",
           "released_at": "2026-11-18T18:59:15Z",
-          "built_at": "2026-11-23T07:30:06Z",
+          "built_at": "2026-11-23T23:50:32Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975721",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363796",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3501,9 +3501,9 @@
           "version": "3.0.1",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-speakers@sha256:ba13594c2185dbdd6ffeccb0bd99102e492ef0aed7a577af7322e0837a202f86",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-speakers@sha256:2d5c7bbf622a2dc8d8ea50ab8c2f03b1d63636e69579ecf65c326e7801ce21ca",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-speakers/releases/download/v3.0.1/bdh_app_speakers-3.0.1-py3-none-any.whl",
           "sha256": "31d0801547e265c0ef25a234c647090680c99d3ae7d888b490f77ca0c0ce96be",
           "permissions": [
@@ -3519,9 +3519,9 @@
           "custom_base": false,
           "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#13)",
           "released_at": "2026-11-17T03:34:37Z",
-          "built_at": "2026-11-23T07:30:03Z",
+          "built_at": "2026-11-23T23:51:08Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975698",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71364039",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3564,9 +3564,9 @@
           "version": "2.0.1",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-stays@sha256:395b30d1f738ff0faf27ffae8df42b3e548a87083d090b8f5fe7597d2f8332bc",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-stays@sha256:04486da50ac28dd62c7ecd2bfaf0f3008c337726516b17e3e76fec590b7c3af5",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-stays/releases/download/v2.0.1/bdh_app_stays-2.0.1-py3-none-any.whl",
           "sha256": "fbd677f33337c7342fb6225d5a9161ded2cf30ee1f728730aaa4a4a4fbaa3b2e",
           "permissions": [
@@ -3584,9 +3584,9 @@
           "custom_base": false,
           "changelog": "Require bdh-sdk 0.30 (2.0.1) (#5)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
           "released_at": "2026-11-16T05:44:35Z",
-          "built_at": "2026-11-23T07:30:01Z",
+          "built_at": "2026-11-23T23:50:30Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975688",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363783",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3650,9 +3650,9 @@
           "kind": "image",
           "channel": "beta",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_events@sha256:a255381cc85811d1555717fe1f9227d50cf85977602b732efdfbcbd0f4393e83",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_events@sha256:d07c576ce054bd8a2944acb9f6687d596eb311d047a21b5bb5a1b32c079a6c1f",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-events/releases/download/v1.1.0b1/bdh_app_sunpeaks_events-1.1.0b1-py3-none-any.whl",
           "sha256": "2fbfa9aa36019c4e1dfe6d9339ebb12b2b81e680f2406f48461aaf132fb11a21",
           "permissions": [],
@@ -3666,9 +3666,9 @@
           "custom_base": false,
           "changelog": "Provide the Winter Opening Day date as a season hint (#3)",
           "released_at": "2026-11-20T16:21:32Z",
-          "built_at": "2026-11-23T07:30:07Z",
+          "built_at": "2026-11-23T23:51:11Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975727",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71364068",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3676,9 +3676,9 @@
           "version": "1.0.1",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_events@sha256:927a3276863fa7af267cb70dd2fa7d912a821bf07c7132e73644e167072b9f39",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_events@sha256:0fdc8a7a0e7ebc17df988a59d13e8fcc25c7bd85e8b93585b4b4739f9f826380",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-events/releases/download/v1.0.1/bdh_app_sunpeaks_events-1.0.1-py3-none-any.whl",
           "sha256": "22a76405a287b41e1f9c1efdc10c02c8e7def53cf7a17bf4fa67ec132baed616",
           "permissions": [],
@@ -3690,9 +3690,9 @@
           "custom_base": false,
           "changelog": "Drop the home-screen tile: background feed app (1.0.1) (#2)\n\nThe hub's waker now runs tile-less apps' status hooks every wake_every,\nso the feed still refreshes without a tile.",
           "released_at": "2026-11-17T02:33:35Z",
-          "built_at": "2026-11-23T07:30:51Z",
+          "built_at": "2026-11-23T23:50:27Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975911",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363772",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3733,9 +3733,9 @@
           "kind": "image",
           "channel": "beta",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:30a2291689655248248b403e54e4cb53ba4a7a3848025be2a06a3d8aa8795130",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:4e1eda14638637a045b56fbd0394369003952841044a8d3e1bc4b24e88da0890",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/releases/download/v2.1.0b1/bdh_app_sunpeaks_webcams-2.1.0b1-py3-none-any.whl",
           "sha256": "73a3efae6f20461f16ca1a85cc1f4d3e9548a33523e2434bc7642032c91ee242",
           "permissions": [],
@@ -3749,9 +3749,9 @@
           "custom_base": false,
           "changelog": "Provide 'Mountain cams' screen saver source (SDK 0.39 SAVER), 2.1.0b1 (#12)\n\nReplaces the deprecated BACKGROUNDS provider with a declared SaverSource\n(live kind, one SaverImage per camera, label = camera name).",
           "released_at": "2026-11-20T22:44:10Z",
-          "built_at": "2026-11-23T07:30:56Z",
+          "built_at": "2026-11-23T23:50:21Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975949",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363748",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3786,9 +3786,9 @@
           "version": "2.0.2",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:6cd834a243d1e38ac0822daf9e41d701e04aaefedb5c211f84220ca332198bf9",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-sunpeaks_webcams@sha256:61c187414490c20c69e442e3f1c910515b1d1f50ede1bccdd4a663ba66a33434",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-sunpeaks-webcams/releases/download/v2.0.2/bdh_app_sunpeaks_webcams-2.0.2-py3-none-any.whl",
           "sha256": "632e3950245414edbb34ca4ce72378d8e63173cc786252af8a7e35cbba2dabe2",
           "permissions": [],
@@ -3802,9 +3802,9 @@
           "custom_base": false,
           "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#8)",
           "released_at": "2026-11-17T03:34:01Z",
-          "built_at": "2026-11-23T07:30:06Z",
+          "built_at": "2026-11-23T23:50:25Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975716",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363760",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3897,9 +3897,9 @@
           "kind": "image",
           "channel": "beta",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:6707c23ef0f3423cb419e2320baf50dbfafbe962405787efed19afc815f65750",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:894ff0898036f9cb3d54aaf40d5c6a3d2232f42a6e81aa4de4bd0a56fd4b4cc9",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v2.0.6b2/bdh_app_timers-2.0.6b2-py3-none-any.whl",
           "sha256": "9eb3c8177b502d91b3f1eeb109ffb3ca7b4efd5153f7486d2f82b56e196663c5",
           "permissions": [
@@ -3914,9 +3914,9 @@
           "custom_base": false,
           "changelog": "Drop the temporary media permission (2.0.6b2) (#12)",
           "released_at": "2026-11-20T23:13:15Z",
-          "built_at": "2026-11-23T07:30:02Z",
+          "built_at": "2026-11-23T23:50:22Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975694",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363750",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -3953,9 +3953,9 @@
           "version": "2.0.5",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:04055c0b0ea4c11de243bd5ed50cc5ca566f314d4fc4028220b071de55af09a9",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-timers@sha256:140bc57630b6126ab3e6524a13d8c59bbe4edfaeaa24e82b180dbe7c4bffd99b",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-timers/releases/download/v2.0.5/bdh_app_timers-2.0.5-py3-none-any.whl",
           "sha256": "21b38809534f1f8e66ae1c57c0c66d9c6d4f3591263c66f2965cef17347a0b2c",
           "permissions": [
@@ -3970,9 +3970,9 @@
           "custom_base": false,
           "changelog": "Timers 2.0.5: drop hub-navbar offset inside the iframe, align header (#10)\n\n* Drop hub-navbar offsets inside iframe; add layout guard test\n\n\n* BrokerTests: patch only the worker's threading, not the SDK rpc thread\n\n\n---------",
           "released_at": "2026-11-17T03:41:44Z",
-          "built_at": "2026-11-23T07:30:11Z",
+          "built_at": "2026-11-23T23:51:09Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975731",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71364047",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -4122,9 +4122,9 @@
           "version": "2.0.1",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-vacation_mode@sha256:22fa60fc2a7f593e3925e71059806afc0c6d6c4530cba380b0ae343f5c8eb9ef",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-vacation_mode@sha256:28345c0822c85c5294d62ed4d585db36697f987c03b297a4edee90940448d761",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-vacation-mode/releases/download/v2.0.1/bdh_app_vacation_mode-2.0.1-py3-none-any.whl",
           "sha256": "2385b076b3c04e08fb221f7d5f7b6d39020073719b4c24e08f5eafe0372be6ce",
           "permissions": [
@@ -4150,9 +4150,9 @@
           "custom_base": false,
           "changelog": "Return 403 to anonymous visitors instead of a login redirect (2.0.1) (#8)\n\nIn the app container there is no hub login page, and Django's\nlogin_required redirect imports contrib.auth models the runtime doesn't\ninstall, so anonymous requests crashed with a 500.",
           "released_at": "2026-11-16T14:24:10Z",
-          "built_at": "2026-11-23T07:30:49Z",
+          "built_at": "2026-11-23T23:50:24Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975899",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363757",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -4225,9 +4225,9 @@
           "version": "2.0.2",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-weather@sha256:83acf0a97f29271be176ba38295487c1ae86498944faf28a6adc5de68f6dec06",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-weather@sha256:22cbbcf73d2f7ddd2f9d2490129847f046ea27bffd112c14745c1fffec7b1ad1",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-weather/releases/download/v2.0.2/bdh_app_weather-2.0.2-py3-none-any.whl",
           "sha256": "60cb0adcd8ca591248a56f8f557b08d9d33f6a89fcbea86776d0cc51abc64ff8",
           "permissions": [],
@@ -4241,9 +4241,9 @@
           "custom_base": false,
           "changelog": "Require bdh-sdk 0.30 (2.0.2) (#12)\n\nRebuilds the image on the current SDK (signed identity v2), so the hub can stop sending v1 identity signatures.",
           "released_at": "2026-11-16T05:44:28Z",
-          "built_at": "2026-11-23T07:30:06Z",
+          "built_at": "2026-11-23T23:51:09Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975720",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71364054",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
@@ -4332,9 +4332,9 @@
           "version": "2.2.2",
           "kind": "image",
           "hub_api": 2,
-          "image": "ghcr.io/blackdiamondlodge/bdh-app-wifi@sha256:c097857aeb22936aaa08e66f7014e79895542be8c61ec8861666c7aab358dde6",
-          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
-          "build": "gh-45131365418.1",
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-wifi@sha256:db57a026af25810435050e0c903e21eca613d15335986f33f7a12f7a64adbfbd",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45292048866.1",
           "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-wifi/releases/download/v2.2.2/bdh_app_wifi-2.2.2-py3-none-any.whl",
           "sha256": "5c25c51768487f971d96d15e8b44a184a93b59b6067a6a65f40cd5d60ef46600",
           "permissions": [],
@@ -4346,9 +4346,9 @@
           "custom_base": false,
           "changelog": "Drop hub-navbar offsets inside iframe; add layout guard test (#12)",
           "released_at": "2026-11-17T03:34:09Z",
-          "built_at": "2026-11-23T07:30:05Z",
+          "built_at": "2026-11-23T23:51:04Z",
           "attestation": {
-            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/70975713",
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71364014",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
           }
         },
