@@ -1852,6 +1852,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b17",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:6dc7c73b803665217403ac1b4ab5f62b971b6ce1fa0b18df1453bd888c6d9197",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:adf0e79f7e0923fd96ec9070b9a29993a5b209c16d57534a7b9c311b7cab353c",
+          "build": "gh-45233360063.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b17/bdh_app_gemstone-0.1.0b17-py3-none-any.whl",
+          "sha256": "c418ba71bc437a7ebcb88e1a8dcad88c364c18793645b2d45345747b0ff52790",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "0.1.0b17: Autopilot off backstop, brightness never turns lights on, activity log (#18)\n\nThe hot tub stayed on past Autopilot's off time after it got a brightness\ncommand in the evening. Three minutes after the off time the worker now turns\noff any Autopilot controller still on (once a night, respecting keep-on-until).\nThe brightness slider skips controllers that are off. Every command is logged\nwith who sent it (admin/guest/app), last 300, admin-only at api/activity/.",
+          "released_at": "2026-11-23T17:56:08Z",
+          "built_at": "2026-11-23T17:59:54Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71233305",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b16",
           "kind": "image",
           "channel": "beta",
