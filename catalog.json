@@ -1999,6 +1999,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b24",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:efeee5cc0be7835ec339ed81257f2a425838280969ae3288d2fbe213c9872fc8",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45451705860.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b24/bdh_app_gemstone-0.1.0b24-py3-none-any.whl",
+          "sha256": "f34fffce4b8558f2d4a33091bcdf4afe8aa6e62b4334dad23828776cfcc71208",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Tonight shows the schedule that owns tonight; Name first in the schedule editor (#25)",
+          "released_at": "2026-11-24T17:40:41Z",
+          "built_at": "2026-11-24T17:45:01Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71742001",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b23",
           "kind": "image",
           "channel": "beta",
