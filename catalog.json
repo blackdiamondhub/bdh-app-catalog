@@ -3597,8 +3597,8 @@
     "sonos_control": {
       "name": "Music",
       "description": "Sonos room grouping, volume and playback control",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-sonos-control/v2.6.0/sonos_control/static/sonos_control/hub/icon.svg",
-      "repo": "blackdiamondhub/bdh-app-sonos-control",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-speakers/v2.6.0/sonos_control/static/sonos_control/hub/icon.svg",
+      "repo": "blackdiamondhub/bdh-app-speakers",
       "versions": [
         {
           "version": "2.6.0",
@@ -3607,7 +3607,7 @@
           "image": "ghcr.io/blackdiamondhub/bdh-app-sonos_control@sha256:2e28bdf5e0230dcff5ae18be11b381afbf6d20145e1dba613cd97d584af921eb",
           "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
           "build": "gh-45292048866.1",
-          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-sonos-control/releases/download/v2.6.0/bdh_app_sonos_control-2.6.0-py3-none-any.whl",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-speakers/releases/download/v2.6.0/bdh_app_sonos_control-2.6.0-py3-none-any.whl",
           "sha256": "e099b2395c4bdadc6a7c275c281d04a54d47aee59c42328ab0e8951753b0937d",
           "permissions": [],
           "network": "outbound",
@@ -3631,7 +3631,7 @@
           "image": "ghcr.io/blackdiamondhub/bdh-app-sonos_control@sha256:426e305ec5b9fb826f51c38e23ec67093b56a8e8161ea05fa48581e3e5a4f051",
           "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:e4714080582991c498395e69bdd47e9c66a2e3a75e6e3b35230f43c74801b144",
           "build": "gh-43738724361.1",
-          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-sonos-control/releases/download/v2.5.1/bdh_app_sonos_control-2.5.1-py3-none-any.whl",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-speakers/releases/download/v2.5.1/bdh_app_sonos_control-2.5.1-py3-none-any.whl",
           "sha256": "c0a7d590443611179c25a3bde289b02797dea8ed6e45e5df300dc64f274b08f0",
           "permissions": [],
           "network": "outbound",
@@ -3650,7 +3650,7 @@
         },
         {
           "version": "2.5.0",
-          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-sonos-control/releases/download/v2.5.0/bdh_app_sonos_control-2.5.0-py3-none-any.whl",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-speakers/releases/download/v2.5.0/bdh_app_sonos_control-2.5.0-py3-none-any.whl",
           "sha256": "02be4a3c92aac24e6fb0bbc30768cd3b043e39ddc3bac920605ce2b3ede16c95",
           "hub_api": 1,
           "requires_sdk": "<1,>=0.13",
