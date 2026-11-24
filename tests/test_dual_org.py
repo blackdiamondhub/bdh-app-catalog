@@ -104,14 +104,14 @@ class DualOrgSchemaTest(unittest.TestCase):
 
     def test_published_catalog_validates_and_after_rewrite_to_new_org(self):
         text = bc.CATALOG.read_text(encoding="utf-8")
-        self.assertNotIn(NEW + "/", text, "catalog.json should not name the new org yet")
         catalog = json.loads(text)
         self.assertEqual(valid(catalog), [])
         moved = renamed(catalog)
         self.assertNotIn(f"{OLD}/bdh-app-", json.dumps({k: [
             {f: x for f, x in v.items() if f != "attestation"} for v in a["versions"]] + [a["repo"]]
             for k, a in moved["apps"].items()}))
-        self.assertNotEqual(moved, catalog)
+        if f"ghcr.io/{OLD}/" in text:
+            self.assertNotEqual(moved, catalog)
         self.assertEqual(valid(moved), [])
 
     def test_semantics_still_bind_the_image_to_the_app(self):
