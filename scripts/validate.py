@@ -63,11 +63,15 @@ def check_semantics(catalog):
     repos = {}
     for app_id, app in catalog.get("apps", {}).items():
         repo = app.get("repo", "")
-        if repo in repos:
-            errors.append(f"{app_id}: repo {repo} already holds app {repos[repo]!r}")
-        repos[repo] = app_id
+        # Versions published before the org rename keep the old org in their
+        # URLs, so every URL may name the repo under any org in ORGS.
+        alts = tuple(bc.repo_with_org(repo, o) for o in bc.ORGS) if "/" in repo else (repo,)
+        name = repo.split("/", 1)[-1]
+        if name in repos:
+            errors.append(f"{app_id}: repo {repo} already holds app {repos[name]!r}")
+        repos[name] = app_id
         icon = app.get("icon")
-        if icon and not icon.startswith(f"https://raw.githubusercontent.com/{repo}/"):
+        if icon and not icon.startswith(tuple(f"https://raw.githubusercontent.com/{r}/" for r in alts)):
             errors.append(f"{app_id}: icon is not from {repo}")
 
         seen = set()
@@ -89,7 +93,8 @@ def check_semantics(catalog):
             elif bc.channel(v) == bc.BETA:
                 errors.append(f"{where}: only pre-release versions (aN/bN/rcN) can be beta")
             url = v.get("wheel_url", "")
-            prefix = f"{bc.release_url_prefix(repo)}v{version}/"
+            prefixes = [f"{bc.release_url_prefix(r)}v{version}/" for r in alts]
+            prefix = next((p for p in prefixes if url.startswith(p)), prefixes[-1])
             if not url.startswith(prefix):
                 errors.append(f"{where}: wheel_url must start with {prefix}")
             else:
@@ -120,7 +125,7 @@ def check_immutable(catalog, base):
         if app is None:
             errors.append(f"{app_id}: app removed (yank its versions instead)")
             continue
-        if app.get("repo") != old_app.get("repo"):
+        if not bc.same_repo(app.get("repo"), old_app.get("repo")):
             errors.append(f"{app_id}: repo changed from {old_app.get('repo')}")
         new_versions = {v["version"]: v for v in app.get("versions", [])}
         for old in old_app.get("versions", []):
@@ -140,10 +145,12 @@ def check_immutable(catalog, base):
             for field in set(old) | set(new):
                 if field in mutable or field == "channel":
                     continue
-                if old.get(field) != new.get(field):
+                # Moving a URL to the renamed org is not a change.
+                if not bc.org_moved(old.get(field), new.get(field), field):
                     errors.append(f"{where}: {field} changed; published versions are immutable")
             if bc.is_image(old):
-                rebuilt = {f for f in bc.REBUILD_FIELDS if old.get(f) != new.get(f)}
+                rebuilt = {f for f in bc.REBUILD_FIELDS
+                           if not bc.org_moved(old.get(f), new.get(f), f)}
                 if rebuilt and "image" not in rebuilt:
                     errors.append(f"{where}: {', '.join(sorted(rebuilt))} changed without a new image")
             elif "attestation" in old and old["attestation"] != new.get("attestation"):
@@ -187,13 +194,20 @@ def is_base_bump(catalog, base):
     return len(bases) == 1
 
 
+def is_org_rewrite(catalog, base):
+    """Every change only moves the old org's names and URLs to the new org
+    (the one-off catalog rewrite after the org rename)."""
+    apps, old = catalog.get("apps", {}), base.get("apps", {})
+    return set(apps) == set(old) and bc.org_moved(old, apps)
+
+
 def check_pr(catalog, base):
     """Rules for a pull request against ``base`` (see the module docs)."""
     errors = []
     base = base or {"apps": {}}
     changed = sorted(app_id for app_id in set(catalog.get("apps", {})) | set(base.get("apps", {}))
                      if catalog["apps"].get(app_id) != base["apps"].get(app_id))
-    if len(changed) > 1 and not is_base_bump(catalog, base):
+    if len(changed) > 1 and not is_base_bump(catalog, base) and not is_org_rewrite(catalog, base):
         errors.append(f"this PR changes {len(changed)} apps ({', '.join(changed)}); "
                       "change one app per PR (only the builder's base bump may change several)")
     return errors

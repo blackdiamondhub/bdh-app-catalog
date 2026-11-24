@@ -7,7 +7,7 @@ name: Promote a beta version
 # pre-release; the builder adds it as beta, so only beta hubs such as MI see
 # it), then run this:
 #
-#   gh workflow run promote.yml -R blackdiamondlodge/bdh-app-catalog -f app=weather -f version=2.3.0b1
+#   gh workflow run promote.yml -R blackdiamondhub/bdh-app-catalog -f app=weather -f version=2.3.0b1
 
 on:
   workflow_dispatch:

@@ -1,7 +1,7 @@
 # bdh-app-catalog
 
 The app catalog for Black Diamond Hub: every released version of every hub app
-(`blackdiamondlodge/bdh-app-*`), with what a hub needs to show the app in its
+(`blackdiamondhub/bdh-app-*`), with what a hub needs to show the app in its
 store and install it: for hub API 2 apps a digest-pinned container image built
 by this repo's [builder](#how-versions-get-added), for hub API 1 apps a wheel.
 
@@ -9,12 +9,14 @@ by this repo's [builder](#how-versions-get-added), for hub API 1 apps a wheel.
 [`schema/catalog.schema.json`](schema/catalog.schema.json) (JSON Schema 2020-12)
 plus the semantic rules enforced by [`scripts/validate.py`](scripts/validate.py).
 
-The GitHub org is being renamed from `blackdiamondlodge` to `blackdiamondhub`.
+The GitHub org was renamed from `blackdiamondlodge` to `blackdiamondhub`.
 Validation accepts either org wherever an org appears (repo, icon, wheel URL,
-image, base, attestation URL and signer workflow). Published entries keep the
-org they were signed under, and `gh attestation verify` runs against that org.
-The scripts generate new entries under `blackdiamondlodge` unless `BDH_ORG`
-is set (for example `BDH_ORG=blackdiamondhub`).
+image, base, attestation URL and signer workflow), and a repo is the same app
+under either org. Published entries keep the attestation and signer they were
+signed under, and `gh attestation verify` runs against that org. A PR whose
+only change moves old-org names and URLs to the new org (the one-off catalog
+rewrite) may touch every app. The scripts generate new entries under
+`blackdiamondhub` unless `BDH_ORG` is set (for example `BDH_ORG=blackdiamondlodge`).
 
 ## Format
 
@@ -25,12 +27,12 @@ is set (for example `BDH_ORG=blackdiamondhub`).
     "weather": {                     // PluginSpec.id; keys sorted
       "name": "Weather",             // first tile title of the newest version
       "description": "Weather for any location …",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-weather/v1.6.1/weather/static/weather/hub/icon.svg",  // optional
-      "repo": "blackdiamondlodge/bdh-app-weather",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-weather/v1.6.1/weather/static/weather/hub/icon.svg",  // optional
+      "repo": "blackdiamondhub/bdh-app-weather",
       "versions": [                  // newest first, versions unique
         {
           "version": "1.6.1",
-          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-weather/releases/download/v1.6.1/bdh_app_weather-1.6.1-py3-none-any.whl",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-weather/releases/download/v1.6.1/bdh_app_weather-1.6.1-py3-none-any.whl",
           "sha256": "074a34ba…",     // 64 lowercase hex chars of the wheel
           "hub_api": 1,              // PluginSpec.api_version the app targets
           "requires_sdk": "<1,>=0.16",
@@ -45,8 +47,8 @@ is set (for example `BDH_ORG=blackdiamondhub`).
           "changelog": "Point to Settings > General for the hub location (1.6.1) (#7)",
           "released_at": "2026-11-14T04:10:46Z",
           "attestation": {           // optional, see Trust model
-            "url": "https://github.com/blackdiamondlodge/bdh-app-weather/attestations/123",
-            "signer_workflow": "blackdiamondlodge/bdh-sdk/.github/workflows/app-release.yml"
+            "url": "https://github.com/blackdiamondhub/bdh-app-weather/attestations/123",
+            "signer_workflow": "blackdiamondhub/bdh-sdk/.github/workflows/app-release.yml"
           },
           "yanked": "reason"         // optional; hubs must not offer it
         }
@@ -65,18 +67,18 @@ a hub API 2 wheel entry may only remain yanked):
   "kind": "image",
   "channel": "stable",               // or "beta" (see Beta releases); absent = stable
   "hub_api": 2,
-  "image": "ghcr.io/blackdiamondlodge/bdh-app-cameras@sha256:…",   // always ghcr.io/blackdiamondlodge/bdh-app-<id>, by digest
-  "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:…",    // the runtime it was built FROM
+  "image": "ghcr.io/blackdiamondhub/bdh-app-cameras@sha256:…",   // always ghcr.io/blackdiamondhub/bdh-app-<id>, by digest
+  "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:…",    // the runtime it was built FROM
   "build": "gh-123456789.1",         // builder run; changes on every rebuild
-  "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-cameras/releases/download/v2.1.0/bdh_app_cameras-2.1.0-py3-none-any.whl",
+  "wheel_url": "https://github.com/blackdiamondhub/bdh-app-cameras/releases/download/v2.1.0/bdh_app_cameras-2.1.0-py3-none-any.whl",
   "sha256": "…",                     // of that source wheel
   "permissions": [], "network": "lan", "lifecycle": "always", "memory_mb": 96,
   "companions": ["go2rtc"], "provides": [],
   "custom_base": false,              // true: the app adds its own Dockerfile steps
   "changelog": "…", "released_at": "…", "built_at": "…",
   "attestation": {                   // provenance of the image, signed by the builder
-    "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/…",
-    "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+    "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/…",
+    "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
   }
 }
 ```
@@ -114,7 +116,7 @@ Field notes:
 ### Hub API 2+: images, built here
 
 App repos release through the reusable
-[`bdh-sdk` `app-release.yml`](https://github.com/blackdiamondlodge/bdh-sdk/blob/main/.github/workflows/app-release.yml).
+[`bdh-sdk` `app-release.yml`](https://github.com/blackdiamondhub/bdh-sdk/blob/main/.github/workflows/app-release.yml).
 It publishes and attests only build inputs: the wheel, `bdh-lock.txt`
 (hash-locked dependencies), `bdh-app.json` (build config + manifest, including
 an optional declarative `apt` list) and, for `custom_base` apps only,
@@ -136,7 +138,7 @@ builder. Every 6 hours, or on demand
    template (`builder/build_app.sh`, FROM the base by digest), smoke-tests it
    (`builder/smoke.sh`: starts it hardened like the supervisor does, checks
    `/_bdh/health` and that its views import, measures RSS/PSS), pushes
-   `ghcr.io/blackdiamondlodge/bdh-app-<id>:<version>` and attests it with
+   `ghcr.io/blackdiamondhub/bdh-app-<id>:<version>` and attests it with
    `actions/attest-build-provenance` (pushed to the registry);
 3. opens catalog PRs: one per new app version (`builder/<id>-<version>`) and
    one for all rebuilds (`builder/base-<digest>`). PRs that need no human
@@ -165,7 +167,7 @@ an app change:
 2. Promote it once it has proven itself:
 
    ```sh
-   gh workflow run promote.yml -R blackdiamondlodge/bdh-app-catalog -f app=weather -f version=2.3.0b1
+   gh workflow run promote.yml -R blackdiamondhub/bdh-app-catalog -f app=weather -f version=2.3.0b1
    ```
 
    [`promote.yml`](.github/workflows/promote.yml) runs
@@ -204,7 +206,7 @@ run re-downloads every wheel. `--network`:
 - if there is an `attestation`, runs
   `gh attestation verify <wheel> --repo <repo> --signer-workflow <signer_workflow>`,
 - for image entries: `gh attestation verify oci://<image> --repo
-  blackdiamondlodge/bdh-app-catalog --signer-workflow <build.yml>`, checks the
+  blackdiamondhub/bdh-app-catalog --signer-workflow <build.yml>`, checks the
   image's `org.blackdiamondlodge.bdh.app`/`.version` labels, and that the
   image's rootfs `diff_ids` start with its `base`'s (a compatibility check:
   the app was built on that runtime).
@@ -213,10 +215,11 @@ On pull requests (`--pr`):
 
 - **one app per PR.** Only the builder's base bump may touch several apps,
   and only if every change is a rebuild of an existing version onto one
-  common new `base`.
+  common new `base`; the org-rename rewrite (only org changes) is the other
+  exception.
 - no label is needed for new or widened permissions, network or companions:
   the hub admin approves those when installing or updating the app.
-- the image repo must be `ghcr.io/blackdiamondlodge/bdh-app-<same id>`
+- the image repo must be `ghcr.io/blackdiamondhub/bdh-app-<same id>` (or the old org's)
   (enforced on every run).
 
 ## Trust model
@@ -235,7 +238,7 @@ On pull requests (`--pr`):
   `--signer-workflow`, so a wheel built anywhere else fails even with a matching
   hash. Versions released before attestation was added have no `attestation`.
 - **Images are built only by this repo.** The image attestation's signer is
-  pinned to `blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml`;
+  pinned to `blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml`;
   the hub supervisor verifies it (with `cosign verify-attestation` against
   that workflow identity on `refs/heads/main`) before it runs an image, and
   pulls only by the catalog digest. App repos have no push rights to GHCR.
@@ -246,7 +249,7 @@ On pull requests (`--pr`):
 
 ## Consuming the catalog (hubs)
 
-- Fetch `https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-catalog/main/catalog.json`
+- Fetch `https://raw.githubusercontent.com/blackdiamondhub/bdh-app-catalog/main/catalog.json`
   with `If-None-Match` and cache it on disk. Refresh about hourly and when the
   store is opened. If the fetch fails, keep using the last good copy. A GitHub
   outage must never break installed apps.

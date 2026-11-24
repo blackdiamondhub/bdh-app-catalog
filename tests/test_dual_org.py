@@ -11,8 +11,9 @@ from unittest import mock
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 import bdhcatalog as bc  # noqa: E402
+import builder  # noqa: E402
 import validate  # noqa: E402
-from test_images import catalog_with, image_entry, valid  # noqa: E402
+from test_images import BASE1, BASE2, catalog_with, image_entry, valid  # noqa: E402
 
 OLD, NEW = "blackdiamondlodge", "blackdiamondhub"
 
@@ -29,6 +30,11 @@ def renamed(value, old=OLD, new=NEW):
     if isinstance(value, str):
         return value.replace(f"/{old}/", f"/{new}/").replace(f"{old}/bdh-app-", f"{new}/bdh-app-")
     return value
+
+
+def old_org(value):
+    """``value`` entirely under the old org, attestations included (as published before the rename)."""
+    return json.loads(json.dumps(value).replace(f"{NEW}/", f"{OLD}/"))
 
 
 def new_org_entry(app_id="demo", **extra):
@@ -70,7 +76,7 @@ class DualOrgSchemaTest(unittest.TestCase):
                                 "signer_workflow": f"{NEW}/bdh-sdk/.github/workflows/app-release.yml"}}
 
     def test_new_org_app_keeps_old_org_attestations(self):
-        catalog = renamed(catalog_with(demo=[image_entry()]))
+        catalog = renamed(old_org(catalog_with(demo=[image_entry()])))
         self.assertEqual(catalog["apps"]["demo"]["versions"][0]["attestation"]["signer_workflow"],
                          f"{OLD}/bdh-app-catalog/.github/workflows/build.yml")
         self.assertEqual(valid(catalog), [])
@@ -134,17 +140,74 @@ class DualOrgVerifyTest(unittest.TestCase):
                                   f"{NEW}/bdh-app-catalog/.github/workflows/build.yml")])
 
 
+class MixedOrgTest(unittest.TestCase):
+    """Between the org rename and the catalog rewrite, the catalog names the
+    old org while the builder and new releases use the new one."""
+
+    def setUp(self):
+        self.old = old_org(catalog_with(demo=[image_entry()], other=[image_entry("other")]))
+        self.releases = {f"{NEW}/bdh-app-demo": "v2.0.0", f"{NEW}/bdh-app-other": "v2.0.0"}
+
+    def test_plan_matches_apps_across_orgs(self):
+        self.assertEqual(builder.plan(self.old, BASE1, self.releases), [])
+        plan = builder.plan(self.old, BASE2, self.releases)
+        self.assertEqual(sorted((i["app"], i["repo"], i["reason"]) for i in plan),
+                         [("demo", f"{NEW}/bdh-app-demo", "rebuild"),
+                          ("other", f"{NEW}/bdh-app-other", "rebuild")])
+        new = builder.plan(self.old, BASE1, {**self.releases, f"{NEW}/bdh-app-demo": "v2.1.0"})
+        self.assertEqual([(i["app"], i["reason"]) for i in new], [("demo", "new")])
+
+    def test_new_org_version_lands_on_old_org_app(self):
+        catalog = copy.deepcopy(self.old)
+        app = {"name": "Demo", "description": "", "repo": f"{NEW}/bdh-app-demo"}
+        entry = image_entry(version="2.1.0", digest="c")
+        self.assertEqual(builder.apply(catalog, [{"app_id": "demo", "app": app, "entry": entry}]),
+                         ([], ["demo"]))
+        self.assertEqual(catalog["apps"]["demo"]["repo"], f"{OLD}/bdh-app-demo")
+        self.assertEqual(valid(catalog) + validate.check_immutable(catalog, self.old)
+                         + validate.check_pr(catalog, self.old), [])
+
+    def test_org_rewrite_pr_may_touch_every_app(self):
+        moved = renamed(self.old)
+        self.assertEqual(valid(moved) + validate.check_immutable(moved, self.old)
+                         + validate.check_pr(moved, self.old), [])
+        sneaky = copy.deepcopy(moved)
+        sneaky["apps"]["demo"]["versions"][0]["sha256"] = "e" * 64
+        self.assertTrue(any("sha256 changed" in e for e in validate.check_immutable(sneaky, self.old)))
+        self.assertTrue(any("changes 2 apps" in e for e in validate.check_pr(sneaky, self.old)))
+        evil = json.loads(json.dumps(self.old).replace(f"{OLD}/bdh-app-demo", "evil/bdh-app-demo"))
+        self.assertTrue(validate.check_immutable(evil, self.old) or validate.check_schema(evil))
+
+    def test_org_rewrite_is_one_way_and_keeps_attestations(self):
+        moved = renamed(self.old)
+        # Moving back to the old (claimable) org name is a change.
+        self.assertTrue(validate.check_immutable(self.old, moved))
+        self.assertTrue(any("changes 2 apps" in e for e in validate.check_pr(self.old, moved)))
+        # Attestations name the org that signed them; an org-only edit is a change.
+        att = json.loads(json.dumps(self.old).replace(f"{OLD}/bdh-app-catalog", f"{NEW}/bdh-app-catalog"))
+        self.assertNotEqual(att, self.old)
+        self.assertTrue(any("attestation" in e for e in validate.check_immutable(att, self.old)))
+        # Only a whole old-org path segment moves.
+        self.assertFalse(bc.org_moved(f"x{OLD}/a", f"x{NEW}/a"))
+        self.assertTrue(bc.org_moved(f"ghcr.io/{OLD}/a", f"ghcr.io/{NEW}/a"))
+
+    def test_one_repo_is_one_app_under_either_org(self):
+        catalog = copy.deepcopy(self.old)
+        catalog["apps"]["other"]["repo"] = f"{NEW}/bdh-app-demo"
+        self.assertTrue(any("already holds" in e for e in validate.check_semantics(catalog)))
+
+
 class OrgOverrideTest(unittest.TestCase):
     def _org(self, env):
         code = "import bdhcatalog as bc; print(bc.ORG, bc.IMAGE_PREFIX, bc.BUILDER_WORKFLOW)"
         return subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, check=False,
                               cwd=Path(bc.__file__).parent, env={**os.environ, **env})
 
-    def test_default_is_unchanged_and_bdh_org_overrides(self):
-        self.assertEqual(self._org({"BDH_ORG": ""}).stdout.split()[0], OLD)
-        out = self._org({"BDH_ORG": NEW})
+    def test_default_is_the_new_org_and_bdh_org_overrides(self):
+        out = self._org({"BDH_ORG": ""})
         self.assertEqual(out.stdout.split(), [NEW, f"ghcr.io/{NEW}/",
                                               f"{NEW}/bdh-app-catalog/.github/workflows/build.yml"])
+        self.assertEqual(self._org({"BDH_ORG": OLD}).stdout.split()[0], OLD)
         self.assertNotEqual(self._org({"BDH_ORG": "evil"}).returncode, 0)
 
 

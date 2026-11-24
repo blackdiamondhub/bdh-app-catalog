@@ -56,7 +56,7 @@ def sync_release(repo, rel, catalog_path, dispatch):
     if any(a["name"] == "bdh-app.json" for a in rel["assets"]):
         catalog = bc.load_catalog(catalog_path) if Path(catalog_path).exists() else {"apps": {}}
         version = rel["tagName"].removeprefix("v")
-        if any(app["repo"] == repo and any(v["version"] == version for v in app["versions"])
+        if any(bc.same_repo(app["repo"], repo) and any(v["version"] == version for v in app["versions"])
                for app in catalog["apps"].values()):
             print(f"{repo} {rel['tagName']}: already in the catalog")
         elif dispatch:
@@ -72,7 +72,7 @@ def sync_release(repo, rel, catalog_path, dispatch):
     catalog = bc.load_catalog(catalog_path) if Path(catalog_path).exists() else {"apps": {}}
     digest = wheels[0].get("digest", "").removeprefix("sha256:")
     for app in catalog["apps"].values():
-        if app["repo"] == repo and any(v["sha256"] == digest for v in app["versions"]):
+        if bc.same_repo(app["repo"], repo) and any(v["sha256"] == digest for v in app["versions"]):
             print(f"{repo} {rel['tagName']}: already in the catalog")
             return
 

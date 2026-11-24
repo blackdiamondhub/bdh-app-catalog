@@ -3,7 +3,7 @@ name: Build app images
 # The platform image builder. App repos publish only a wheel, bdh-lock.txt
 # and bdh-app.json (bdh-sdk's app-release workflow, which attests them);
 # this workflow builds every app image FROM the bdh-app-runtime base with the
-# SDK's template, smoke-tests it, pushes ghcr.io/blackdiamondlodge/bdh-app-<id>,
+# SDK's template, smoke-tests it, pushes ghcr.io/blackdiamondhub/bdh-app-<id>,
 # attests it, and opens the catalog PR. App repos never push images.
 #
 # Runs on a schedule (new app releases, and a rebuild of every app when the
@@ -78,7 +78,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: blackdiamondlodge/bdh-sdk
+          repository: blackdiamondhub/bdh-sdk
           ref: ${{ env.SDK_REF }}
           path: .sdk
       - uses: actions/setup-python@v5
@@ -88,8 +88,13 @@ jobs:
         run: |
           mkdir -p art
           gh release download "$TAG" -R "$REPO" -D art -p '*.whl' -p bdh-lock.txt -p bdh-app.json -p bdh-extra.Dockerfile
+          # Releases made before the org rename (blackdiamondlodge ->
+          # blackdiamondhub) were signed under the old org's names.
+          name="${REPO#*/}"
           for f in art/*; do
-            gh attestation verify "$f" --repo "$REPO" \
+            gh attestation verify "$f" --repo "blackdiamondhub/$name" \
+              --signer-workflow blackdiamondhub/bdh-sdk/.github/workflows/app-release.yml ||
+            gh attestation verify "$f" --repo "blackdiamondlodge/$name" \
               --signer-workflow blackdiamondlodge/bdh-sdk/.github/workflows/app-release.yml
           done
           app=$(jq -r .id art/bdh-app.json)
@@ -98,7 +103,7 @@ jobs:
             echo "bdh-extra.Dockerfile without custom_base"; exit 1
           fi
           echo "APP=$app" >> "$GITHUB_ENV"
-          echo "IMAGE=ghcr.io/blackdiamondlodge/bdh-app-$app" >> "$GITHUB_ENV"
+          echo "IMAGE=ghcr.io/blackdiamondhub/bdh-app-$app" >> "$GITHUB_ENV"
       - name: Build
         run: |
           docker pull -q "$BASE"
