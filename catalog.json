@@ -3067,9 +3067,34 @@
     "restaurants": {
       "name": "Restaurants",
       "description": "Sun Peaks restaurants with Google ratings, hours, photos and a guest shortlist",
-      "icon": "https://raw.githubusercontent.com/blackdiamondlodge/bdh-app-restaurants/v2.0.1/restaurants/static/restaurants/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-restaurants/v2.0.2b1/restaurants/static/restaurants/hub/icon.svg",
       "repo": "blackdiamondlodge/bdh-app-restaurants",
       "versions": [
+        {
+          "version": "2.0.2b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-restaurants@sha256:d70f38f1cccad566ea4147a5fd4c2abfe94e4f321c87eeb3a2fc1e5fb19d0cb5",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:c86db0228c7a9a70868ddfcd1e77cbec0ac1d7e1a337bd0c4e6990fc751c3d44",
+          "build": "gh-45482579673.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-restaurants/releases/download/v2.0.2b1/bdh_app_restaurants-2.0.2b1-py3-none-any.whl",
+          "sha256": "fb292a37fbcf26a9c7c576ebdcf64f5df299328583fe486b68d4829d96ff4c79",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Point shortlist at blackdiamondhub.github.io (2.0.2b1) (#18)",
+          "released_at": "2026-11-24T20:32:20Z",
+          "built_at": "2026-11-24T20:37:44Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/71813836",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.1",
           "kind": "image",
