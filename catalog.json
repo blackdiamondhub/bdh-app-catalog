@@ -1948,6 +1948,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b21",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:82780c13cc585e4c4b96ed157da2221e35dc574272d93d133f508a721c7bcac2",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45320851093.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b21/bdh_app_gemstone-0.1.0b21-py3-none-any.whl",
+          "sha256": "98f029e4e27fd70b6a94e3da7e041bc0b3b07ce946c5694087c97c85a634a7f3",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Previews match the lights; count designs started elsewhere (#22)\n\n- Gamma-correct device colours for screen (and back) so e.g. (255,30,0)\n  shows orange, not red.\n- Carry background colour and per-animation params (accent/isofade on/off,\n  motionless length, smooth length/spacing) to the UI and render them.\n- Worker notes designs started outside the hub (Gemstone app) as plays so\n  they appear in Recently played.\n- solid_id uses the swatch hex directly; sameDesign tolerates colour rounding.\n- Tests for each.",
+          "released_at": "2026-11-24T03:34:44Z",
+          "built_at": "2026-11-24T03:39:17Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71429657",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b20",
           "kind": "image",
           "channel": "beta",
