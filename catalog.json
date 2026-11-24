@@ -1999,6 +1999,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b23",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:27d672a9e8d5d7e26d0884004624f8dfd485c1ea59135c63358925131d32e157",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45338256390.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b23/bdh_app_gemstone-0.1.0b23-py3-none-any.whl",
+          "sha256": "779a2a33835ecddbd66908faa1dcb4ef81d7b66c50a89a081172152865820187",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Autopilot: collapsible card and scrolling Events panel (#24)\n\n- Header is a fold button (remembered per device); collapsed shows on/off + next event\n- Events panel matches the other columns' height and scrolls (capped at 460px when stacked)\n- Events count in the panel header; list shows up to 60",
+          "released_at": "2026-11-24T06:06:02Z",
+          "built_at": "2026-11-24T06:10:11Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71465563",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b22",
           "kind": "image",
           "channel": "beta",
