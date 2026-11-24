@@ -1999,6 +1999,31 @@
       "repo": "blackdiamondlodge/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.1.0b22",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondlodge/bdh-app-gemstone@sha256:e2c966e94d435ac5acf4054c5d313233326d319a0cd24d1903db9d90ec65e9ba",
+          "base": "ghcr.io/blackdiamondlodge/bdh-app-runtime@sha256:04c3212ba686955a8b3190cd80759558192661b69d0d464db2f6534d2efa46af",
+          "build": "gh-45334387059.1",
+          "wheel_url": "https://github.com/blackdiamondlodge/bdh-app-gemstone/releases/download/v0.1.0b22/bdh_app_gemstone-0.1.0b22-py3-none-any.whl",
+          "sha256": "b4c239a066d86970e2b696dca26bcd8968d0d569ea86e7e2e1bbd67297d7b023",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Plan tab: Coming up timeline, Autopilot and Schedules (admins) (#23)\n\nAdds an admin-only Plan tab with a merged Autopilot/schedule timeline, the Autopilot settings (moved out of hub Settings) and Gemstone timers grouped into schedules. Tonight shows the playing schedule to everyone.",
+          "released_at": "2026-11-24T05:32:15Z",
+          "built_at": "2026-11-24T05:36:48Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71457737",
+            "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b21",
           "kind": "image",
           "channel": "beta",
