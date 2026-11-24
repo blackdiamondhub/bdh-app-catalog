@@ -9,6 +9,13 @@ by this repo's [builder](#how-versions-get-added), for hub API 1 apps a wheel.
 [`schema/catalog.schema.json`](schema/catalog.schema.json) (JSON Schema 2020-12)
 plus the semantic rules enforced by [`scripts/validate.py`](scripts/validate.py).
 
+The GitHub org is being renamed from `blackdiamondlodge` to `blackdiamondhub`.
+Validation accepts either org wherever an org appears (repo, icon, wheel URL,
+image, base, attestation URL and signer workflow). Published entries keep the
+org they were signed under, and `gh attestation verify` runs against that org.
+The scripts generate new entries under `blackdiamondlodge` unless `BDH_ORG`
+is set (for example `BDH_ORG=blackdiamondhub`).
+
 ## Format
 
 ```jsonc

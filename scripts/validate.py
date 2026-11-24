@@ -4,7 +4,8 @@
 Offline checks: the JSON Schema, plus what a schema can't say -- versions are
 unique and newest first, wheel URLs point at the app's own repo and the tag
 for that version, each repo holds one app id, image entries name
-``ghcr.io/blackdiamondlodge/bdh-app-<their id>``, and a hub API 2+ version is
+``ghcr.io/<org>/bdh-app-<their id>`` (org: blackdiamondlodge or its new name
+blackdiamondhub), and a hub API 2+ version is
 an image (a hub API 2+ wheel may only remain as a yanked entry), and a
 pre-release version (aN/bN/rcN) declares its ``channel`` while a final
 version is never beta.
@@ -97,11 +98,12 @@ def check_semantics(catalog):
                     errors.append(f"{where}: wheel filename is not for version {version}")
             if bc.is_image(v):
                 name = v.get("image", "").split("@", 1)[0]
-                if name != bc.image_repo(app_id):
+                if name not in bc.image_repos(app_id):
                     errors.append(f"{where}: image must be {bc.image_repo(app_id)}@sha256:<digest>, not {name}")
             else:
                 att = v.get("attestation")
-                if att and not att.get("url", "").startswith(f"https://github.com/{repo}/attestations/"):
+                if att and not att.get("url", "").startswith(tuple(
+                        f"https://github.com/{bc.repo_with_org(repo, o)}/attestations/" for o in bc.ORGS)):
                     errors.append(f"{where}: attestation is not from {repo}")
                 if v.get("hub_api", 1) >= 2 and not v.get("yanked"):
                     errors.append(f"{where}: hub API {v['hub_api']} versions must be kind image "
@@ -234,6 +236,15 @@ def gh_verify(subject, repo, signer):
     return None
 
 
+def attested_repo(repo, signer):
+    """``repo`` under the org named by ``signer``.
+
+    The signing certificate records the org at signing time, so an entry
+    signed before the org rename verifies against the old org's repo name.
+    """
+    return bc.repo_with_org(repo, signer.split("/", 1)[0])
+
+
 def check_network(catalog, base, reg=None):
     errors = []
     reg = reg or registry.Registry()
@@ -242,7 +253,8 @@ def check_network(catalog, base, reg=None):
             where = f"{app_id} {v['version']}"
             if bc.is_image(v) and not v.get("yanked"):
                 errors += check_image(app_id, v, reg)
-                problem = gh_verify(f"oci://{v['image']}", bc.CATALOG_REPO, bc.BUILDER_WORKFLOW)
+                signer = v.get("attestation", {}).get("signer_workflow", bc.BUILDER_WORKFLOW)
+                problem = gh_verify(f"oci://{v['image']}", attested_repo(bc.CATALOG_REPO, signer), signer)
                 if problem:
                     errors.append(f"{where}: image attestation did not verify: {problem}")
                 else:
@@ -268,7 +280,8 @@ def check_network(catalog, base, reg=None):
                 errors.append(f"{where}: wheel is {info['id']} {info['version']}")
             att = v.get("attestation")
             if att and not bc.is_image(v):
-                problem = gh_verify(str(path), app["repo"], att["signer_workflow"])
+                signer = att["signer_workflow"]
+                problem = gh_verify(str(path), attested_repo(app["repo"], signer), signer)
                 if problem:
                     errors.append(f"{where}: attestation did not verify: {problem}")
                 else:
