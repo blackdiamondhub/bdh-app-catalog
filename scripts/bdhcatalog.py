@@ -17,11 +17,12 @@ CATALOG = ROOT / "catalog.json"
 SCHEMA = ROOT / "schema" / "catalog.schema.json"
 
 SCHEMA_VERSION = 1
-# The GitHub org being renamed from blackdiamondlodge to blackdiamondhub.
+# The GitHub org was renamed from blackdiamondlodge to blackdiamondhub.
 # Published entries keep the org they were made under, so validation accepts
-# every org in ORGS while new entries are generated under ORG.
+# every org in ORGS while new entries are generated under ORG (the new org).
 ORGS = ("blackdiamondlodge", "blackdiamondhub")
-ORG = os.environ.get("BDH_ORG") or ORGS[0]
+OLD_ORG, NEW_ORG = ORGS
+ORG = os.environ.get("BDH_ORG") or NEW_ORG
 if ORG not in ORGS:
     raise RuntimeError(f"BDH_ORG={ORG!r} is not one of {', '.join(ORGS)}")
 ENTRY_POINT_GROUP = "blackdiamondhub.plugins"
@@ -124,6 +125,44 @@ def image_repos(app_id):
 def repo_with_org(repo, org):
     """``owner/name`` moved under ``org``."""
     return f"{org}/{repo.split('/', 1)[1]}"
+
+
+def same_repo(a, b):
+    """``a`` and ``b`` are the same repo, possibly under different orgs in ORGS."""
+    if a == b:
+        return True
+    try:
+        (oa, na), (ob, nb) = a.split("/", 1), b.split("/", 1)
+    except (AttributeError, ValueError):
+        return False
+    return na == nb and oa in ORGS and ob in ORGS
+
+
+_OLD_ORG_PATH = re.compile(rf"(?<![\w.-]){OLD_ORG}/")
+
+
+def org_moved(old, new, key=None):
+    """``new`` is ``old`` with zero or more old-org paths moved to the new org.
+
+    One-way: moving back to the old org (a name anyone could claim after the
+    rename) is a change. ``attestation`` records name the org that signed them
+    and must stay exactly as published."""
+    if old == new:
+        return True
+    if key == "attestation":
+        return False
+    if isinstance(old, str) and isinstance(new, str):
+        return _OLD_ORG_PATH.sub(f"{NEW_ORG}/", old) == new
+    if isinstance(old, dict) and isinstance(new, dict):
+        return set(old) == set(new) and all(org_moved(old[k], new[k], k) for k in old)
+    if isinstance(old, list) and isinstance(new, list):
+        return len(old) == len(new) and all(org_moved(o, n, key) for o, n in zip(old, new))
+    return False
+
+
+def digest(ref):
+    """The ``sha256:...`` part of ``name@sha256:...`` (``ref`` if there is none)."""
+    return ref.rsplit("@", 1)[-1] if isinstance(ref, str) else ref
 
 
 def is_image(entry):

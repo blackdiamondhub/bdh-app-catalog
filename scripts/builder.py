@@ -110,22 +110,28 @@ def _is_new(app, version):
                if beta or bc.channel(v) == bc.STABLE)
 
 
+def _short(repo):
+    return repo.split("/", 1)[1]
+
+
 def plan(catalog, base, releases, apps=None, rebuild_all=False):
     """``releases`` maps repo -> the tags that publish bdh-app.json (the
     newest stable release and the newest pre-release; a single tag is
     accepted too). At most one new version per app is planned per run,
     stable first; the next run picks up the other."""
     include = []
-    by_repo = {app["repo"]: (app_id, app) for app_id, app in catalog["apps"].items()}
+    # Keyed by repo name without the org: entries made before the org rename
+    # name the old org, the release list names the new one.
+    by_repo = {_short(app["repo"]): (app_id, app) for app_id, app in catalog["apps"].items()}
     wanted = {_norm(a) for a in apps or ()}
 
     def names(repo, app_id):
-        short = repo.split("/", 1)[1]
+        short = _short(repo)
         return {_norm(app_id), _norm(short), _norm(short.removeprefix("bdh-app-"))}
 
     known = set()
-    for repo in set(releases) | set(by_repo):
-        known |= names(repo, by_repo.get(repo, (repo.split("bdh-app-", 1)[-1],))[0])
+    for repo in set(releases) | {app["repo"] for app in catalog["apps"].values()}:
+        known |= names(repo, by_repo.get(_short(repo), (repo.split("bdh-app-", 1)[-1],))[0])
     unknown = sorted(wanted - known)
     if unknown:
         raise ValueError(f"unknown app(s): {', '.join(unknown)}")
@@ -134,7 +140,7 @@ def plan(catalog, base, releases, apps=None, rebuild_all=False):
         return not wanted or bool(wanted & names(repo, app_id or ""))
 
     for repo, tags in sorted(releases.items()):
-        app_id, app = by_repo.get(repo, (None, None))
+        app_id, app = by_repo.get(_short(repo), (None, None))
         app_id = app_id or repo.split("bdh-app-", 1)[1]
         if not selected(repo, app_id):
             continue
@@ -143,9 +149,9 @@ def plan(catalog, base, releases, apps=None, rebuild_all=False):
         if new:
             tag = min(new, key=lambda t: bc.is_prerelease(t.removeprefix("v")))
             include.append({"repo": repo, "tag": tag, "app": app_id, "reason": "new"})
-    planned = {i["repo"] for i in include}
+    planned = {_short(i["repo"]) for i in include}
     for app_id, app in sorted(catalog["apps"].items()):
-        if app["repo"] in planned or not selected(app["repo"], app_id):
+        if _short(app["repo"]) in planned or not selected(app["repo"], app_id):
             continue
         images = [v for v in app["versions"] if bc.is_image(v) and not v.get("yanked")]
         if not images:
@@ -159,8 +165,9 @@ def plan(catalog, base, releases, apps=None, rebuild_all=False):
                 if newest not in targets:
                     targets.append(newest)
         for newest in targets:
-            if rebuild_all or newest["base"] != base:
-                include.append({"repo": app["repo"], "tag": f"v{newest['version']}", "app": app_id,
+            # By digest: a base under the old org is the same image.
+            if rebuild_all or bc.digest(newest["base"]) != bc.digest(base):
+                include.append({"repo": bc.repo_with_org(app["repo"], bc.ORG), "tag": f"v{newest['version']}", "app": app_id,
                                 "reason": "rebuild"})
     return include
 
@@ -241,7 +248,7 @@ def apply(catalog, built):
         app = catalog["apps"].get(app_id)
         if app is None:
             app = catalog["apps"][app_id] = {**item["app"], "versions": []}
-        elif app["repo"] != item["app"]["repo"]:
+        elif not bc.same_repo(app["repo"], item["app"]["repo"]):
             raise SystemExit(f"app id {app_id!r} belongs to {app['repo']}, not {item['app']['repo']}")
         existing = next((v for v in app["versions"] if v["version"] == entry["version"]), None)
         if existing is not None:

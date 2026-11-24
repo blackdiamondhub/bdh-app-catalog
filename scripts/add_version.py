@@ -5,7 +5,7 @@ Hub API 2+ apps ship as images built by .github/workflows/build.yml (see
 scripts/builder.py); this script refuses them.
 
     python scripts/add_version.py --wheel dist/bdh_app_x-1.2.0-py3-none-any.whl \
-        --repo blackdiamondlodge/bdh-app-x --tag v1.2.0 \
+        --repo blackdiamondhub/bdh-app-x --tag v1.2.0 \
         --changelog "Fix the thing" --attestation-url https://github.com/...
 
 The plugin id, hub_api and container manifest are read from the wheel's
@@ -93,7 +93,7 @@ def add_version(args):
     app = apps.get(info["id"])
     if app is None:
         app = apps[info["id"]] = {"name": "", "description": "", "repo": args.repo, "versions": []}
-    elif app["repo"] != args.repo:
+    elif not bc.same_repo(app["repo"], args.repo):
         raise SystemExit(f"app id {info['id']!r} belongs to {app['repo']}, not {args.repo}")
 
     entry = build_entry(info, args, sha256, url)
