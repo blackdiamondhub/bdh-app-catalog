@@ -45,12 +45,12 @@
         "icon": {
           "description": "Store icon, pinned to the newest version's tag.",
           "type": "string",
-          "pattern": "^https://raw\\.githubusercontent\\.com/blackdiamondlodge/bdh-app-[a-z0-9-]+/v[^/]+/.+$"
+          "pattern": "^https://raw\\.githubusercontent\\.com/(blackdiamondlodge|blackdiamondhub)/bdh-app-[a-z0-9-]+/v[^/]+/.+$"
         },
         "repo": {
           "description": "owner/name of the app's GitHub repo. An app id is bound to one repo.",
           "type": "string",
-          "pattern": "^blackdiamondlodge/bdh-app-[a-z0-9-]+$"
+          "pattern": "^(blackdiamondlodge|blackdiamondhub)/bdh-app-[a-z0-9-]+$"
         },
         "versions": {
           "description": "Newest first; versions are unique and immutable.",
@@ -131,12 +131,12 @@
         "image": {
           "description": "ghcr.io/blackdiamondlodge/bdh-app-<id>, pinned by digest. A rebuild changes it (an upgrade for the supervisor).",
           "type": "string",
-          "pattern": "^ghcr\\.io/blackdiamondlodge/bdh-app-[a-z0-9_-]+@sha256:[0-9a-f]{64}$"
+          "pattern": "^ghcr\\.io/(blackdiamondlodge|blackdiamondhub)/bdh-app-[a-z0-9_-]+@sha256:[0-9a-f]{64}$"
         },
         "base": {
           "description": "The bdh-app-runtime base the image was built FROM; its layers prefix the image's.",
           "type": "string",
-          "pattern": "^ghcr\\.io/blackdiamondlodge/bdh-app-runtime@sha256:[0-9a-f]{64}$"
+          "pattern": "^ghcr\\.io/(blackdiamondlodge|blackdiamondhub)/bdh-app-runtime@sha256:[0-9a-f]{64}$"
         },
         "build": {
           "description": "Builder run that produced the image (gh-<run id>.<attempt>).",
@@ -146,7 +146,7 @@
         "wheel_url": {
           "description": "The release wheel the image was built from.",
           "type": "string",
-          "pattern": "^https://github\\.com/blackdiamondlodge/bdh-app-[a-z0-9-]+/releases/download/v[^/]+/[A-Za-z0-9_.]+-[^/-]+-[^/]+\\.whl$"
+          "pattern": "^https://github\\.com/(blackdiamondlodge|blackdiamondhub)/bdh-app-[a-z0-9-]+/releases/download/v[^/]+/[A-Za-z0-9_.]+-[^/-]+-[^/]+\\.whl$"
         },
         "sha256": {
           "type": "string",
@@ -227,10 +227,13 @@
           "properties": {
             "url": {
               "type": "string",
-              "pattern": "^https://github\\.com/blackdiamondlodge/bdh-app-catalog/attestations/\\d+$"
+              "pattern": "^https://github\\.com/(blackdiamondlodge|blackdiamondhub)/bdh-app-catalog/attestations/\\d+$"
             },
             "signer_workflow": {
-              "const": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+              "enum": [
+                "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml",
+                "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+              ]
             }
           }
         },
@@ -280,7 +283,7 @@
         "wheel_url": {
           "description": "GitHub release asset of the app repo, tag v<version>.",
           "type": "string",
-          "pattern": "^https://github\\.com/blackdiamondlodge/bdh-app-[a-z0-9-]+/releases/download/v[^/]+/[A-Za-z0-9_.]+-[^/-]+-[^/]+\\.whl$"
+          "pattern": "^https://github\\.com/(blackdiamondlodge|blackdiamondhub)/bdh-app-[a-z0-9-]+/releases/download/v[^/]+/[A-Za-z0-9_.]+-[^/-]+-[^/]+\\.whl$"
         },
         "sha256": {
           "type": "string",
@@ -373,11 +376,14 @@
           "properties": {
             "url": {
               "type": "string",
-              "pattern": "^https://github\\.com/blackdiamondlodge/bdh-app-[a-z0-9-]+/attestations/\\d+$"
+              "pattern": "^https://github\\.com/(blackdiamondlodge|blackdiamondhub)/bdh-app-[a-z0-9-]+/attestations/\\d+$"
             },
             "signer_workflow": {
               "description": "Workflow that built and signed the wheel; pass to gh attestation verify --signer-workflow.",
-              "const": "blackdiamondlodge/bdh-sdk/.github/workflows/app-release.yml"
+              "enum": [
+                "blackdiamondlodge/bdh-sdk/.github/workflows/app-release.yml",
+                "blackdiamondhub/bdh-sdk/.github/workflows/app-release.yml"
+              ]
             }
           }
         },

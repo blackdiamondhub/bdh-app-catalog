@@ -82,8 +82,8 @@ def add_version(args):
     if tag != f"v{version}":
         raise SystemExit(f"tag {tag!r} does not match wheel version {version!r}")
     owner = args.repo.split("/", 1)[0]
-    if owner != bc.ORG:
-        raise SystemExit(f"repo must be under github.com/{bc.ORG}")
+    if owner not in bc.ORGS:
+        raise SystemExit(f"repo must be under github.com/{' or '.join(bc.ORGS)}")
     url = args.url or f"{bc.release_url_prefix(args.repo)}{tag}/{wheel.name}"
     sha256 = bc.sha256_file(wheel)
 

@@ -7,6 +7,7 @@ import configparser
 import email.parser
 import hashlib
 import json
+import os
 import re
 import zipfile
 from pathlib import Path
@@ -16,13 +17,21 @@ CATALOG = ROOT / "catalog.json"
 SCHEMA = ROOT / "schema" / "catalog.schema.json"
 
 SCHEMA_VERSION = 1
-ORG = "blackdiamondlodge"
+# The GitHub org being renamed from blackdiamondlodge to blackdiamondhub.
+# Published entries keep the org they were made under, so validation accepts
+# every org in ORGS while new entries are generated under ORG.
+ORGS = ("blackdiamondlodge", "blackdiamondhub")
+ORG = os.environ.get("BDH_ORG") or ORGS[0]
+if ORG not in ORGS:
+    raise RuntimeError(f"BDH_ORG={ORG!r} is not one of {', '.join(ORGS)}")
 ENTRY_POINT_GROUP = "blackdiamondhub.plugins"
 SIGNER_WORKFLOW = f"{ORG}/bdh-sdk/.github/workflows/app-release.yml"
 CATALOG_REPO = f"{ORG}/bdh-app-catalog"
 BUILDER_WORKFLOW = f"{CATALOG_REPO}/.github/workflows/build.yml"
 IMAGE_PREFIX = f"ghcr.io/{ORG}/"
 BASE_REPO = f"{IMAGE_PREFIX}bdh-app-runtime"
+SIGNER_WORKFLOWS = tuple(f"{o}/bdh-sdk/.github/workflows/app-release.yml" for o in ORGS)
+BUILDER_WORKFLOWS = tuple(f"{o}/bdh-app-catalog/.github/workflows/build.yml" for o in ORGS)
 # Fields of an image entry that a rebuild (same release, new base) changes.
 REBUILD_FIELDS = {"image", "base", "build", "built_at", "attestation"}
 
@@ -105,6 +114,16 @@ def dump_catalog(catalog, path=CATALOG):
 
 def image_repo(app_id):
     return f"{IMAGE_PREFIX}bdh-app-{app_id}"
+
+
+def image_repos(app_id):
+    """Every accepted image repo for ``app_id``, one per org in ORGS."""
+    return tuple(f"ghcr.io/{o}/bdh-app-{app_id}" for o in ORGS)
+
+
+def repo_with_org(repo, org):
+    """``owner/name`` moved under ``org``."""
+    return f"{org}/{repo.split('/', 1)[1]}"
 
 
 def is_image(entry):
