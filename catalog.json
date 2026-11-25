@@ -1423,10 +1423,51 @@
     },
     "device_control": {
       "name": "Controls",
-      "description": "Lodge device controls (lights, blinds, fireplace) via Home Assistant",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.1.0b1/device_control/static/device_control/hub/icon.svg",
+      "description": "Lodge device controls (scenes, lights, blinds) via Home Assistant",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.2.0b1/device_control/static/device_control/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-device-control",
       "versions": [
+        {
+          "version": "2.2.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-device_control@sha256:ac91f52cf4760113f4a3e810d33e561d7e8884097352b8ab44806ce4494d7300",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:c86db0228c7a9a70868ddfcd1e77cbec0ac1d7e1a337bd0c4e6990fc751c3d44",
+          "build": "gh-45579629671.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-device-control/releases/download/v2.2.0b1/bdh_app_device_control-2.2.0b1-py3-none-any.whl",
+          "sha256": "453941a74b7c82e40cf7d668812a5da0dabf5b303515820d8248057613b421e8",
+          "permissions": [
+            "ha.call:cover.close_cover",
+            "ha.call:cover.open_cover",
+            "ha.call:cover.set_cover_position",
+            "ha.call:cover.stop_cover",
+            "ha.call:light.toggle",
+            "ha.call:light.turn_off",
+            "ha.call:light.turn_on",
+            "ha.call:scene.turn_on",
+            "ha.call:switch.toggle",
+            "ha.call:switch.turn_off",
+            "ha.call:switch.turn_on",
+            "ha.read:cover.*",
+            "ha.read:light.*",
+            "ha.read:scene.*",
+            "ha.read:switch.*"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Controls: remove fireplace (moved to the Fireplace app) - 2.2.0b1 (#14)\n\nThe Napoleon fireplace now lives in its own app (bdh-app-fireplace, via\npynapoleon). Drop the Fireplace tab, its api/fireplace/* endpoints, the\nfireplace.js/css assets, the fireplace homepage status/shortcut, and the\nclimate/number/select/media grants that only the fireplace card used.",
+          "released_at": "2026-11-25T07:55:26Z",
+          "built_at": "2026-11-25T08:50:41Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72053373",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.1.0b1",
           "kind": "image",
@@ -1676,6 +1717,38 @@
           "attestation": {
             "url": "https://github.com/blackdiamondlodge/bdh-app-catalog/attestations/71363739",
             "signer_workflow": "blackdiamondlodge/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
+    "fireplace": {
+      "name": "Fireplace",
+      "description": "Napoleon fireplaces through the Napoleon cloud (pynapoleon)",
+      "repo": "blackdiamondhub/bdh-app-fireplace",
+      "versions": [
+        {
+          "version": "1.0.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-fireplace@sha256:58d13b2ac42688d80cf7a15b2a94b77061d83fc5284750c820d175d5dc85fec5",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:c86db0228c7a9a70868ddfcd1e77cbec0ac1d7e1a337bd0c4e6990fc751c3d44",
+          "build": "gh-45579629671.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-fireplace/releases/download/v1.0.0b1/bdh_app_fireplace-1.0.0b1-py3-none-any.whl",
+          "sha256": "3c0892a05a0880c945f160149c09e62493c849104df28ee53e6b8fc2bad478cb",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Fireplace app: Napoleon cloud backend, card UI with FlameRenderer, homepage status/shortcut (#1)\n\nPort of hass-napoleon's fireplace card onto plain DOM + flames.js, backed by\npynapoleon instead of Home Assistant. Includes the 'Fireplaces off' homepage\nshortcut moved from the Controls app, Python + JS tests and CI/release.",
+          "released_at": "2026-11-25T07:55:16Z",
+          "built_at": "2026-11-25T08:50:45Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72053386",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
           }
         }
       ]
