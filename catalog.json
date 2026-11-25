@@ -1721,6 +1721,38 @@
         }
       ]
     },
+    "fireplace": {
+      "name": "Fireplace",
+      "description": "Napoleon fireplaces through the Napoleon cloud (pynapoleon)",
+      "repo": "blackdiamondhub/bdh-app-fireplace",
+      "versions": [
+        {
+          "version": "1.0.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-fireplace@sha256:58d13b2ac42688d80cf7a15b2a94b77061d83fc5284750c820d175d5dc85fec5",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:c86db0228c7a9a70868ddfcd1e77cbec0ac1d7e1a337bd0c4e6990fc751c3d44",
+          "build": "gh-45579629671.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-fireplace/releases/download/v1.0.0b1/bdh_app_fireplace-1.0.0b1-py3-none-any.whl",
+          "sha256": "3c0892a05a0880c945f160149c09e62493c849104df28ee53e6b8fc2bad478cb",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Fireplace app: Napoleon cloud backend, card UI with FlameRenderer, homepage status/shortcut (#1)\n\nPort of hass-napoleon's fireplace card onto plain DOM + flames.js, backed by\npynapoleon instead of Home Assistant. Includes the 'Fireplaces off' homepage\nshortcut moved from the Controls app, Python + JS tests and CI/release.",
+          "released_at": "2026-11-25T07:55:16Z",
+          "built_at": "2026-11-25T08:50:45Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72053386",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "flights": {
       "name": "Flights",
       "description": "Track flights with FlightAware and get delay, gate and landing alerts",
