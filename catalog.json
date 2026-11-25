@@ -3536,9 +3536,36 @@
     "snow_report": {
       "name": "Mountain Conditions",
       "description": "Sun Peaks mountain conditions (snow, weather, forecast)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-snow-report/v3.2.0/snow_report/static/snow_report/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-snow-report/v3.2.1b1/snow_report/static/snow_report/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-snow-report",
       "versions": [
+        {
+          "version": "3.2.1b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-snow_report@sha256:aa5aa44207ac4d45215b3138627edfed27d9d5039bfdd1edf63a70cf5e195165",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:c86db0228c7a9a70868ddfcd1e77cbec0ac1d7e1a337bd0c4e6990fc751c3d44",
+          "build": "gh-45579629671.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-snow-report/releases/download/v3.2.1b1/bdh_app_snow_report-3.2.1b1-py3-none-any.whl",
+          "sha256": "6396ab8c5649f888c9cb3b2ec914c35dd42a69e0592d01d4115e4ad497013f5e",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Match the weather background to the resort's hero icon (#16)\n\nWhen the resort's daily report drives the hero (e.g. flurries), the animated background followed Open-Meteo's current code instead (e.g. overcast), so a snowflake showed over a cloudy sky. Derive the background from the hero icon in that case, night-adjusted.",
+          "released_at": "2026-11-24T20:31:40Z",
+          "built_at": "2026-11-25T08:50:31Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72053322",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "3.2.0",
           "kind": "image",
