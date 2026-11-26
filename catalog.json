@@ -1727,6 +1727,31 @@
       "repo": "blackdiamondhub/bdh-app-fireplace",
       "versions": [
         {
+          "version": "1.0.0b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-fireplace@sha256:06e0f1f29f5e08b65a01f86cc2d9179787cceae4e8f5465625b43a62b3f58e38",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:ffa26cde9e36f772fac9d4ffffc2be58289516fbc58b10a9ff00ba1c410d5957",
+          "build": "gh-45784384594.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-fireplace/releases/download/v1.0.0b2/bdh_app_fireplace-1.0.0b2-py3-none-any.whl",
+          "sha256": "67e45493705cda1ad75ce7968712c4369cb4488a00ca425acdde50438b2d6779",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Animated flame tile icon while a fireplace is on; 1.0.0b2 (#2)\n\nicon_on (bdh-sdk 0.44) shows hub/icon-on.svg (SMIL flames) while the\nstatus level is ON; hub/icon.svg is now an unlit firebox.",
+          "released_at": "2026-11-25T22:58:24Z",
+          "built_at": "2026-11-26T08:37:28Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72562685",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b1",
           "kind": "image",
           "channel": "beta",
