@@ -4900,6 +4900,33 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.2.0b4",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:11c77454c2db24809b58cd3980b562d20d0eaef9e6ffcff4fe1a2dd60a4baea9",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45899905731.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b4/bdh_app_voice-0.2.0b4-py3-none-any.whl",
+          "sha256": "3d9f690b4bd4d16d91520ee2fdedb53173f1b4f287753172f1e36adb2d75eb0f",
+          "permissions": [
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "End the conversation when the person is done; follow-up wait 5 s (0.2.0b4) (#4)\n\nA built-in end_conversation tool, handled by the voice app (never the gateway): the model says a short goodbye and calls it, and the conversation ends once the goodbye has played. Speaking again cancels it.",
+          "released_at": "2026-11-26T21:40:10Z",
+          "built_at": "2026-11-26T21:44:16Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72853226",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b3",
           "kind": "image",
           "channel": "beta",
