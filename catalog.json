@@ -4762,9 +4762,36 @@
     },
     "voice": {
       "name": "Voice",
-      "description": "Wake-word detection for the wall screens",
+      "description": "Wake word and voice assistant for the wall screens",
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
+        {
+          "version": "0.2.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:4ff68d8702a8b08608fc7213dc428e79c70fe2eed3e8b0cbacd1e93e6e15f74f",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45893607153.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b1/bdh_app_voice-0.2.0b1-py3-none-any.whl",
+          "sha256": "98700f2d093804db6d564fa08f52194e72ab3a1e5e3d955962ca0c940e582ff8",
+          "permissions": [
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Voice assistant: Azure OpenAI Realtime conversations after the wake word (#1)\n\nAfter a wake the listen socket carries a speech-to-speech conversation:\nmic audio is upsampled to 24 kHz and streamed to the Realtime GA API, tool\ncalls run through the hub tools gateway, and reply audio streams back to the\nscreen as binary frames framed by speak_start/speak_end, with state and\ntranscript messages, barge-in, follow-up and max-length limits, and per-turn\nrecords on voice/conversation. New settings: enabled, api_key (secret),\nendpoint, model, voice, max_seconds, follow_up_seconds, instructions.\nNeeds the tools permission. Version 0.2.0b1.",
+          "released_at": "2026-11-26T20:43:00Z",
+          "built_at": "2026-11-26T20:49:18Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72838498",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "0.1.0b1",
           "kind": "image",
