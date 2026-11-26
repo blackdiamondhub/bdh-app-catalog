@@ -2213,6 +2213,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b8",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:d2dd1ee353455d660738c42e10084352b88a9d32084c7d1d71f50695f08de864",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45901043279.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b8/bdh_app_frame-1.0.0b8-py3-none-any.whl",
+          "sha256": "df33c1caabe73027b2275cff5c51c3cc4521be663b345002b737da81ba946dd0",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b8: Start slideshow button (#8)\n\nAnyone using the app (admin, guest, family link) can press Start slideshow:\non the next pass each TV in Art Mode shows one of our photos (which also\nleaves the Art Mode menu) and the slideshow is sent again. Goes through the\nworker, so the TV still only has one connection. Version 1.0.0b8.",
+          "released_at": "2026-11-26T21:51:50Z",
+          "built_at": "2026-11-26T21:53:34Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72855467",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b7",
           "kind": "image",
           "channel": "beta",
