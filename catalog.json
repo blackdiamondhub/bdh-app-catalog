@@ -1727,6 +1727,31 @@
       "repo": "blackdiamondhub/bdh-app-fireplace",
       "versions": [
         {
+          "version": "1.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-fireplace@sha256:392060c98f7757b04d182ba0c32c5b24f908dc9e6576c3bcd23d3835bd52b9d0",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:ffa26cde9e36f772fac9d4ffffc2be58289516fbc58b10a9ff00ba1c410d5957",
+          "build": "gh-45863021291.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-fireplace/releases/download/v1.1.0b1/bdh_app_fireplace-1.1.0b1-py3-none-any.whl",
+          "sha256": "dfcef46cc739c30c634f43433165cd767d648a3b01c4fd2d9440e2c9a570eb32",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Save your own presets (guests too, kept 2 weeks) (#3)\n\n* Save your own presets (guests too, kept 2 weeks)\n\nSave the flame, ember bed and top light (never the heater) as a named\npreset on the hub, shared by every screen and fireplace. Owners and admins\nsave house presets; guests see those read-only and save into a separate\nguest folder whose presets are deleted 14 days after they were saved.\n\n\n* Tests: state carries looks/guest; apply looks in the guest view\n\n\n---------",
+          "released_at": "2026-11-26T16:30:57Z",
+          "built_at": "2026-11-26T16:55:40Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72765855",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b2",
           "kind": "image",
           "channel": "beta",
