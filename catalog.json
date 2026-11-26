@@ -2213,6 +2213,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b6",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:9acafdfae74ae08ef6679e36a69367a6eb44d21c1f31666367748119b4353174",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45899587829.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b6/bdh_app_frame-1.0.0b6-py3-none-any.whl",
+          "sha256": "0b2983be4081d0f44cb33a75fe92a42a1f47587c30c626b7366e0e3f3485c93f",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b6: interval set in the app, slideshow kept rotating, TVs pairing page, TV call deadlines (#6)\n\n- Anyone using the app (admin, guest, family link) picks how often the photo changes\n- Slideshow re-sent after each show and verified on full syncs; unchanged TVs skipped for 10 min\n- Admin TVs settings page with guided pairing (Access Notification steps, Ask the TV, result per state) and Look now\n- Hard deadline on TV calls (60 s, uploads 180 s) so a dropped reply can't hang the worker\n- Version 1.0.0b6",
+          "released_at": "2026-11-26T21:38:34Z",
+          "built_at": "2026-11-26T21:40:23Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72852242",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b5",
           "kind": "image",
           "channel": "beta",
