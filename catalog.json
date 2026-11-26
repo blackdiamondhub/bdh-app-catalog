@@ -4633,6 +4633,38 @@
         }
       ]
     },
+    "voice": {
+      "name": "Voice",
+      "description": "Wake-word detection for the wall screens",
+      "repo": "blackdiamondhub/bdh-app-voice",
+      "versions": [
+        {
+          "version": "0.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:db6a29ed81a019591192208cc6583d4aa33fa328fd28dbb7b2809dc516ccd3c5",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:ffa26cde9e36f772fac9d4ffffc2be58289516fbc58b10a9ff00ba1c410d5957",
+          "build": "gh-45870033050.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.1.0b1/bdh_app_voice-0.1.0b1-py3-none-any.whl",
+          "sha256": "93b20375b3b9766de5b9c0ec98113faa290b28a9a799414f127625d4ffaec598",
+          "permissions": [],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Voice: wake-word detection for the wall screens (0.1.0b1)\n\nKiosks stream 16 kHz PCM to /voice/api/listen; openWakeWord's models run\nwith onnxruntime + numpy (scores identical to openwakeword 0.6.0) and the\napp answers hello/wake/config JSON. Admin-only Settings -> Voice page with\nconnected screens and the last 50 detections with their clips.",
+          "released_at": "2026-11-26T17:40:39Z",
+          "built_at": "2026-11-26T17:44:34Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72783261",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "weather": {
       "name": "Weather",
       "description": "Weather for any location (now, 24 hours, 7 days, air quality, alerts)",
