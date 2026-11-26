@@ -2213,6 +2213,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b9",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:5aaacaadd82fa979347f5d93495a9b0eeb42dd844888034976ba9272bb9596db",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45903547289.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b9/bdh_app_frame-1.0.0b9-py3-none-any.whl",
+          "sha256": "a5cdae4178fae1e135b585a441db9ea008b6299d17cd172234546dacd5faf502",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Frame 1.0.0b9: save the TV's new token; respect photos deleted on the TV (#9)\n\n- The TV can issue a new token after Allow; FrameClient notices it and the\n  worker saves it, so the TV stops asking every time Start slideshow is pressed.\n- A Frame photo deleted on a TV stays off that TV (still on the others) instead\n  of being re-uploaded. If every Frame photo vanishes at once (TV reset), they go back.",
+          "released_at": "2026-11-26T22:14:39Z",
+          "built_at": "2026-11-26T22:16:22Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72860140",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b8",
           "kind": "image",
           "channel": "beta",
