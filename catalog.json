@@ -2213,6 +2213,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b7",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:6d3cc71c3e53cef50e8c3378b8a1cfd91e87942ce2d2ca28fd5ac16ab2489d22",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45900340846.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b7/bdh_app_frame-1.0.0b7-py3-none-any.whl",
+          "sha256": "6671d3d3b77630b46e433a4e91e73a3e84bd75d17e67e3894db79e88e28b0fa9",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "b7: keep TV setup off the tile (#7)\n\nThe homepage tile no longer says 'A TV needs pairing' or 'No TVs added';\nthat belongs on the admin TVs page. Version 1.0.0b7.",
+          "released_at": "2026-11-26T21:45:42Z",
+          "built_at": "2026-11-26T21:47:21Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72853920",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b6",
           "kind": "image",
           "channel": "beta",
