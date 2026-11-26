@@ -1424,9 +1424,50 @@
     "device_control": {
       "name": "Controls",
       "description": "Lodge device controls (scenes, lights, blinds) via Home Assistant",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.3.0b1/device_control/static/device_control/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.4.0b1/device_control/static/device_control/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-device-control",
       "versions": [
+        {
+          "version": "2.4.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-device_control@sha256:dc07d863ef1f54a8f66913f16d8447b5cd6190c4081aedc23553734f54527ff6",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45905767497.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-device-control/releases/download/v2.4.0b1/bdh_app_device_control-2.4.0b1-py3-none-any.whl",
+          "sha256": "e6399bbfb6ae5bf85e9679db6140de95213a5aa31b695f6bb2b54e266dc5302d",
+          "permissions": [
+            "ha.call:cover.close_cover",
+            "ha.call:cover.open_cover",
+            "ha.call:cover.set_cover_position",
+            "ha.call:cover.stop_cover",
+            "ha.call:light.toggle",
+            "ha.call:light.turn_off",
+            "ha.call:light.turn_on",
+            "ha.call:scene.turn_on",
+            "ha.call:switch.toggle",
+            "ha.call:switch.turn_off",
+            "ha.call:switch.turn_on",
+            "ha.read:cover.*",
+            "ha.read:light.*",
+            "ha.read:scene.*",
+            "ha.read:switch.*"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant tools for the blinds: list_blinds and set_blinds (2.4.0b1) (#16)\n\nlist_blinds reports each Shades-tab blind by floor (open/closed/% open/moving);\nset_blinds opens, closes, stops or positions blinds named loosely: a blind,\nroom, floor, 'great room', 'all', or several. Request and names are normalised\nthe same way so device words on either side never stop a match.",
+          "released_at": "2026-11-26T22:22:42Z",
+          "built_at": "2026-11-26T22:36:42Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72865350",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.3.0b1",
           "kind": "image",
