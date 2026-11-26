@@ -1768,6 +1768,31 @@
       "repo": "blackdiamondhub/bdh-app-fireplace",
       "versions": [
         {
+          "version": "1.2.0b3",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-fireplace@sha256:929298dd88d804261e1fac3ff6485802b9ab9f803ede4d22e56585e066830ebc",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45896566799.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-fireplace/releases/download/v1.2.0b3/bdh_app_fireplace-1.2.0b3-py3-none-any.whl",
+          "sha256": "16ea18856205687d5ac776466c93cca54c202400f20d4a66b9a951f8937fb919",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant: let the model map loose fireplace names and ask when unsure (1.2.0b3) (#6)",
+          "released_at": "2026-11-26T21:12:26Z",
+          "built_at": "2026-11-26T21:14:25Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72844847",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.2.0b1",
           "kind": "image",
           "channel": "beta",
