@@ -1727,6 +1727,31 @@
       "repo": "blackdiamondhub/bdh-app-fireplace",
       "versions": [
         {
+          "version": "1.2.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-fireplace@sha256:113deb7fa0c6d3d1bd7ecb41bb88867fc92609a6346e066c8c9a4cf268a39e2f",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45887788462.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-fireplace/releases/download/v1.2.0b1/bdh_app_fireplace-1.2.0b1-py3-none-any.whl",
+          "sha256": "439c16e2b1e4b3c43bdf49368f26d0d0712411531cc57e80f1ca10d211b6d292",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant tools: fireplace status and controls (1.2.0b1) (#4)\n\nget_status (read-only), set_power, set_heat, set_flames, set_ember_bed,\nset_top_light, apply_preset and save_preset for the hub's voice/chat\nassistant. Every mode gets them, like the page; saving follows the page\n(owners save house presets, everyone else guest presets). Needs bdh-sdk 0.46.",
+          "released_at": "2026-11-26T19:57:39Z",
+          "built_at": "2026-11-26T20:01:41Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72824795",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.1.0b1",
           "kind": "image",
           "channel": "beta",
