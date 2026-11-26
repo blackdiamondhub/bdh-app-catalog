@@ -3825,9 +3825,38 @@
     "speakers": {
       "name": "Speakers",
       "description": "Speaker grouping, volume and playback control for Sonos and Home Assistant media players",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-speakers/v3.2.0b1/speakers/static/speakers/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-speakers/v3.2.0b2/speakers/static/speakers/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-speakers",
       "versions": [
+        {
+          "version": "3.2.0b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-speakers@sha256:83614fa2fce84e04daff7f9cd31d5c1fe43b87108d0ebfa3b8a77b3dfa60c1fb",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:ffa26cde9e36f772fac9d4ffffc2be58289516fbc58b10a9ff00ba1c410d5957",
+          "build": "gh-45867560956.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-speakers/releases/download/v3.2.0b2/bdh_app_speakers-3.2.0b2-py3-none-any.whl",
+          "sha256": "1b33fbef372fcef06029ddf9f0a8f4073653047e1738c265ca6406234529de88",
+          "permissions": [
+            "ha.call:media_player.*",
+            "ha.read:media_player.*",
+            "media"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Ignore a home theatre's sub and surrounds as group members (3.2.0b2) (#17)\n\nsoco lists bonded satellites (surrounds, sub) in group.members, so the app\nshowed Living Room and Office as grouped, ungroup tried to unjoin the\nsatellites (Sonos rejects it), ungroup_all could abort, and a soundbar\njoining another group delegated coordination to its own sub. Filter by\nis_visible everywhere members are read.",
+          "released_at": "2026-11-26T16:52:09Z",
+          "built_at": "2026-11-26T17:26:19Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72776691",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "3.2.0b1",
           "kind": "image",
