@@ -2116,6 +2116,40 @@
         }
       ]
     },
+    "frame": {
+      "name": "Frame",
+      "description": "Family and guest photos on Samsung Frame TVs",
+      "repo": "blackdiamondhub/bdh-app-frame",
+      "versions": [
+        {
+          "version": "1.0.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:404310535fc28a237a0f8c1580c933b695887de484a953800aa0a98f2ab0f9e6",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:8e7cb442ba54c4b8a54d88c038b856dc2efad274f3915a557c5c4691eb4d454a",
+          "build": "gh-45882130974.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b1/bdh_app_frame-1.0.0b1-py3-none-any.whl",
+          "sha256": "1fb55b8420b97d1f7147dfe372bd7d79f0130a346ab74a7a02fb1c10d790a756",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Frame app 1.0.0b1: family photos on Frame TVs, guest uploads during stays (#1)",
+          "released_at": "2026-11-26T18:45:57Z",
+          "built_at": "2026-11-26T19:15:50Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72810344",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "gemstone": {
       "name": "Gemstone",
       "description": "Play, design and set up Gemstone Lights",
