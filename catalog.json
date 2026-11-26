@@ -4995,6 +4995,33 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.2.0b6",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:64b1083fd41a9e9d2f030e53cbeae22ae29c5cce6fb0712f231c16b835cce001",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45911294623.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b6/bdh_app_voice-0.2.0b6-py3-none-any.whl",
+          "sha256": "0de2d994efa213b5dd3f35869dbe0aed1e19e2277d13749fc41e4e64278d1fe9",
+          "permissions": [
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Keep command replies short: act without narrating, confirm briefly (0.2.0b6) (#6)\n\nGuests found the assistant too chatty for commands (e.g. saying it would check\nwhether the blinds were open before closing them). The instructions now say to\ncall the tool straight away and confirm in a few words.",
+          "released_at": "2026-11-26T23:22:35Z",
+          "built_at": "2026-11-26T23:32:10Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72876438",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b5",
           "kind": "image",
           "channel": "beta",
