@@ -1424,9 +1424,50 @@
     "device_control": {
       "name": "Controls",
       "description": "Lodge device controls (scenes, lights, blinds) via Home Assistant",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.2.0b1/device_control/static/device_control/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.3.0b1/device_control/static/device_control/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-device-control",
       "versions": [
+        {
+          "version": "2.3.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-device_control@sha256:121c43e228ac63e3cce31e71c3db49ce600bd06d6fd6f33a1783193b71cef5cd",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45887788462.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-device-control/releases/download/v2.3.0b1/bdh_app_device_control-2.3.0b1-py3-none-any.whl",
+          "sha256": "7f2d73d32f25bad3a63577f08ac0a616b83433244ed75b9ba4dfce6ec7b365b5",
+          "permissions": [
+            "ha.call:cover.close_cover",
+            "ha.call:cover.open_cover",
+            "ha.call:cover.set_cover_position",
+            "ha.call:cover.stop_cover",
+            "ha.call:light.toggle",
+            "ha.call:light.turn_off",
+            "ha.call:light.turn_on",
+            "ha.call:scene.turn_on",
+            "ha.call:switch.toggle",
+            "ha.call:switch.turn_off",
+            "ha.call:switch.turn_on",
+            "ha.read:cover.*",
+            "ha.read:light.*",
+            "ha.read:scene.*",
+            "ha.read:switch.*"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant tools: list and activate scenes (2.3.0b1) (#15)\n\nlist_scenes (read-only) and activate_scene for the hub's voice/chat\nassistant, offered in every mode like the homepage scene shortcuts and\nlimited to the scenes the \"Scenes to show\" setting allows. Needs\nbdh-sdk 0.46.",
+          "released_at": "2026-11-26T19:57:36Z",
+          "built_at": "2026-11-26T20:01:38Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72824787",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.2.0b1",
           "kind": "image",
