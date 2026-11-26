@@ -2188,6 +2188,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b5",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:21a6e69d9b425e14cd3b8450e49c222a4741a2546751f8809b1f208e3c309936",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45895292884.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b5/bdh_app_frame-1.0.0b5-py3-none-any.whl",
+          "sha256": "8f81a9c817cb13da076d33122b3db13a1e3c42c1689ffaedb547ac77cdbf1273",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "1.0.0b5: hide unpaired TVs from the app (#5)\n\n* Only show paired TVs in the app\n\nUnpaired TVs stay in admin Settings and keep getting pairing prompts, but\naren't listed or selectable in the app until someone presses Allow.\n\n\n* Test: TVs with the power cut between stays\n\n\n---------",
+          "released_at": "2026-11-26T21:01:52Z",
+          "built_at": "2026-11-26T21:03:31Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72841930",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b4",
           "kind": "image",
           "channel": "beta",
