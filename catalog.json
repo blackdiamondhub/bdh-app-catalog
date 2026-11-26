@@ -4793,6 +4793,33 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.2.0b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:11947557e6ce8838cd8bb7d68a176d4a7db51bc421538313263b662f3949a61e",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45896566799.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b2/bdh_app_voice-0.2.0b2-py3-none-any.whl",
+          "sha256": "c1ad9efd77f18f9316d781455d46f5249cabfde72ba154a0f5d8ae31ab577946",
+          "permissions": [
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant: ask when a request is ambiguous; know which room the screen is in (0.2.0b2) (#2)",
+          "released_at": "2026-11-26T21:10:50Z",
+          "built_at": "2026-11-26T21:14:27Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72844864",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b1",
           "kind": "image",
           "channel": "beta",
