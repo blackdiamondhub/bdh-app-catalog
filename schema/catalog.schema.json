@@ -158,7 +158,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^(ha\\.read:[a-z0-9_*]+(\\.[a-z0-9_*]+)?|ha\\.call:[a-z0-9_]+\\.([a-z0-9_]+|\\*)|events\\.(publish|subscribe):[A-Za-z0-9_./*#+-]+|alerts|speakers|media|displays\\.read|ha\\.ws)$"
+            "pattern": "^(ha\\.read:[a-z0-9_*]+(\\.[a-z0-9_*]+)?|ha\\.call:[a-z0-9_]+\\.([a-z0-9_]+|\\*)|events\\.(publish|subscribe):[A-Za-z0-9_./*#+-]+|alerts|speakers|media|displays\\.read|stays\\.read|ha\\.ws)$"
           }
         },
         "network": {
@@ -311,7 +311,7 @@
           "uniqueItems": true,
           "items": {
             "type": "string",
-            "pattern": "^(ha\\.read:[a-z0-9_*]+(\\.[a-z0-9_*]+)?|ha\\.call:[a-z0-9_]+\\.([a-z0-9_]+|\\*)|events\\.(publish|subscribe):[A-Za-z0-9_./*#+-]+|alerts|speakers|media|displays\\.read|ha\\.ws)$"
+            "pattern": "^(ha\\.read:[a-z0-9_*]+(\\.[a-z0-9_*]+)?|ha\\.call:[a-z0-9_]+\\.([a-z0-9_]+|\\*)|events\\.(publish|subscribe):[A-Za-z0-9_./*#+-]+|alerts|speakers|media|displays\\.read|stays\\.read|ha\\.ws)$"
           }
         },
         "network": {
