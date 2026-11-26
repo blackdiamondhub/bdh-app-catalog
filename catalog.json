@@ -4490,6 +4490,34 @@
       "repo": "blackdiamondhub/bdh-app-timers",
       "versions": [
         {
+          "version": "2.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-timers@sha256:45481ad5318e79d3548b740a21f181ece951294907996904bccc73a2a389a89e",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-45897391734.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-timers/releases/download/v2.1.0b1/bdh_app_timers-2.1.0b1-py3-none-any.whl",
+          "sha256": "03b6b201d88efec890b4eac26b9ff9f6ac0a1d6352629cbc77094aa71003ddf7",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant tools: list, start, pause/resume, add time, cancel and stop timers (2.1.0b1) (#14)\n\nlist_timers (read-only), start_timer (duration or ends_at alarm), start_preset,\npause_timer, resume_timer, add_time (negative takes time off; snoozes a ringing\ntimer), cancel_timer and stop_alarm for the hub's voice/chat assistant, in every\nmode. Timer names are free text matched loosely on both sides. Needs bdh-sdk 0.46.",
+          "released_at": "2026-11-26T21:18:42Z",
+          "built_at": "2026-11-26T21:21:21Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/72846360",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "2.0.6b2",
           "kind": "image",
           "channel": "beta",
