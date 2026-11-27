@@ -1424,9 +1424,50 @@
     "device_control": {
       "name": "Controls",
       "description": "Lodge device controls (scenes, lights, blinds) via Home Assistant",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.4.0b1/device_control/static/device_control/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.5.0b1/device_control/static/device_control/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-device-control",
       "versions": [
+        {
+          "version": "2.5.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-device_control@sha256:4c7027855f99f5e51de809eaec5db0e0bccfd06c1adcbcc9c80547177fd5abfc",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-46043255587.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-device-control/releases/download/v2.5.0b1/bdh_app_device_control-2.5.0b1-py3-none-any.whl",
+          "sha256": "8b3e332d807ed341e5a4a4608553d4fd098b2e3a3cbf652a07f7b6b08cc7826c",
+          "permissions": [
+            "ha.call:cover.close_cover",
+            "ha.call:cover.open_cover",
+            "ha.call:cover.set_cover_position",
+            "ha.call:cover.stop_cover",
+            "ha.call:light.toggle",
+            "ha.call:light.turn_off",
+            "ha.call:light.turn_on",
+            "ha.call:scene.turn_on",
+            "ha.call:switch.toggle",
+            "ha.call:switch.turn_off",
+            "ha.call:switch.turn_on",
+            "ha.read:cover.*",
+            "ha.read:light.*",
+            "ha.read:scene.*",
+            "ha.read:switch.*"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant tools for the lights: list_lights and set_lights (2.5.0b1) (#17)\n\nGeneralise the blinds' loose-name matching into matching.Catalog (shared by\nblinds and lights): rooms, room-on-a-floor, floor aliases, ambiguity.\nLights are labelled '<room> <name>'; a room targets all its lights. The\nscene tool descriptions steer the model to set_lights for switching/dimming.",
+          "released_at": "2026-11-27T17:30:10Z",
+          "built_at": "2026-11-27T17:38:20Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73221990",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.4.0b1",
           "kind": "image",
