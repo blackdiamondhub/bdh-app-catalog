@@ -5333,6 +5333,34 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.2.0b11",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:22c18963d768da7e299051ddf862f9bbab9428e233955aa6fc2da6bfb50df61f",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46054034023.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b11/bdh_app_voice-0.2.0b11-py3-none-any.whl",
+          "sha256": "8db85935430e1e55dec073fc9261a322e80061e976a15be7c276ae33136cff73",
+          "permissions": [
+            "stays.read",
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Wake-word clips page: back button, tidy Download button (0.2.0b11) (#11)",
+          "released_at": "2026-11-27T18:57:27Z",
+          "built_at": "2026-11-27T19:05:33Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73245080",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b10",
           "kind": "image",
           "channel": "beta",
