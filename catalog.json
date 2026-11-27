@@ -5076,6 +5076,33 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.2.0b9",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:bc5aebfca8d993bc6bc2c205836f56749893ee4dbdbdfffdf2e0e39cdfad863c",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-46042742663.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b9/bdh_app_voice-0.2.0b9-py3-none-any.whl",
+          "sha256": "cf46ae253732a4934f23819adf2e4399fce1767ae14a4ab696e8aa060e4ad8af",
+          "permissions": [
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Goodbye is just 'Bye!', never narrate instructions (0.2.0b9) (#9)",
+          "released_at": "2026-11-27T17:26:49Z",
+          "built_at": "2026-11-27T17:34:44Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73221120",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b8",
           "kind": "image",
           "channel": "beta",
