@@ -3558,9 +3558,37 @@
     "lift_status": {
       "name": "Lift Status",
       "description": "Sun Peaks lift and trail status",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-lift-status/v2.0.2/lift_status/static/lift_status/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-lift-status/v2.0.3b1/lift_status/static/lift_status/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-lift-status",
       "versions": [
+        {
+          "version": "2.0.3b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-lift_status@sha256:1d4266005a0a83facc30d258c5544f957f2cbf56e8e0ab14ac254fc87f1e713e",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46053118780.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-lift-status/releases/download/v2.0.3b1/bdh_app_lift_status-2.0.3b1-py3-none-any.whl",
+          "sha256": "c116ae84f01d1a9a293b076e467403ced8361ded604d6bda7b2bb383898d59c7",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "season",
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Only show real Operations Update posts (#11)\n\nThe standing 'Real-Time Lift and Alpine Trail Grooming Updates' heading\nmatched the 'update' check, so on days without a dated post the card\nshowed site boilerplate and the grooming-PDF archive links. Match only\nheadings starting with 'Operations Update'.",
+          "released_at": "2026-11-27T18:55:21Z",
+          "built_at": "2026-11-27T18:58:21Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73243625",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.2",
           "kind": "image",
