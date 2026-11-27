@@ -3883,9 +3883,34 @@
     "restaurants": {
       "name": "Restaurants",
       "description": "Sun Peaks restaurants with Google ratings, hours, photos and a guest shortlist",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-restaurants/v2.0.2b1/restaurants/static/restaurants/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-restaurants/v2.1.0b1/restaurants/static/restaurants/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-restaurants",
       "versions": [
+        {
+          "version": "2.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-restaurants@sha256:32d574aee8942cf77d13c0aa03bf92cf014ca9234d14b2d4ff11479cc690ed0d",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46064527881.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-restaurants/releases/download/v2.1.0b1/bdh_app_restaurants-2.1.0b1-py3-none-any.whl",
+          "sha256": "b7c3261123949b6aa68aed419c58ac61c772ca2a03fa7613772cbc569169d8ae",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant tool: find_restaurants (2.1.0b1) (#19)\n\nOne read-only tool for the hub assistant in every mode: one place by loose\nname (status, today's hours, phone, price, offers) or a short list by food\nand time, with hours across midnight and seasonal closures handled.",
+          "released_at": "2026-11-27T20:26:41Z",
+          "built_at": "2026-11-27T20:35:32Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73268851",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.2b1",
           "kind": "image",
