@@ -5254,6 +5254,34 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.2.0b10",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:792b315aa0f8a8822c75f6246c77687c0710cec72b26829009cb829747ec5a6a",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46051086997.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b10/bdh_app_voice-0.2.0b10-py3-none-any.whl",
+          "sha256": "87173c8a8def3164c41394a447c88d10541b4527567b5ac07292abc702d38b8a",
+          "permissions": [
+            "stays.read",
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Collect wake-word training clips with a review page (0.2.0b10) (#10)\n\nSaves 3 s (2 s before / 1 s after the peak) 16 kHz WAV clips of every wake\nand near-miss at or above a collect threshold (30 %), on a background writer\nbehind a bounded queue. A SQLite index joins each wake's conversation outcome\nand suggests a label; admins review, label and download the dataset as a zip\n(positive/negative/unlabelled + metadata.jsonl) on Settings > Wake-word clips.\nOff during guest stays by default (stays.read); capped at 3000 clips, oldest\nunlabelled first. Clips never leave the hub.",
+          "released_at": "2026-11-27T18:32:51Z",
+          "built_at": "2026-11-27T18:40:58Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73239097",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b9",
           "kind": "image",
           "channel": "beta",
