@@ -5661,9 +5661,34 @@
     "wifi": {
       "name": "WiFi",
       "description": "Wi-Fi QR codes for guests",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-wifi/v2.2.2/wifi/static/wifi/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-wifi/v2.2.3b1/wifi/static/wifi/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-wifi",
       "versions": [
+        {
+          "version": "2.2.3b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-wifi@sha256:1a30777e5ac614492f8728ce8d655a502c13d4914d2823b7fe1f82f468ca161d",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46052017605.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-wifi/releases/download/v2.2.3b1/bdh_app_wifi-2.2.3b1-py3-none-any.whl",
+          "sha256": "78e4a9e11a3f668236b76e83bc53571d8af58df23ad202e9568346662fae026e",
+          "permissions": [],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Use in-page confirm instead of native dialogs (#14)\n\nThe hub iframe sandbox has no allow-modals, so confirm()/alert() are\nsilently ignored and Remove buttons never submit. Use bdh-sdk 0.48's\ndata-bdh-confirm / bdh.alert.",
+          "released_at": "2026-11-27T18:46:54Z",
+          "built_at": "2026-11-27T18:48:31Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73241332",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.2.2",
           "kind": "image",
