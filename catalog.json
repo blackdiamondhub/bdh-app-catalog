@@ -4011,9 +4011,37 @@
     "shuttle": {
       "name": "Shuttle",
       "description": "Sun Peaks in-resort shuttle times, live bus location and spoken reminders",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-shuttle/v2.1.0b6/shuttle/static/shuttle/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-shuttle/v2.2.0b1/shuttle/static/shuttle/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-shuttle",
       "versions": [
+        {
+          "version": "2.2.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-shuttle@sha256:bf03acf6746b2c0e994426ffb79b7b2564b3da0bea03abbfedfbd2d19f162ada",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46063172395.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-shuttle/releases/download/v2.2.0b1/bdh_app_shuttle-2.2.0b1-py3-none-any.whl",
+          "sha256": "c75332e043ece4ad28269b85be08c9d42eb6f7b32eee34bc3b596b0acb65dcc3",
+          "permissions": [
+            "alerts",
+            "speakers"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant tool: next_shuttle (2.2.0b1) (#14)\n\nRead-only timetable lookup for the hub's assistant in every mode: the next buses from E6 Altitude to the Village (or back), first and last bus of the day, tomorrow's times, and off-season handling, in lodge time.",
+          "released_at": "2026-11-27T20:17:48Z",
+          "built_at": "2026-11-27T20:23:43Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73265763",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.1.0b6",
           "kind": "image",
