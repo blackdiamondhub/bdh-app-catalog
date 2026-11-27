@@ -2322,6 +2322,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b13",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:b51ae13967e922cfdb809036f926ded83a2fb9ef8d5b015f210ebe295ba68f4b",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-46045645640.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b13/bdh_app_frame-1.0.0b13-py3-none-any.whl",
+          "sha256": "60bca0bbba8234589de81a5533a8284f25546e23d262f17662789cb02fcab532",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Use in-page confirm sheets instead of window.confirm (b13) (#13)\n\nThe hub iframe sandbox has no allow-modals, so window.confirm() returned\nfalse silently and bulk delete / End guest stay did nothing. Both now use\nthe app's own modal sheet. Adds a test that frame's static JS has no\nnative confirm/alert/prompt.",
+          "released_at": "2026-11-27T17:56:04Z",
+          "built_at": "2026-11-27T17:57:30Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73227340",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b12",
           "kind": "image",
           "channel": "beta",
