@@ -2761,6 +2761,31 @@
       "repo": "blackdiamondhub/bdh-app-gemstone",
       "versions": [
         {
+          "version": "0.2.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-gemstone@sha256:f3856fc73aad1629bfae5c148e1bca515eac6e018832a31dba285da6ea456657",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46075881274.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-gemstone/releases/download/v0.2.0b1/bdh_app_gemstone-0.2.0b1-py3-none-any.whl",
+          "sha256": "8eb8124f151ed8b1a4f6d30d7e1a2f866e84884a8c26d768bddfac79610efd97",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Add assistant tools: lights_status and set_lights (0.2.0b1) (#27)\n\nVoice-assistant tools for zone/pattern/colour/brightness/on-off with ASR-tolerant matching.",
+          "released_at": "2026-11-27T22:14:31Z",
+          "built_at": "2026-11-27T22:20:35Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73294494",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b24",
           "kind": "image",
           "channel": "beta",
