@@ -2349,6 +2349,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b17",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:f94771713e6efffc554aebbacf314ff430bb14e722490184f59c4c03391cb6d8",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46070342724.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b17/bdh_app_frame-1.0.0b17-py3-none-any.whl",
+          "sha256": "0f236a3e2b3cf18860cedc9a3f5e443cbbc1412dc116242b65bdc3cc14c41f8e",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "1.0.0b17: colored icon, upload progress, TVs on while syncing (#17)\n\n* Colored hub tile icon matching the other apps\n\n\n* Show TVs as on while photos upload, with progress; skip photos deleted mid-sync\n\nA first sync can take minutes; the TV stayed 'Off' until it finished.\n\n\n---------",
+          "released_at": "2026-11-27T21:06:11Z",
+          "built_at": "2026-11-27T21:28:02Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73282540",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b16",
           "kind": "image",
           "channel": "beta",
