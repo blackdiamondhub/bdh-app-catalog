@@ -5906,9 +5906,34 @@
     "wifi": {
       "name": "WiFi",
       "description": "Wi-Fi QR codes for guests",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-wifi/v2.2.3b1/wifi/static/wifi/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-wifi/v2.3.0b1/wifi/static/wifi/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-wifi",
       "versions": [
+        {
+          "version": "2.3.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-wifi@sha256:065ae9082f3a75eed210a6405c3e15dee2318f7bfc92d54b9c1a38ecbcac49bf",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46063177307.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-wifi/releases/download/v2.3.0b1/bdh_app_wifi-2.3.0b1-py3-none-any.whl",
+          "sha256": "a2b95f400e42b4696b4e8a3dac354fa129125ddf6fd87de0319239aa03beb4ef",
+          "permissions": [],
+          "network": "none",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant tool: wifi_info (2.3.0b1) (#15)\n\nRead-only guest WiFi lookup for the hub's assistant in every mode: name and password of the networks shown to everyone only; admins-only networks never appear in any mode.",
+          "released_at": "2026-11-27T20:18:08Z",
+          "built_at": "2026-11-27T20:25:34Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73266207",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.2.3b1",
           "kind": "image",
