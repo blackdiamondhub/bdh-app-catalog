@@ -3313,9 +3313,34 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-calendar/v2.2.0/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-calendar/v2.2.1b1/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.2.1b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-hub_calendar@sha256:fac434b0433cf30a52665cbd447d34545317a8454d6543d2af98ef01e2a45297",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46053772362.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-calendar/releases/download/v2.2.1b1/bdh_app_calendar-2.2.1b1-py3-none-any.whl",
+          "sha256": "b69234d7821f3d5e1b8dc680aad34277413f734a905669d8531fafaad8622fd5",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Use in-page confirm instead of native dialogs (#17)\n\nThe hub iframe sandbox has no allow-modals, so confirm()/alert() are\nsilently ignored and Remove buttons never submit. Use bdh-sdk 0.48's\ndata-bdh-confirm / bdh.alert.",
+          "released_at": "2026-11-27T18:39:15Z",
+          "built_at": "2026-11-27T19:03:19Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73244578",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.2.0",
           "kind": "image",
