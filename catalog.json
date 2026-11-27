@@ -4837,6 +4837,33 @@
       "repo": "blackdiamondhub/bdh-app-sunpeaks-events",
       "versions": [
         {
+          "version": "1.2.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-sunpeaks_events@sha256:9322b0cb768637731382c2d6912132c0e1b81ae1973586cf25021d9258f61902",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46064999041.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-sunpeaks-events/releases/download/v1.2.0b1/bdh_app_sunpeaks_events-1.2.0b1-py3-none-any.whl",
+          "sha256": "685e184c3083a61348bf597ff373208caf3ab04d1d93391b0d0c3e2258e5a09a",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 160,
+          "companions": [],
+          "provides": [
+            "season"
+          ],
+          "custom_base": false,
+          "changelog": "Assistant tool: events (1.2.0b1) (#5)\n\nOne read-only tool for the hub assistant in every mode: what's on today,\ntonight, tomorrow, a weekday, the weekend, a date or the next few days,\noptionally matching words, from a compact copy saved by each refresh.",
+          "released_at": "2026-11-27T20:36:23Z",
+          "built_at": "2026-11-27T20:39:48Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73269919",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.1.0b1",
           "kind": "image",
           "channel": "beta",
