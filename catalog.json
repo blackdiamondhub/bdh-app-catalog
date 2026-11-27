@@ -5086,6 +5086,35 @@
       "repo": "blackdiamondhub/bdh-app-unifi-screens",
       "versions": [
         {
+          "version": "0.1.0b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-unifi_screens@sha256:5fea1de1649d7489183f357948a14abe2ae05810d5ac4bdc8556e6671ccb9b97",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46051193443.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-unifi-screens/releases/download/v0.1.0b2/bdh_app_unifi_screens-0.1.0b2-py3-none-any.whl",
+          "sha256": "e7d945e0fa15c4d994d44bdda84748fa43155ee85474028462af942843b194c5",
+          "permissions": [
+            "alerts",
+            "displays.read",
+            "ha.call:notify.*"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Use in-page confirm instead of native dialogs (#2)\n\nThe hub iframe sandbox has no allow-modals, so confirm()/alert() are\nsilently ignored and Remove buttons never submit. Use bdh-sdk 0.48's\ndata-bdh-confirm / bdh.alert.",
+          "released_at": "2026-11-27T18:39:47Z",
+          "built_at": "2026-11-27T18:42:33Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73239612",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.1.0b1",
           "kind": "image",
           "channel": "beta",
