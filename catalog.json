@@ -2322,6 +2322,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b15",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:9ecd348932c702ae8530f17399df95eb1a2958361d453d525f5f641687a3fcc6",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46049839526.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b15/bdh_app_frame-1.0.0b15-py3-none-any.whl",
+          "sha256": "ba489dba1ddc0b3d5a18ea9013d18b42b7a78427b3113ee63ba362bc871c08f8",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Photo sheet on '…', dialogs open beside what you tapped; 1.0.0b15 (#15)\n\n- Admin '…' on a photo opens a sheet: Show on (per-TV chips) and Delete.\n- The hub sizes its iframe to the whole page, so centred dialogs could open\n  off-screen; modal(html, near) now places them beside the button or tile.\n- Revert b14's delete-once-deleted-on-every-TV: deleting on a TV only takes\n  it off that TV.\n- Test that every data-act/data-* button in the static JS is handled.",
+          "released_at": "2026-11-27T18:29:06Z",
+          "built_at": "2026-11-27T18:30:47Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73236753",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b14",
           "kind": "image",
           "channel": "beta",
