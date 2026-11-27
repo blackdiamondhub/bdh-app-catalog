@@ -5689,9 +5689,36 @@
     "weather": {
       "name": "Weather",
       "description": "Weather for any location (now, 24 hours, 7 days, air quality, alerts)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-weather/v2.0.2/weather/static/weather/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-weather/v2.1.0b1/weather/static/weather/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-weather",
       "versions": [
+        {
+          "version": "2.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-weather@sha256:35c584965a0440429733b8554b62b59f17a5930f3a76e33a5b478b1cf51dec7f",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46056471276.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-weather/releases/download/v2.1.0b1/bdh_app_weather-2.1.0b1-py3-none-any.whl",
+          "sha256": "d68e8a6b00b5a1d790edafa50183cbc37ad7f496baf9de594f36d6dfeec19e22",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Assistant tools: current_weather and weather_forecast (2.1.0b1) (#14)\n\nRead-only lookups for the hub's assistant in every mode: the weather now,\nand a forecast for a day, part of a day (tonight, tomorrow morning...),\nthe weekend or the next 1-7 days, as compact speech-ready strings.\nRequires bdh-sdk 0.46 (tools hooks); hourly forecast now includes\napparent temperature for feels-like.",
+          "released_at": "2026-11-27T19:17:50Z",
+          "built_at": "2026-11-27T19:25:46Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73250720",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.2",
           "kind": "image",
