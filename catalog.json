@@ -4598,9 +4598,38 @@
     "speakers": {
       "name": "Speakers",
       "description": "Speaker grouping, volume and playback control for Sonos and Home Assistant media players",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-speakers/v3.3.0b1/speakers/static/speakers/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-speakers/v3.3.0b2/speakers/static/speakers/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-speakers",
       "versions": [
+        {
+          "version": "3.3.0b2",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-speakers@sha256:4ed83aa5a562d794d41d416394f95eebb276d667fd8de78be82d9f85417716d9",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46068138663.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-speakers/releases/download/v3.3.0b2/bdh_app_speakers-3.3.0b2-py3-none-any.whl",
+          "sha256": "164132ce9fa52ea74ca7833aa9959d7b210d626c7d58685403c260d93f5406ab",
+          "permissions": [
+            "ha.call:media_player.*",
+            "ha.read:media_player.*",
+            "media"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant: skipping on an idle room says it is not playing (3.3.0b2) (#19)",
+          "released_at": "2026-11-27T21:06:24Z",
+          "built_at": "2026-11-27T21:08:26Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73276978",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "3.3.0b1",
           "kind": "image",
