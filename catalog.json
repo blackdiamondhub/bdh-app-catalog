@@ -2322,6 +2322,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b14",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:6d33867dd053b15e3751c0c1bd1b9291cc88f107ab7e22804f8a94801fc130b3",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-46047048776.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b14/bdh_app_frame-1.0.0b14-py3-none-any.whl",
+          "sha256": "285123d88cbab9c558f2105887f3a22c3c43531bf12112f197ad3f7f3b17622f",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Delete a photo once it's deleted on every TV; show tiles framed like the TV (b14) (#14)\n\n- A photo deleted with the remote on one TV still only comes off that TV;\n  once it has been deleted on every TV it was on, Frame deletes it.\n- Photo tiles are 16:9 with the whole photo and blurred sides, as the TVs\n  show it (images.for_tv), instead of a cropped cover.",
+          "released_at": "2026-11-27T18:06:54Z",
+          "built_at": "2026-11-27T18:08:50Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73230827",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b13",
           "kind": "image",
           "channel": "beta",
