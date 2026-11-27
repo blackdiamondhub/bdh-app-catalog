@@ -3610,9 +3610,37 @@
     "lift_status": {
       "name": "Lift Status",
       "description": "Sun Peaks lift and trail status",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-lift-status/v2.0.3b1/lift_status/static/lift_status/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-lift-status/v2.1.0b1/lift_status/static/lift_status/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-lift-status",
       "versions": [
+        {
+          "version": "2.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-lift_status@sha256:7ea36deec93d2a6b7e987c2f904f08fbef4920bec0c7877d4ef0d008d6f14e16",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46059449486.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-lift-status/releases/download/v2.1.0b1/bdh_app_lift_status-2.1.0b1-py3-none-any.whl",
+          "sha256": "bdbcaa94b317dc7f5086232993d4b5519636be5381ead171f4caab5c952fba8f",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "season",
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Assistant tools: lift_status and run_status (2.1.0b1) (#12)\n\nRead-only lift and run lookups for the hub's assistant in every mode, with loose (ASR-tolerant) lift/run name matching, today's hours in lodge time, and off-season/unavailable handling.",
+          "released_at": "2026-11-27T19:44:08Z",
+          "built_at": "2026-11-27T19:51:25Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73257781",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.0.3b1",
           "kind": "image",
