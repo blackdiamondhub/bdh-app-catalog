@@ -5469,6 +5469,34 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.2.0b12",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:56625091e36dc16ad6ddb07a0aa794869b86471fafbfadafcad567c3239e80fa",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46064536948.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b12/bdh_app_voice-0.2.0b12-py3-none-any.whl",
+          "sha256": "1a720eede598883d7d229264eaac5d0936aeb8079620c4fa7649fe87723003b4",
+          "permissions": [
+            "stays.read",
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Add the custom Hey Juniper wake word (0.2.0b12) (#12)\n\nhey_juniper_v2.onnx from blackdiamondhub/bdh-wakeword release hey_juniper-v2\n(sha256 37747486...e318). Hey Jarvis stays the default; the wake-word\nsetting's choices now come from WAKE_WORDS.",
+          "released_at": "2026-11-27T20:33:48Z",
+          "built_at": "2026-11-27T20:37:18Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73269320",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b11",
           "kind": "image",
           "channel": "beta",
