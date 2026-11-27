@@ -4251,9 +4251,36 @@
     "snow_report": {
       "name": "Mountain Conditions",
       "description": "Sun Peaks mountain conditions (snow, weather, forecast)",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-snow-report/v3.2.1b1/snow_report/static/snow_report/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-snow-report/v3.3.0b1/snow_report/static/snow_report/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-snow-report",
       "versions": [
+        {
+          "version": "3.3.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-snow_report@sha256:0fb8fce34fbf3e432fc50a80dca9b78d7f889e33efcc35d3231cba5bde04c7e4",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46059449486.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-snow-report/releases/download/v3.3.0b1/bdh_app_snow_report-3.3.0b1-py3-none-any.whl",
+          "sha256": "8eb13eded24cea8f427b884c6bcc6aadbb6a4c877824980145c6269b54884f7f",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [
+            "stats"
+          ],
+          "custom_base": false,
+          "changelog": "Assistant tool: snow_report (3.3.0b1) (#17)\n\nRead-only snow report for the hub's assistant in every mode: new snow, base, conditions, temperatures and wind up top, in hub units with lodge-time update stamp; stale note, off-season and unavailable handling.",
+          "released_at": "2026-11-27T19:44:02Z",
+          "built_at": "2026-11-27T19:51:24Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73257778",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "3.2.1b1",
           "kind": "image",
