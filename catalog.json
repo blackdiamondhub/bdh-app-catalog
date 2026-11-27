@@ -5049,6 +5049,33 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.2.0b8",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:aaff12da7eeec685cf314a041ad444640bcfce238d1d2f3a7cd64b2294bdcbc9",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-46041015023.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b8/bdh_app_voice-0.2.0b8-py3-none-any.whl",
+          "sha256": "952749cd9a6a3f6d0e0aeed58ce9e2646dcd4b5eda9ed820efcd7aaf516bad45",
+          "permissions": [
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Ignore side conversations, end on more goodbyes (0.2.0b8) (#8)",
+          "released_at": "2026-11-27T17:13:36Z",
+          "built_at": "2026-11-27T17:22:01Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73217219",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b7",
           "kind": "image",
           "channel": "beta",
