@@ -2254,6 +2254,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b11",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:7fdb9d00780342c6e132a556dba95f7c339856db34110970d2ef9d40d851841a",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:04d744bb568ca12d97587935a8d4159a94fa3965852801ffef0226acfc49f272",
+          "build": "gh-46035381647.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b11/bdh_app_frame-1.0.0b11-py3-none-any.whl",
+          "sha256": "934f6f6dc78a1ee841797c9c5221d81cb28294a63662bd91d10e39b393793b86",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Frame 1.0.0b11: frame every photo to 16:9 with blurred sides; no TV mattes (#11)\n\nSamsung's art app crashes (error 40000) when a non-16:9 photo has a matte,\nand the TV crops non-16:9 photos. Photos are now sent as 3840x2160 with the\nwhole photo centred and a blurred copy filling the sides, always matte none.\nThe matte setting is removed. Photos sent by older versions are re-sent.",
+          "released_at": "2026-11-27T16:38:33Z",
+          "built_at": "2026-11-27T16:40:29Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73203874",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b10",
           "kind": "image",
           "channel": "beta",
