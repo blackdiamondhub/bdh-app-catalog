@@ -2349,6 +2349,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b16",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:5891ce8a9894e1292f2d18243cefd40282b29efc083511274556080328398783",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46052937276.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b16/bdh_app_frame-1.0.0b16-py3-none-any.whl",
+          "sha256": "76548a94e2c5d35105578df6a65a9d2d0e23ae3c2854dd017035969165c2cf70",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Open a photo bigger, letterboxed like the TV (1.0.0b16) (#16)\n\nTap the photo in its sheet (admin ... or guest tap), or double tap/click an admin tile.\nNew image/<id>.jpg and g/<secret>/image/<id>.jpg endpoints serve the full photo with the\nsame visibility rules as the thumbnails.",
+          "released_at": "2026-11-27T18:54:31Z",
+          "built_at": "2026-11-27T18:56:28Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73243119",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b15",
           "kind": "image",
           "channel": "beta",
@@ -3286,9 +3313,34 @@
     "hub_calendar": {
       "name": "Calendar",
       "description": "A family calendar merging iCal feeds with events added on the hub",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-calendar/v2.2.0/hub_calendar/static/hub_calendar/hub/icon.svg",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-calendar/v2.2.1b1/hub_calendar/static/hub_calendar/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-calendar",
       "versions": [
+        {
+          "version": "2.2.1b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-hub_calendar@sha256:fac434b0433cf30a52665cbd447d34545317a8454d6543d2af98ef01e2a45297",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46053772362.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-calendar/releases/download/v2.2.1b1/bdh_app_calendar-2.2.1b1-py3-none-any.whl",
+          "sha256": "b69234d7821f3d5e1b8dc680aad34277413f734a905669d8531fafaad8622fd5",
+          "permissions": [],
+          "network": "outbound",
+          "lifecycle": "on_demand",
+          "memory_mb": 192,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Use in-page confirm instead of native dialogs (#17)\n\nThe hub iframe sandbox has no allow-modals, so confirm()/alert() are\nsilently ignored and Remove buttons never submit. Use bdh-sdk 0.48's\ndata-bdh-confirm / bdh.alert.",
+          "released_at": "2026-11-27T18:39:15Z",
+          "built_at": "2026-11-27T19:03:19Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73244578",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.2.0",
           "kind": "image",
@@ -5308,6 +5360,34 @@
       "description": "Wake word and voice assistant for the wall screens",
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
+        {
+          "version": "0.2.0b11",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:22c18963d768da7e299051ddf862f9bbab9428e233955aa6fc2da6bfb50df61f",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:fa6e1f6a0032f8d73b40d1f9b74fbb73ea874d09647389d29b594321421a378d",
+          "build": "gh-46054034023.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.2.0b11/bdh_app_voice-0.2.0b11-py3-none-any.whl",
+          "sha256": "8db85935430e1e55dec073fc9261a322e80061e976a15be7c276ae33136cff73",
+          "permissions": [
+            "stays.read",
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Wake-word clips page: back button, tidy Download button (0.2.0b11) (#11)",
+          "released_at": "2026-11-27T18:57:27Z",
+          "built_at": "2026-11-27T19:05:33Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73245080",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "0.2.0b10",
           "kind": "image",
