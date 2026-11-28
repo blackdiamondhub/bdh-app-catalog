@@ -5742,6 +5742,35 @@
       "repo": "blackdiamondhub/bdh-app-voice",
       "versions": [
         {
+          "version": "0.3.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-voice@sha256:883e21f778d3641302ba216d8b372a71d14416100e04593ef9f9ebecfcd14a7c",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:e2777c16c4f40c039cab9d14ed73a80c4e8dc2816cbe40c04dd1af2a10f1d231",
+          "build": "gh-46115130981.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-voice/releases/download/v0.3.0b1/bdh_app_voice-0.3.0b1-py3-none-any.whl",
+          "sha256": "90f45bd4d41bbefbf0babbf7aeb40db415921143a841dc7daea62694697ea030",
+          "permissions": [
+            "events.subscribe:sentinel/sync",
+            "stays.read",
+            "tools"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Durable conversation record for the sentinel (0.3.0b1) (#14)\n\n- voice.conversations: every conversation gets a conversation_id, turns are\n  numbered seq and stored in /data/voice/conversations.sqlite3 before being\n  published on voice/conversation (turn events + one final record with\n  completeness complete/partial/unknown and what is missing).\n- Records left open by a restart are closed as unknown; sentinel/sync replays\n  final records it missed.\n- Retention: guest-stay conversations until checkout + transcript_guest_days\n  (7), others transcript_days (30); pruned hourly.\n- No transcript text in the log while guests may be staying (length + id only).\n- end_conversation counts as a tool call; tool results (200 chars) recorded.\n- Settings -> Voice -> Conversations admin pages (list + detail).",
+          "released_at": "2026-11-28T06:01:23Z",
+          "built_at": "2026-11-28T06:08:43Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73378357",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "0.2.0b13",
           "kind": "image",
           "channel": "beta",
