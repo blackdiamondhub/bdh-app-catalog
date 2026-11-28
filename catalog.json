@@ -4221,6 +4221,44 @@
         }
       ]
     },
+    "sentinel": {
+      "name": "Sentinel",
+      "description": "Watches the voice assistant's conversations and flags misuse",
+      "repo": "blackdiamondhub/bdh-app-sentinel",
+      "versions": [
+        {
+          "version": "0.1.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-sentinel@sha256:486d74a307179120a05b068ccd2aefe5d043a33c638979c9304ee089601e82cd",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:e2777c16c4f40c039cab9d14ed73a80c4e8dc2816cbe40c04dd1af2a10f1d231",
+          "build": "gh-46115801900.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-sentinel/releases/download/v0.1.0b1/bdh_app_sentinel-0.1.0b1-py3-none-any.whl",
+          "sha256": "a59876b3b6572a47217ccd07d75ae20523393e25a8de22cf5acfb91d50eb0031",
+          "permissions": [
+            "alerts",
+            "events.subscribe:assistant/#",
+            "events.subscribe:voice/conversation",
+            "ha.call:notify.*",
+            "stays.read"
+          ],
+          "network": "outbound",
+          "lifecycle": "always",
+          "memory_mb": 128,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Sentinel 0.1.0b1: assistant safety supervisor (#1)\n\nIngests voice conversation records and hub tool-gateway events, marks\ncompleteness, runs deterministic rules on complete conversations only,\npersists findings before notifying, groups incidents with one phone push\neach, and runs an AI judge in shadow mode.",
+          "released_at": "2026-11-28T06:14:49Z",
+          "built_at": "2026-11-28T06:17:26Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73379775",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        }
+      ]
+    },
     "shuttle": {
       "name": "Shuttle",
       "description": "Sun Peaks in-resort shuttle times, live bus location and spoken reminders",
