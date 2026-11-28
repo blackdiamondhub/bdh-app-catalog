@@ -2390,6 +2390,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b19",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:397c74c78d7c92a82556d6e362ebdb36851faf1dc9393e036515bfaa4a358ac3",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:e2777c16c4f40c039cab9d14ed73a80c4e8dc2816cbe40c04dd1af2a10f1d231",
+          "build": "gh-46104373648.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b19/bdh_app_frame-1.0.0b19-py3-none-any.whl",
+          "sha256": "edc200e3fc0e092bb878f4aa94b262858d42ae3b956d82d5f7a41eab3db8489a",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Stop re-asking a TV to allow Frame every pass (1.0.0b19) (#19)\n\nA paired TV that puts its Allow prompt up never finishes the websocket\nopen, so Frame saw a timeout and retried every ~75 s, popping the\nprompt again each time. Detect it (connect-phase timeout / non-connect\nevent), show 'Press Allow on the TV', back off 30 min, and offer\n'Ask again' on the TVs page.",
+          "released_at": "2026-11-28T03:44:13Z",
+          "built_at": "2026-11-28T03:47:08Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73358571",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b18",
           "kind": "image",
           "channel": "beta",
