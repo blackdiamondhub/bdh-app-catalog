@@ -2390,6 +2390,33 @@
       "repo": "blackdiamondhub/bdh-app-frame",
       "versions": [
         {
+          "version": "1.0.0b18",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-frame@sha256:1b5bfa2969738574eff2b4283b4b437e72a1ae7de97b328f54908e08db1e3524",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:963c5fa39a53f8c8c071a8cfb5d9bcb672a359f93d2cdcb3d1bfbe93d4b5222d",
+          "build": "gh-46089274952.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-frame/releases/download/v1.0.0b18/bdh_app_frame-1.0.0b18-py3-none-any.whl",
+          "sha256": "0d839867209b3b0c3e9448f30765fdc4c44a2ee5ea99505cd7825633ddb4d31f",
+          "permissions": [
+            "stays.read"
+          ],
+          "network": "lan",
+          "lifecycle": "always",
+          "memory_mb": 256,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "1.0.0b18: TV power buttons (#18)\n\n* Drop the 'other photos in My Photos' line from the TVs card\n\n\n* 1.0.0b18: TV power buttons (IP Control), resumed-sync progress, drop other-photos line\n\nEach TV gets a round power button left of play (green when on) for admins and guests.\nOff is standby via Samsung IP Control (port 1516); on is Wake-on-LAN + IP powerOn.\n2024+ Frames ignore the websocket power key for standby, so TVs without an IP Control\ntoken fall back to the key. Settings > TVs gets 'Set up power control'.\n\n\n---------",
+          "released_at": "2026-11-28T00:40:39Z",
+          "built_at": "2026-11-28T00:43:32Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73325725",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
+        {
           "version": "1.0.0b17",
           "kind": "image",
           "channel": "beta",
