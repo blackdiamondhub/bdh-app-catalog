@@ -1477,10 +1477,51 @@
     },
     "device_control": {
       "name": "Controls",
-      "description": "Lodge device controls (scenes, lights, blinds) via Home Assistant",
-      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.5.0b1/device_control/static/device_control/hub/icon.svg",
+      "description": "Lodge device controls (scenes, lights, blinds, heaters, fans) via Home Assistant",
+      "icon": "https://raw.githubusercontent.com/blackdiamondhub/bdh-app-device-control/v2.6.0b1/device_control/static/device_control/hub/icon.svg",
       "repo": "blackdiamondhub/bdh-app-device-control",
       "versions": [
+        {
+          "version": "2.6.0b1",
+          "kind": "image",
+          "channel": "beta",
+          "hub_api": 2,
+          "image": "ghcr.io/blackdiamondhub/bdh-app-device_control@sha256:7e4e7dea5c3a4437b29767f1aa44e79548c254534aa75d4ecc155ff987e07ece",
+          "base": "ghcr.io/blackdiamondhub/bdh-app-runtime@sha256:963c5fa39a53f8c8c071a8cfb5d9bcb672a359f93d2cdcb3d1bfbe93d4b5222d",
+          "build": "gh-46086747816.1",
+          "wheel_url": "https://github.com/blackdiamondhub/bdh-app-device-control/releases/download/v2.6.0b1/bdh_app_device_control-2.6.0b1-py3-none-any.whl",
+          "sha256": "d414a38c6beca57db1c7df0fb22f1c042379ab60153a5177934f63e8ba2be48d",
+          "permissions": [
+            "ha.call:cover.close_cover",
+            "ha.call:cover.open_cover",
+            "ha.call:cover.set_cover_position",
+            "ha.call:cover.stop_cover",
+            "ha.call:light.toggle",
+            "ha.call:light.turn_off",
+            "ha.call:light.turn_on",
+            "ha.call:scene.turn_on",
+            "ha.call:switch.toggle",
+            "ha.call:switch.turn_off",
+            "ha.call:switch.turn_on",
+            "ha.read:cover.*",
+            "ha.read:light.*",
+            "ha.read:scene.*",
+            "ha.read:switch.*"
+          ],
+          "network": "none",
+          "lifecycle": "always",
+          "memory_mb": 96,
+          "companions": [],
+          "provides": [],
+          "custom_base": false,
+          "changelog": "Assistant: deck heaters, exhaust fans and garage lights (2.6.0b1) (#18)\n\nThe assistant said it couldn't control the deck heaters although they are on\nthe Controls page. Add list_heaters_fans/set_heaters_fans for the Deck and\nFans tabs, put the Garage tab's lights into the lights tools, and keep TV\nsockets and PDU Sonos outlets out on purpose (NOT_FOR_ASSISTANT).\n\nDeck heaters turned on by a guest/dashboard switch themselves off after the\nadmin setting heater_auto_off_minutes (default 120, 0 = never); the deadline\nis persisted in app state and enforced by a background worker.\n\nAssistantCoverageTests fails when a Controls-tab device is neither reachable\nby a tool nor explicitly excluded.",
+          "released_at": "2026-11-28T00:05:35Z",
+          "built_at": "2026-11-28T00:14:57Z",
+          "attestation": {
+            "url": "https://github.com/blackdiamondhub/bdh-app-catalog/attestations/73320198",
+            "signer_workflow": "blackdiamondhub/bdh-app-catalog/.github/workflows/build.yml"
+          }
+        },
         {
           "version": "2.5.0b1",
           "kind": "image",
